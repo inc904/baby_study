@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>反转数组</title>
+</head>
+<body>
+  <script>
+      var arr = [1, 9, 4, 7, 12]
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (j = 0; j < arr.length - 1 - i; j++) {
+          var temp = arr[j]
+          arr[j] = arr[j + 1]
+          arr[j + 1] = temp
+        }
+      }
+      // for (let i = 0; i < arr.length / 2; i++) {
+      //   var temp = arr[i]
+      //   arr[i] = arr[arr.length - 1 - i]
+      //   arr[arr.length - 1 - i] = temp
+      // }
+      console.log(arr)
+
+      // var arr = [12, 33, 55, 66];
+    // // 准备新数组，用来保存 翻转之后 的元素
+    // var arr1 = [];
+    // // 倒序遍历 原数组 中的 每个元素
+    // for (var i = arr.length - 1; i >= 0; i--) {
+    //     // 将 原数组中的 元素 直接 追加 到 新数组中
+    //     // arr1.push(arr[i]);
+    //     arr1.push(arr[i]);
+
+    //   }
+    //   alert(arr + '\n' + arr1);
+    // 12,33,55,66
+    // 66,55,33,12
+
+  </script>
+</body>
+</html>

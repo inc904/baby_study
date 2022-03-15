@@ -1,0 +1,15 @@
+<!--pages/film/film.wxml-->
+<view class="film">
+  <view class="file-type" wx:for="{{ moviesList.typeList }}" wx:key="{{ index }}">
+    <view class="type-title">
+      <text class="title">{{ item }}</text>
+      <navigator class="more" url="/pages/moreList/moreList">更多</navigator>
+    </view>
+
+    <scroll-view class="film-list" scroll-x>
+      <view class="list-wrap">
+        <filmItem wx:for="{{ moviesList.movies[index] }}" wx:key="{{ index }}"></filmItem>
+      </view>
+    </scroll-view>
+  </view>
+</view>

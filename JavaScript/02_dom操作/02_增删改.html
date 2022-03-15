@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			ul {
+				display: table;
+				clear: both;
+			}
+
+			ul li {
+				float: left;
+				list-style: none;
+				border: 1px solid aqua;
+				padding: 10px;
+				margin: 10px;
+			}
+
+			button {
+				display: block;
+				line-height: 40px;
+				margin: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			function myClick(idStr, fn){
+				var btn = document.getElementById(idStr)
+				btn.onclick = fn;
+			}
+			window.onload = function (){
+				// 创建一个广州节点,添加到城市下面
+				myClick("btn01", function(){
+					// 创建广州节点  <li>广州</li>
+					// 1.创建元素节点
+					// 2.创建文本节点
+					var newLi = document.createElement("li");
+					var newText = document.createTextNode("广州");
+					newLi.setAttribute("id","gz");
+					newLi.appendChild(newText);
+					console.log(newLi);
+					var city =  document.getElementById("city");
+					console.log(city);
+					city.appendChild(newLi);
+					// 添加到城市下面
+				})
+				// 将广州节点添加到北京前面
+				myClick("btn02", function(){
+					var ul = document.getElementById("city");
+					var li = document.createElement("li");
+					var bj = document.getElementById("bj");
+					var gztext = document.createTextNode("广州");
+					li.appendChild(gztext);
+					ul.insertBefore(li,bj);
+				});
+				// 使用广州节点替换掉 北京节点
+				myClick("btn03", function(){
+					var bj = document.getElementById("bj");
+					var newLi = document.createElement("li");
+					var newText = document.createTextNode("广州");
+					newLi.setAttribute("id","gz");
+					newLi.appendChild(newText);
+					city.replaceChild(newLi, bj);
+				})
+				// 删除北京节点
+				myClick("btn04",function(){
+					var bj = document.getElementById("bj");
+					var city = document.getElementById("city");
+					city.removeChild(bj);
+				})
+				// 读取city内的HTML代码
+				myClick("btn05",function(){
+					var city = document.getElementById("city");
+					console.log(city.innerHTML);
+				})
+				// 设置北京内的html代码
+				myClick("btn06",function(){
+					var bj = document.getElementById("bj");
+					bj.innerHTML = "<p>北京欢迎你</p>"
+				})
+				
+			
+			}
+			
+		</script>
+		<ul id="city">
+			<li id="bj">北京</li>
+			<li>上海</li>
+			<li>东京</li>
+			<li>首尔</li>
+		</ul>
+		<button type="button" id="btn01">创建一个“广州”节点添加到#city下面</button>
+		<button type="button" id="btn02">将广州节点添加到#bj前面</button>
+		<button type="button" id="btn03">使用“广州”节点，替换掉#bj节点</button>
+		<button type="button" id="btn04">删除北京节点</button>
+		<button type="button" id="btn05"> 读取city内的HTML代码</button>
+		<button type="button" id="btn06">设置北京内的html代码</button>
+	</body>
+</html>

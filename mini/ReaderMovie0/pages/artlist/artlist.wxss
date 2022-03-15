@@ -1,0 +1,71 @@
+/* pages/artlist/artlist.wxss */
+.swiperImg{
+  width: 100%;
+  height: 100%;
+}
+.art-section{
+  margin-top: 20rpx;
+  margin-bottom: 40rpx;
+  background-color: #eee;
+}
+.art-panel{
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+.art-title{
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  line-height:90rpx;
+  padding-left: 20rpx;
+
+}
+.panel-title{
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-left: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #333;
+
+}
+.art-title image{
+  width: 60rpx;
+  height: 60rpx;
+  vertical-align: center;
+}
+.art-title text{
+  font-size: 28rpx;
+  margin-left: 20rpx; 
+}
+.art-img{
+  width: 100%;
+  height: 400rpx;
+  margin: 0;
+  padding: 0;
+  vertical-align: center;
+}
+.art-info{
+  font-size: 30rpx;
+  /* text-indent: 60rpx; */
+  padding: 20rpx;
+  /* background-color: pink; */
+  /* padding: 20rpx; */
+}
+.art-info text{
+  margin: 0;
+  padding: 0;
+}
+.art-msg{
+  display: flex;
+  color: #ccc;
+  font-size: 24rpx;
+  padding-bottom: 10rpx;
+}
+.msg-icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+  vertical-align: middle;
+}

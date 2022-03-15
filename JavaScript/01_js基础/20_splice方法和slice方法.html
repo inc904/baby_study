@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 数组的几种方法 -->
+    <script>
+        var arr = ['唐僧', '孙悟空', '八戒', '沙和尚', '小白龙', '紫霞仙子'];
+        /*
+            slice()
+                - 可以从数组中提取指定的元素,返回一个新的数组，不会对原数组产生影响
+                - 参数： 
+                    1、第一个参数：截取开始位置的索引  (包含此索引的值)
+                    2、第二个参数：截取结束的位置索引 （不包含此索引的值）
+                    3.当只传入一个参数时，会默认当做开始的位置索引，一直截取到数组的最后一个元素
+                    4、当传入的值是负值的时候，表示从数组的末尾开始截取几个数
+        */
+        var newArr = arr.slice(2, 5);
+        console.log("arr: ", arr);
+        console.log("newArr", newArr);
+        console.log("-----------------");
+
+        var newArr1 = arr.slice(1);
+        console.log("arr: ", arr);
+        console.log("-----------------");
+        console.log("newArr1: ", newArr1);
+
+        var newArr4 = arr.slice(-2);
+        console.log("arr: ", arr);
+        console.log("-----------------");
+        console.log("newArr4: ", newArr4);
+
+        /*
+            splice()
+            - 可以从数组中截取指定的元素，返回包含删除元素的数组，对原数组产生影响
+            - 参数：
+                1、第一个参数：截取的开始位置索引（包含此索引的值）
+                2、第二个参数：截取的元素个数
+                3、第三个及以后参数，表示，对原数组删除后，添加新的元素
+                4、如果只传入一个参数n，参数作为开始截取的位置的索引,一直截取到数组末尾
+                5、当传入的值是负值的时候，表示从数组的末尾开始截取几个数
+        */
+        console.log("arr: ", arr);
+        var newArr2 = arr.splice(2, 1);
+        console.log("newArr2: ", newArr2);
+        console.log("arr: ", arr);
+        console.log("-----------------");
+
+
+
+        var arr = ['唐僧', '孙悟空', '八戒', '沙和尚', '小白龙', '紫霞仙子'];
+        console.log("arr: ", arr);
+        var newArr3 = arr.splice(2)
+        console.log("newArr3: ", newArr3);
+        console.log("arr: ", arr);
+        console.log("-----------------");
+
+
+
+        var arr = ['唐僧', '孙悟空', '八戒', '沙和尚', '小白龙', '紫霞仙子'];
+        var newArr5 = arr.splice(-3)
+        console.log("arr: ", arr);
+        console.log("newArr5: ", newArr5);
+        console.log("-----------------");
+
+
+        var arr = ['唐僧', '孙悟空', '八戒', '沙和尚', '小白龙', '紫霞仙子'];
+        var newArr6 = arr.splice(1,2,"牛魔王","铁扇公主","二郎神")
+        console.log("arr: ", arr);
+        console.log("newArr6: ", newArr6);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>清除浮动</title>
+    <style>
+      /* ul {
+        overflow: hidden;
+      } */
+      ul::after {
+        content: '';
+        height: 0;
+        visibility: hidden;
+        clear: both;
+        display: block;
+      }
+      ul li {
+        list-style: none;
+        float: left;
+        width: 30px;
+        margin-right: 3px;
+        border: 1px solid red;
+      }
+      .box {
+        width: 100px;
+        height: 30px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <!-- <p style="clear: both; background-color: green;"></p> -->
+    </ul>
+    <div></div>
+
+    <div class="box">nothing</div>
+  </body>
+</html>

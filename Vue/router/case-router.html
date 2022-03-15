@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后台管理案例</title>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router-3.0.7.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{msg}}
+      <button @click="getlist">获取列表</button>
+    </div>
+    <script>
+      var User = {
+        template: `
+                <div>userlist</div>
+              `,
+      }
+      var routes = [{ path: '/user', components: User }]
+      new Vue({
+        data: {
+          msg: 'hello',
+        },
+        methods: {
+          async getlist() {
+            const data = await this.$http.get(
+              'https://www.fastmock.site/mock/6145a47aab15ddd6d18196d8e2b5f630/api/getlist'
+            )
+            console.log(data)
+          },
+        },
+        components: {
+          user: {},
+        },
+      }).$mount('#app')
+    </script>
+  </body>
+</html>

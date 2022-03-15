@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>数组去重</title>
+  </head>
+  <body>
+    <script>
+      var arr = [1, 23, 5, 8, 90, 9, 9]
+      var t = []
+      t[0] = arr[0]
+      for (let i = 0; i < arr.length; i++) {
+        for (let k = 0; k < t.length; k++) {
+          if (t[k] === arr[i]) {
+            break
+          }
+          if (k === t.length - 1) {
+            t.push(arr[i])
+          }
+        }
+      }
+      console.log(t)
+      /*
+
+      1. 对象属性的不重复性
+      2. 新旧对象 newObj.indexOf != -1
+      3. new Set()
+      */
+    </script>
+  </body>
+</html>

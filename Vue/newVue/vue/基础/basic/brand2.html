@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <style>
+        th,
+        td {
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app2">
+        {{new Date() | dateFormate}}
+        <br>
+        {{new Date() | timeFormat}}
+    </div>
+    <div id="app">
+        {{new Date() | dateFormate}}
+        <!-- {{new Date() | timeFormat}}  // app2的私有过滤器，不能再app中使用 -->
+
+        <div>
+            <label for="">
+                品牌<input ctime="text" v-model="brand" @keyup.f2="add">
+            </label>
+
+            <button @click="add">添加</button>
+
+            <label for="">
+                输入搜索关键字：
+                <input type="text" v-model="keywords" id="search" v-focus>
+            </label>
+        </div>
+        <table border="1">
+            <tr>
+                <th>序号</th>
+                <th>品牌</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="item in search(keywords)" :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.brand}}</td>
+                <td>{{item.ctime | dateFormate()}}</td>
+                <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
+            </tr>
+        </table>
+
+    </div>
+    <script>
+        function myPadStart(num) {
+            return num.toString().padStart(2, '0')
+        }
+        Vue.filter('dateFormate', function (date) {
+            var t = new Date(date)
+            var Y = t.getFullYear()
+            var M = t.getMonth() + 1
+            var D = t.getDate()
+            var hh = t.getHours()
+            var mm = (t.getMinutes()).toString().padStart(2, '0')
+            var ss = myPadStart(t.getSeconds())
+            return `${Y}-${M}-${D} ${hh}:${mm}:${ss}`
+
+        })
+        // 自定义全局按键修饰符
+        Vue.config.keyCodes.f2 = 113
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                brandLists: [
+                    { id: 1, brand: '宝马', ctime: new Date() },
+                    { id: 2, brand: '五菱', ctime: new Date() }
+                ],
+                brand: '',
+                keywords: ''
+            },
+            methods: {
+                add() {
+                    var itemNew = {}
+                    itemNew.id = this.brandLists.length + 1
+                    itemNew.brand = this.brand
+                    itemNew.ctime = this.timeFormat(new Date())
+                    console.log(itemNew)
+                    this.brandLists.push(itemNew)
+                    this.brand = ''
+                },
+                del(id) {
+                    // 方法一：
+                    // this.brandLists.forEach((item, i) => {
+                    //     if( item.id === id){
+                    //         this.brandLists.splice(i, 1)
+                    //         return true
+                    //     }
+                    // })
+
+                    // 方法二：
+                    // this.brandLists.some((item, i) =>{
+                    //     if(item.id === id){
+                    //         this.brandLists.splice(i, 1)
+                    //         return true
+                    //     }
+                    // })
+
+                    // 方法三：
+                    var index = this.brandLists.findIndex(item => {
+                        if (item.id === id) return true
+                    })
+                    this.brandLists.splice(index, 1)
+                },
+                timeFormat() {
+                    var t = new Date()
+                    var Y = t.getFullYear()
+                    var M = t.getMonth() + 1
+                    var D = t.getDay()
+                    var hh = t.getHours()
+                    var mm = t.getMinutes()
+                    var ss = t.getSeconds()
+                    return `${Y}-${M}-${D} ${hh}:${mm}:${ss}`
+                },
+                search(keywords) {
+                    // 方法一：
+                    // var newList = []
+                    // this.brandLists.forEach(item => {
+                    //     if (item.brand.indexOf(keywords) != -1) {
+                    //         newList.push(item)
+                    //     }
+                    // })
+                    // console.log(1)
+                    // return newList
+
+                    // 方法二
+                    return this.brandLists.filter(item => {
+                        // if(item.brand.indexOf(keywords) != -1) return item
+                        if (item.brand.includes(keywords)) return item
+                    })
+                }
+            },
+            directives: {
+                focus1: {
+                    // 指令的定义
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                }
+            }
+        })
+        // 原生js自动获取焦点
+        // document.querySelector('#search').focus()
+
+        // 自定义指令 获取焦点
+        // params 1 是指令名称，定义的时候名称不需要加 v- 前缀，使用的时候需要添加前缀
+        // params 2 是一个对象，有一些指令相关的函数，在相应的阶段，执行对应的操作
+        Vue.directive('demo', {
+            bind: function (el) {
+                // 每当指令绑定刀元素上的时候，立刻执行，只执行一次
+                // el.focus()
+            },
+            inserted(el) {
+                // 表示元素插入到 dom 中的时候，执行，只出发一次
+                el.focus()
+            },
+            update: function () {
+                // 当window 更新的时候，会执行，可能会触发多次
+            }
+        })
+        Vue.directive('focus', {
+            // 当被绑定的元素插入到 DOM 中时……
+            inserted: function (el) {
+                // 聚焦元素
+                el.focus()
+            }
+        })
+        var vm2 = new Vue({
+            el: '#app2',
+            data: {
+                msg: '此去轮台招旧部'
+            },
+            methods: {},
+            filters: {
+                timeFormat(time) {
+                    var dt = new Date(time)
+                    var Y = dt.getFullYear()
+                    var M = dt.getMonth() + 1
+                    var D = dt.getDate()
+                    var hh = dt.getHours()
+                    var mm = dt.getMinutes()
+                    var ss = dt.getSeconds()
+                    return `${Y}-${M}-${D} ${hh}:${mm}:${ss}`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

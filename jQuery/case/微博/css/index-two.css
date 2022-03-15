@@ -1,0 +1,79 @@
+/* flex 布局 三栏布局 */
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
+}
+
+.contentWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+    /* background-color: #efe1da; */
+}
+
+.content .cmt {
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+
+}
+
+.content textarea[name='cmt'] {
+    position: absolute;
+    resize: none;
+    width: 726px;
+    height: 100px;
+    top: 53px;
+    left: 35px;
+    outline: none;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.content input#send {
+    color: #fff;
+    background-color: #ffc09f;
+    width: 102px;
+    height: 38px;
+    position: absolute;
+    bottom: 16px;
+    right: 40px;
+    border: none;
+    /* outline: none; */
+    font-size: 16px;
+}
+
+.content ul {
+    padding: 18px;
+}
+.cmtWrapper li{
+    border: 1px solid #000;
+}
+.cmtWrapper li{
+    margin-bottom: 10px;
+}
+/* .cmtText{} */
+.cmtInfo span:nth-child(1){
+    float: left;
+    color: red;
+}
+.cmtInfo span:nth-child(2){
+    float: right;
+}
+
+.cmtInfo span:nth-child(2) a{
+    background: url(../images/icons.png) no-repeat 0 1px;
+    padding-left: 25px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #2b2b2b;
+}
+.cmtInfo span:nth-child(2) a:nth-child(2){
+    background-position: 0 -16px;
+}
+.cmtInfo span:nth-child(2) a:nth-child(3){
+    background-position: 0 -32px;
+}

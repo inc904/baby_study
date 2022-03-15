@@ -1,0 +1,6 @@
+<!--pages/components/fileItem.wxml-->
+<view class="film-item" bindtap="toDetail" data-mid="{{itemInfo.movieId}}">
+  <image class="item-img" src="{{itemInfo.coverImageUrl}}"></image>
+  <view class="item-name">{{itemInfo.title}}</view>
+  <star></star>
+</view>

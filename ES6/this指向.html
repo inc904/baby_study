@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="app">button</button>
+
+    <script>
+        var name = 'aa'
+        function Zclick(e, n1, n2) {
+            console.log(e)
+            console.log(e.target)
+            console.log(this.name)
+            console.log(n1, n2)
+        }
+
+        document.getElementById('app').onclick = function (e) {
+            Zclick(e, 3, 5)
+            // console.log(e)
+            // console.log(e.target)
+            // console.log(this.name)
+        }
+        var o = {
+            name: 'zz',
+            show() {
+                // Zclick()
+                console.log(this.name)
+            },
+            hide(){
+                console.log(this.name)
+            },
+            toot: Zclick
+        }
+        // o.show()
+         npm i style-loader css-loader sass-loader node-sass url-loader file-loader -D
+    </script>
+</body>
+
+</html>

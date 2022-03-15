@@ -1,0 +1,34 @@
+@import '~taro-ui/dist/style/components/search-bar.scss';
+
+.at-search-bar {
+  padding: 20px 16px 40px;
+
+  &__action {
+    display: none;
+  }
+
+  &::after {
+    border-color: rgba(242, 242, 242, 1);
+  }
+
+  &__placeholder-wrap {
+    width: 60px;
+    box-sizing: border-box;
+
+    .at-icon {
+      width: 28px;
+      height: 28px;
+      background-image: url('../../../assets/images/icon/icon-search.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+  }
+}
+
+.searchPage {
+  min-height: 100vh;
+
+  .serchFormWrap {
+    height: 120px;
+  }
+}

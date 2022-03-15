@@ -1,0 +1,11 @@
+<!--components/star/star.wxml-->
+<view class="source">
+  <view class="item-star">
+    <image class="image" src="/images/icon/star.png"></image>
+    <image class="image" src="/images/icon/star.png"></image>
+    <image class="image" src="/images/icon/star.png"></image>
+    <image class="image" src="/images/icon/none-star.png"></image>
+    <image class="image" src="/images/icon/none-star.png"></image>
+  </view>
+  <view class="item-source">9.2</view>
+</view>

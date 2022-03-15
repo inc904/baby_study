@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div v-if="item !== {}">
+      <p>产品名称：{{item.product}}</p>
+      <p>产品描述：{{item.brief}}</p>
+      <p>产品价格：{{item.price}}</p>
+    </div>
+    <ul>
+      <product-item v-for="(item, index) in list" :product="item" :item="{item}" :index="index" :key="index" @pfn="showCheckedName" />
+    </ul>
+  </div>
+  <template id="listItem">
+    <li @click="checkProduct(product)">
+      <p>产品名称：{{product.product}}</p>
+      <p>产品描述：{{product.brief}}</p>
+      <p>产品价格：{{product.price}}</p>
+    </li>
+  </template>
+  <script>
+  console.log(toString.call({}))
+  console.log(toString.call([]))
+  new Vue({
+    data: {
+      list: [
+        { product: '小米5', brief: '好收集', price: 299 },
+        { product: 'apple 9', brief: '好收sdasdasa', price: 2999 },
+        {
+          product: 'Huawei meta 10',
+          brief: '好收集asd奥斯卡大奖',
+          price: 1299,
+        },
+      ],
+      item: {},
+      item2: {},
+    },
+    created() {
+      console.log('item', this.item)
+      console.log('item2', this.item2)
+      console.log('itemType', String(this.item === {}))
+    },
+    methods: {
+      showCheckedName(item) {
+        let nItem = { ...item }
+        this.item = nItem
+        this.item2 = { ...item }
+      },
+    },
+    components: {
+      'product-item': {
+        template: '#listItem',
+        // props: ['product', 'brief', 'price'],
+        props: ['product', 'item', 'index'],
+        methods: {
+          // checkProduct(index) {
+          //   // console.log(index)
+          //   this.$emit('pfn', index)
+          // },
+          checkProduct(product) {
+            console.log(product)
+            this.$emit('pfn', product)
+          },
+        },
+      },
+    },
+  }).$mount('#app')
+  </script>
+</body>
+
+</html>

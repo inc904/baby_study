@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>路由嵌套</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script src="../lib/vue-router-3.0.7.js"></script>
+    <style>
+      .my-active {
+        font-size: 24px;
+        font-weight: 800;
+        color: red;
+        height: 200px;
+        background-color: pink;
+      }
+
+      .v-enter,
+      .v-leave-to {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+
+      .v-enter-active,
+      .v-leave-active {
+        transition: all .5s ease;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-link to='/Account'>用户组件</router-link>
+      <transition mode='out-in'>
+        <router-view></router-view>
+      </transition>
+    </div>
+    <template id="tpl">
+      <div>
+        <h1>这是Account组件</h1>
+        <router-link to='/Account/login'>登录</router-link>
+        <router-link to='/Account/register'>注册</router-link>
+        <router-view></router-view>
+      </div>
+    </template>
+    <script>
+      var login = {
+          template: '<h3>登录组件</h3>'
+        },
+        register = {
+          template: '<h3>注册组件</h3>'
+        },
+        Account = {
+          template: '#tpl'
+        }
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+          login,
+          register,
+          Account,
+        },
+        router: new VueRouter({
+          routes: [{
+            path: '/Account',
+            component: Account,
+            children: [
+              { path: 'login', component: login },
+              { path: 'register', component: register },
+            ]
+          }],
+          linkActiveClass: 'my-active'
+        })
+      })
+    </script>
+  </body>
+
+</html>

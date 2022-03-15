@@ -1,0 +1,34 @@
+/* pages/components/fileItem.wxss */
+
+.film-item {
+  padding: 10rpx 18rpx;
+  width: 210rpx;
+}
+
+.item-img {
+  width: 200rpx;
+  height: 300rpx;
+  vertical-align: bottom;
+}
+
+.item-name {
+  font-size: 22rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.item-star {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-star .image {
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: middle;
+}
+
+.item-source {
+  font-size: 20rpx;
+}

@@ -1,0 +1,82 @@
+/* pages/filmDetail/filmDetail.wxss */
+
+.film-header {
+  width: 100%;
+  height: 300rpx;
+  /* background: url('https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1446261379.webp') no-repeat;
+  background-size: 100% 100%; */
+  position: relative;
+}
+.film-header image{
+  width: 100%;
+  height: 300rpx;
+}
+.inner image {
+  width: 200rpx;
+  height: 300rpx;
+}
+
+.inner {
+  position: absolute;
+  left: 100rpx;
+  bottom: -100rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.film-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40rpx;
+  margin-left: 40rpx;
+}
+
+.film-info text {
+  color: #fff;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+
+.film-detail {
+  margin-top: 120rpx;
+  padding: 20rpx;
+}
+
+.btn {
+  width: 70%;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin: 0a auto;
+  border: 2rpx solid #1f4ba5;
+  color: #1f4ba5;
+  font-size: 28rpx;
+}
+
+.actors {
+  margin-top: 30rpx;
+}
+
+.section-title {
+  border-left: 6rpx solid #1f4ba5;
+  height: 60rpx;
+ line-height: 60rpx;
+}
+
+.section-title text {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+.actors-img{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.actors-wrap{
+  width: 100%;
+}
+.img-wrap image{
+  width: 200rpx;
+  height: 240rpx;
+  margin-left: 16rpx;
+}

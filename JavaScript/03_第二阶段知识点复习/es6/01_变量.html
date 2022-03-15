@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>变量赋值</title>
+</head>
+<body>
+	<script>
+		/*
+		var a = 12;
+		var a = "hello";
+		// es5 的变量 重复赋值,不会报错,覆盖变量的值
+		console.log(a);
+		var MYSQL = "databases";
+		// 仅仅以大写的变量名来标识常量
+		console.log(MYSQL);
+		let str = "hello";
+		// let str = "world";
+		console.log(str);
+		// es6 中 const 对常量的定义，定义后不可修改值
+		const name = "xiangbei";
+		name = "ytf";
+		// Uncaught SyntaxError: Identifier 'name' has already been declared 标识符已经被定义
+		console.log(name);
+
+		*/
+		const a = 5;
+		if(a === 5){
+			console.log("hello");
+		}
+		// 任何时候对常量重新赋值都是不被允许的
+		// if(a = 5){
+		// 	console.log("hello");
+		// }
+		// 
+		// 
+		let b = 10;
+		b = "fucking";
+		console.log(b);
+	</script>
+</body>
+</html>

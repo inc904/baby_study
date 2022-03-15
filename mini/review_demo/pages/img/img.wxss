@@ -1,0 +1,12 @@
+/* pages/img/img.wxss */
+.item {
+  float: left;
+}
+.item + .item{
+  /* border: 0; */
+  border-left: 4rpx solid #ccc;
+}
+
+.block {
+  color: #fff;
+}

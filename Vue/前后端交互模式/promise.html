@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise</title>
+  </head>
+  <body>
+    <script>
+      console.dir(Promise)
+      var p = new Promise(function (resolve, reject) {
+        // 实现异步任务
+        setTimeout(() => {
+          var flag = true
+          if (flag) {
+            // 成功时调用 resolve
+            resolve('success')
+          } else {
+            // 失败时调用 reject
+            reject('Error')
+          }
+        }, 1000)
+      })
+      p.then(
+        function (ret) {
+          // 从 resolve 中 得到正常的结果
+          console.log(ret)
+        },
+        function (ret) {
+          // 从 reject 得到错误信息
+          console.log(ret)
+        }
+      )
+      // 处理原生 Ajax
+      function fetchData(url) {
+        return new Promise(function (resolve, reject) {
+          let handler = function () {
+            if (this.readyState !== 4) return
+            if (this.status === 200) {
+              resolve(this.response)
+            } else {
+              reject(new Error(this.statusText))
+            }
+          }
+          let xhr = new XMLHttpRequest()
+          xhr.onreadystatechange = handler
+          xhr.responseType = 'json'
+          xhr.open('GET', url)
+          xhr.send(null)
+        })
+      }
+      let url =
+        'https://www.fastmock.site/mock/6145a47aab15ddd6d18196d8e2b5f630/api/getlist'
+      fetchData(url)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((ret) => {
+          console.log(ret)
+        })
+      console.log('---------')
+      fetch(url)
+        .then((data) => {
+          return data.text()
+          // return data.json()
+        })
+        .then((ret) => {
+          console.log(ret)
+          // console.log(JSON.parse(ret))
+        })
+    </script>
+  </body>
+</html>

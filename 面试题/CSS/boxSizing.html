@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .div,
+      .div2 {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        border: 10px solid #ccc;
+        margin: 20px;
+      }
+      .div2 {
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div"></div>
+    <div class="div2"></div>
+    <script>
+      function setValue() {
+        var p1 = (p2 = {})
+        p1.name = 'zzc'
+        p2.value = 'web'
+        console.log(p2.name)
+        console.log(p1.value)
+        console.log(p1.value, p2.name)
+      }
+      setValue()
+
+      console.log(typeof p1)
+      console.log(typeof p2)
+      // console.log(p1)
+      console.log(p2)
+    </script>
+  </body>
+</html>

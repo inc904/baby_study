@@ -1,0 +1,89 @@
+<!--pages/user/index.wxml-->
+<view class="user_info_wrap">
+	<view class="user_img_wrap" wx:if="{{userInfo.avatarUrl}}">
+		<image src="{{userInfo.avatarUrl}}" class="user_bg" />
+		<view class="userinfo">
+			<block>
+				<image class="user_icon" src="{{userInfo.avatarUrl}}" />
+				<text class="nickname">{{userInfo.nickName}}</text>
+			</block>
+		</view>
+	</view>
+	<navigator wx:else url="/pages/login/index" class="login_btn">
+		登录
+	</navigator>
+</view>
+<view class="user_content">
+	<view class="user_main">
+		<view class="menu self_menu">
+			<view class="item favorite_shop">
+				<text class="num">1</text>
+				<text class="text">收藏的店铺</text>
+			</view>
+			<view class="item favorite_shop">
+				<text class="num">1</text>
+				<text class="text">收藏的商品</text>
+			</view>
+			<view class="item favorite_shop">
+				<text class="num">1</text>
+				<text class="text">关注的商品</text>
+			</view>
+			<view class="item favorite_shop">
+				<text class="num">1</text>
+				<text class="text">我的足迹</text>
+			</view>
+		</view>
+		<view class="menu_title">
+			我的订单
+		</view>
+		<view class="menu  order_menu">
+			<navigator class="item all " url="/pages/order/index?type=1">
+				<view class="iconfont icon-ding_dan" />
+				<text class="text">全部订单</text>
+			</navigator>
+			<navigator class="item all " url="/pages/order/index?type=2">
+				<view class="iconfont icon-fukuantongzhi" />
+				<text class="text">待付款</text>
+			</navigator>
+			<navigator class="item all " url="/pages/order/index?type=3">
+				<view class="iconfont icon-receipt-address" />
+				<text class="text">待收货</text>
+			</navigator>
+			<navigator class="item all ">
+				<view class="iconfont icon-tuihuotuikuan_dianpu" />
+				<text class="text">退款/退货</text>
+			</navigator>
+
+		</view>
+		<view class="menu address">
+			<view class="text">
+				收获地址管理</view>
+			<view class="arrow icon">></view>
+		</view>
+		<view class="b_m contact">
+			<view class="text">
+				联系客服
+			</view>
+			<view class="arrow icon">
+				400-820-8820
+			</view>
+		</view>
+		<view class="b_m point">
+			<view class="text">
+				意见反馈
+			</view>
+			<view class="arrow icon">></view>
+		</view>
+		<view class="b_m about">
+			<view class="text">
+				关于我们</view>
+			<view class="arrow icon">></view>
+		</view>
+		<view class="menu recommend">
+			<view class="text">
+				把应用推荐给其他人</view>
+			<view class="arrow icon">></view>
+		</view>
+	</view>
+</view>
+

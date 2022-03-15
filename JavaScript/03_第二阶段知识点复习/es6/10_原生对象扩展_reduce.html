@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>reduce</title>
+</head>
+
+<body>
+    <script>
+        //    reduce 返回一个值
+        let arr = [67, 122, 36, 59, 99];
+        // 求和
+        let sum = arr.reduce(function (tmp, item, index) {
+            return tmp + item;
+        })
+        console.log(sum)
+
+        // 求平均  
+        let result = arr.reduce(function (tmp, item, index) {
+            if (index === arr.length - 1) {
+                return (tmp + item) / arr.length;
+            } else {
+                return tmp + item;
+            }
+
+        })
+        console.log(result)
+
+    </script>
+</body>
+
+</html>

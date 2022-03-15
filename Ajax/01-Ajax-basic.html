@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ajax的快速上手</title>
+  </head>
+
+  <body>
+    <script>
+      // XMLHttpRequest
+      // 1.创建请求对象
+      var http = new XMLHttpRequest()
+      // 2.设置发送请求的方式和请求的路径
+      http.open('get', 'https://api.gushi.ci/all.json')
+      // 3.发送请求
+      http.send()
+      // 4.监听请求的变化
+      http.onreadystatechange = function () {
+        // 5.处理请求数据
+        if (http.readyState == 4 && http.status == 200) {
+          console.log(http.responseText)
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+  <div></div>
+  <div>我是div</div>
+  <div>我是div123</div>
+  <span></span>
+  <div><span>我是di里面的span</span></div>
+
+  <script>
+    // :empty() 找到既没有文本内容也没有子元素的制定元素
+    var $empty = $('div:empty')
+    console.log($empty)
+    // :parent 找到有子元素或者有文本内容的指定元素
+    var $parent = $('div:parent')
+    console.log($parent);
+    // :contains(text) 找到包含指定文本内容得元素
+    var $contains = $('div:contains("我是div")')
+    console.log($contains);
+    // :has(selector) 找到包含指定子元素得元素
+    var $has = $("div:has('span')")
+    console.log($has)
+
+  </script>
+</body>
+
+</html>

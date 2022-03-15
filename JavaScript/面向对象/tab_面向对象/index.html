@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="index.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #tab {
+        width: 800px;
+        height: 400px;
+        margin: 100px auto;
+        background-color: #eee;
+      }
+      .nav {
+        display: flex;
+      }
+      .nav div {
+        height: 40px;
+        border-bottom: 1px solid #ccc;
+        width: 100%;
+        position: relative;
+      }
+      .nav div .add {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        height: 15px;
+        width: 15px;
+        line-height: 15px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid #ccc;
+      }
+      .liactive {
+        border-bottom: none;
+      }
+      ul {
+        height: 40px;
+        display: flex;
+      }
+      li {
+        width: 100px;
+        text-align: center;
+        list-style: none;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        position: relative;
+        cursor: pointer;
+      }
+      .title {
+        height: 40px;
+        line-height: 40px;
+      }
+      .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: #000;
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        font-size: 12px;
+        cursor: pointer;
+        text-align: center;
+      }
+      .content section {
+        display: none;
+      }
+      section.conactive {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tab">
+      <div class="nav">
+        <ul class="itemBox">
+          <li class="liactive">
+            <span class="title">新闻</span>
+            <span class="close">x</span>
+          </li>
+          <li>
+            <span class="title">新闻</span>
+            <span class="close">x</span>
+          </li>
+        </ul>
+        <div>
+          <span class="add">+</span>
+        </div>
+      </div>
+      <div class="content">
+        <section class="conactive">1</section>
+        <section>2</section>
+      </div>
+    </div>
+  </body>
+</html>

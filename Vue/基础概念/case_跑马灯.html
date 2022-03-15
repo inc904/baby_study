@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ msg }}</p>
+    <input type="button" value="move" @click="move">
+    <input type="button" value="stop" @click="stop">
+  </div>
+  <script src="lib/vue-2.4.0.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '善始者众，善终者寡。。。！',
+        timer: null
+
+      },
+      methods: {
+        move() {
+          console.log('move')
+         if(this.timer == null){
+          this.timer = setInterval(() => {
+            var start = this.msg.substring(0, 1)
+            var end = this.msg.substring(1)
+            this.msg = end + start
+          }, 1000)
+         }
+        },
+        stop() {
+          clearInterval(this.timer)
+          this.timer = null
+          console.log('stop')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

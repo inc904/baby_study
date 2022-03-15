@@ -1,0 +1,18 @@
+/* components/star/star.wxss */
+.source{
+  display: flex;
+  align-items: center;
+}
+.item-star {
+  display: flex;
+}
+
+.item-star .image {
+  width: 17rpx;
+  height: 17rpx;
+  margin-right: 8rpx;
+}
+.item-source{
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}

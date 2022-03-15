@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue初始</title>
+</head>
+
+<body>
+  <!-- 
+
+    1、文本输入：
+      插值表达式： {{}}  不能解析html标签， 可以解析简单js表达式
+      v-text: 不能解析html标签
+      v-html:  可以解析html标签 
+    2、指令
+      v-if: 直接删除或者注释掉，不会在占位置
+      v-show: 设置 display 属性
+    3、事件
+    v-on： 绑定事件 
+    v-bind: 绑定属性 
+    二者所绑定的事件或属性都必须是 在 实例中 注册过的 事件 或者 数据
+   -->
+  <div id="app">
+
+    <p>列表渲染</p>
+    <ul>
+      <li v-for="(item, index) of student" :key="item.id">
+        {{index}}.{{item.id}}---{{item.name}}---{{item.age}}
+      </li>
+    </ul>
+    <p>显示过滤后的结果</p>
+    <ul>
+      <li v-for="item in enStudent">
+          {{item.id}}---{{item.name}}---{{item.age}}
+      </li>
+    </ul>
+    <p>条件渲染</p>
+    <p>{{ inputType}}</p>
+    <template v-if="inputType === 'loginType'">
+      <label for="">UserName</label>
+      <input type="text" key="loginInput">
+    </template>
+    <template v-else="inputType === 'registerType'">
+      <label for="">Email</label>
+      <input type="text" key="registerInput">
+    </template>
+
+    <button @click="toggleType">toggleType</button>
+
+    <p>文本输入</p>
+    {{msg}}
+    {{ msg  + '1'}}
+    {{ 1 + 6 }}
+    <!-- {{ console.log(123)}} 不可以 -->
+    {{ msg.split("") }}
+    <p>{{ vHtml }}</p>
+
+
+    <p v-text="vText"></p>
+    <p v-text="vHtml"></p>
+    <p v-html="vHtml"></p>
+    <p>事件绑定</p>
+    <button v-on:click="click">点击</button>
+    1
+    <p v-if="msg">{{msg}}</p>
+    4
+    <p v-if="msg.length > 9">{{msg}}</p>
+    2
+    <p v-show="msg.length > 9">{{msg}}</p>
+    3
+    <p>事件</p>
+    <button @click="click">点击</button>
+    <button v-on:click="click">点击</button>
+    <button v-on:click="en">点111击</button>
+    <label for="btn">
+      原生：
+      <input id="btn" type="button" value="原生点击" onclick="alert(1)">
+    </label>
+
+    <!-- <button v-on:click="alert(1)">点击</button> 不可以直接解析js代码 -->
+    <p>v-bind</p>
+    <!-- <p v-bind:title="{{这是一个v_bind绑定}}">这是一个v-bind绑定</p>  不可以-->
+    <p v-bind:title="title">这是一个v-bind绑定</p>
+    <p :title="title">这是一个v-bind绑定</p>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        vText: 'v-text',
+        vHtml: '<span>哈哈哈<span>',
+        title: '这是一个v_bind绑定',
+        student: [
+          { id: 1, name: 'zzc', age: 16 },
+          { id: 2, name: 'tyu', age: 23 },
+          { id: 3, name: 'hjk', age: 26 },
+        ],
+        inputType: 'loginType',
+      },
+      methods: {
+        click: function () {
+          console.log('hello Vue!')
+        },
+        toggleType() {
+          if (this.inputType != '' && this.inputType === 'loginType') {
+            this.inputType = 'registerType'
+          } else {
+            this.inputType = 'loginType'
+          }
+        },
+        en(){
+          console.log(123)
+        }
+      },
+      computed: {
+        enStudent(){
+          return this.student.filter( person =>{
+            return person.id > 1
+          } )
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

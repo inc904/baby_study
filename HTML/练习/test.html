@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="p">
+        修改前的内容
+    </p>
+    <button onclick="change()">change</button>
+    <script>
+        function change() {
+            console.log('13')
+            document.getElementById('p').innerHTML = '修改后的内容'
+            // console.log(document.getElementsByClassName('p'))
+        }
+
+    </script>
+</body>
+
+</html>

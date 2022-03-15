@@ -1,0 +1,7 @@
+.pic{
+  width: 200px;
+  height: 200px;
+  background: url(../image/logo.png) no-repeat;
+  background-size: cover;
+  border: 1px solid gold;
+}

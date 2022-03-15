@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>清除浮动</title>
+		<style>
+			.father{
+				/* width: 210px; */
+				background-color: red;
+				border: 1px solid red;
+				/* 添加overflow属性 */
+				/* overflow: hidden; */
+			}
+			.box1 {
+				width: 100px;
+				height: 50px;
+				background-color: #fadadd;
+				float: left;
+				border: 1px solid blue;
+			}
+
+			.mather {
+				width: 450px;
+				height: 250px;
+				background-color: orange;
+			}
+			/* 伪元素清除浮动 */
+			.clearfix:after{
+				content: ".";
+				display: block;
+				height: 0;
+				clear: both;
+				visibility: hidden;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+		</style>
+	</head>
+	<body>
+		清除浮动的四种方法
+		<div class="father clearfix">
+			<p>			adasdaasddddddddddddddddddfff</p>
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<!-- 添加空标签清除浮动 -->
+			<!-- <div style="clear:both;"></div> -->
+		</div>
+		123
+		<div class="mather">123456</div>
+	</body>
+</html>

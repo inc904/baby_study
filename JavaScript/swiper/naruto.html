@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .clear:after {
+      display: block;
+      content: '';
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    body {
+      height: 100vh;
+      /* display: flex;
+      justify-content: center;
+      align-items: center; */
+    }
+    .container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      background-color: #ccc;
+      transform: scale(0.6);
+      border: 1px solid gold;
+      margin: 0 auto;
+    }
+    .item {
+      width: 400px;
+      height: 400px;
+      /* width: 100%;
+      height: 100%; */
+      position: absolute;
+      left: 0;
+      top: 0;
+      border: 1px solid #ccc;
+      transition: all 0.5s;
+      z-index: 10;
+    }
+    .item img {
+      width: 100%;
+    }
+    .left {
+      border-color: royalblue;
+      /* background-color: royalblue; */
+      left: -500px;
+      filter: blur(10px);
+    }
+    .middle {
+      border-color: yellowgreen;
+      /* background-color: yellowgreen; */
+      transform: scale(1.4);
+      z-index: 100;
+      /* transform-origin: center bottom; */
+    }
+    .right {
+      border-color: blueviolet;
+      /* background-color: blueviolet; */
+      left: 500px;
+      filter: blur(10px);
+    }
+  </style>
+  <body>
+    <!-- <div class="line" style="width: 1700px; height: 2px; background: red"></div> -->
+    <div class="container clear">
+      <div class="item left">
+        <img src="./img/佐助.png" alt="" />
+      </div>
+      <div class="item middle">
+        <img src="./img/小樱.png" alt="" />
+      </div>
+      <div class="item right">
+        <img src="./img/鸣人.png" alt="" />
+      </div>
+    </div>
+    <div class="t">123</div>
+    <script>
+      var itemsArr = document.getElementsByClassName('item')
+      // itemsArr
+      for (let i = 0; i < itemsArr.length; i++) {
+        itemsArr[i].addEventListener('click', function () {
+          //被点击的元素  处于中间位置
+          console.log(123)
+          this.classList.remove('left', 'middle', 'right')
+          this.classList.add('middle')
+          let left =
+            this.previousElementSibling || itemsArr[itemsArr.length - 1]
+          left.classList.remove('left', 'middle', 'right')
+          left.classList.add('left')
+          let right = this.nextElementSibling || itemsArr[0]
+          right.classList.remove('left', 'middle', 'right')
+          right.classList.add('right')
+        })
+      }
+      setInterval(function () {
+        let right = document.querySelector('.right')
+        right.click()
+      }, 2000)
+    </script>
+  </body>
+</html>

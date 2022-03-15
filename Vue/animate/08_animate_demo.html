@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="lib/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="./lib/animate.css">
+
+  <style>
+    #app {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    #app #p {
+
+      background-color: aqua;
+      margin-bottom: 4px;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 2s;
+    }
+
+    .fade-enter-to,
+    .fade-leave {
+      opacity: 1;
+    }
+
+    .fade-enter,
+    .fade-leave-to
+
+    /* .fade-leave-active below version 2.1.8 */
+      {
+      opacity: 0;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    <input type="button" value="toggle" @click="show=!show">
+    <transition 
+    enter-active-class="bounceIn" 
+    leave-active-class="bounceOut" >
+      <h3 id="ppp" v-if="show" class="animated">world</h3>
+    </transition>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#demo',
+      data: {
+        show: false
+      },
+      methods: {
+      }
+    })
+  </script>
+</body>
+
+</html>

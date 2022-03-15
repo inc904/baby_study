@@ -1,0 +1,6 @@
+<!--pages/components/fileItem.wxml-->
+<view class="film-item" bindtap="toDetail">
+  <image class="item-img" src="https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2559742751.jpg"></image>
+  <view class="item-name">{{item.title}}</view>
+  <star></star>
+</view>

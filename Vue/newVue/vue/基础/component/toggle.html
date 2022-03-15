@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件切换</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="登录" @click="flag = true">
+        <input type="button" value="注册" @click="flag = false">
+        <login v-if="flag"></login>
+        <register v-else></register>
+    </div>
+    <script>
+        var login1 = {
+            template: '<h1>登录</h1>'
+        }
+        var register = {
+            template: '<h1 @click="click">{{hh}}</h1>',
+            data() {
+                return {
+                    hh: '哈哈'
+                }
+            }, 
+            methods: {
+                click(){
+                    console.log(123)
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                flag: true
+            },
+            methods: {},
+            components: {
+                'login': login1,
+                register
+            }
+        })
+    </script>
+</body>
+
+</html>

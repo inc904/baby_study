@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set：内置对象</title>
+    <style>
+      header {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+      aside {
+        background-color: green;
+        width: 200px;
+        height: 200px;
+      }
+      footer {
+        background-color: blue;
+        width: 200px;
+        height: 200px;
+      }
+      .box {
+        color: #fff;
+        font-size: 30px;
+      }
+      .box2 {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="test()">按钮</button>
+    <aside class="box box2 a c c">aside</aside>
+    <header></header>
+    <footer></footer>
+    <script>
+      function test() {
+        console.log(1)
+      }
+      function test() {
+        console.log(2)
+      }
+      // let set = new Set(1) // num 1 can‘t iterate
+      // let set = new Set()
+      // console.log(set)
+      // let set2 = new Set('1')
+      // console.log(set2)
+      // set2.add(1)
+      // console.log(set2)
+      let str = 'hello'
+      for (x of str) {
+        console.log(x)
+      }
+      console.dir(str)
+      console.log(String.prototype.hasOwnProperty(Symbol.iterator))
+      console.log(Number.prototype.hasOwnProperty(Symbol.iterator))
+
+      const createIterator = (items) => {
+        const keys = Object.keys(items)
+        const len = keys.length
+        let pointer = 0
+        return {
+          next() {
+            const done = pointer >= len
+            const value = !done ? items[keys[pointer++]] : undefined // 如果当前指针位置小于总长度
+            console.log({ value, done })
+            return {
+              value,
+              done,
+            }
+          },
+        }
+      }
+
+      let list = [1, 2, 3, 4]
+      let listIterator = createIterator(list)
+      listIterator.next()
+      listIterator.next()
+      listIterator.next()
+      listIterator.next()
+      listIterator.next()
+
+      let person = { name: '小红', id: '111' }
+      let personIterator = createIterator(person)
+      personIterator.next()
+      personIterator.next()
+      personIterator.next()
+    </script>
+  </body>
+</html>

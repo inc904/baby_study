@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      从输入URＬ到最终页面渲染完成，发生了什么？
+      1. DNS 解析，将 域名地址 解析为 IP 地址
+      - 浏览器DNS缓存
+      - 系统DNS缓存
+      - 路由器DNS缓存
+      - 网络运行商DNS缓存
+      - 递归搜索:blog.baidu.com
+        - .com 域名下查找 DNS 解析
+        - .baidu 域名下查找 dns 解析
+        - blog 域名下 查找  dns 解析
+        - blog 域名下查找解析
+        - 都找不到，那就出错了
+      2. TCP连接： 三次握手
+      - 第一次握手：由 浏览器 发起，告诉服务器：我要发送请求了
+      - 第二次握手：由 服务器 发起，告诉浏览器：我准备接收了
+      - 第三次握手：由 浏览器 发起，告诉服务器：我马上就发了，准备接收吧
+      3. 发送请求
+      - 请求报文：HTTP 协议的通信内容
+      4. 接收响应
+      - 响应报文
+      5. 渲染页面
+      - 遇见 HTML 标记， 浏览器调用 HTML 解析器，解析成一个对应的 token（联想vnode的形式，对象结构的html） 标记，并构建成一个 DOM 树，
+      - 遇见 style、link 标记：浏览器调用css 解析器，处理 css 标记，并构建 cssom 树
+      - 遇见 script标记：调用 javascript 解析器，处理 script 代码（绑定事件、修改dom树和cssom树）
+      - 将dom树和cssom树合并成 渲染树，
+      - 根据渲染树来计算布局，计算每个节点的几何信息（布局）
+      - 将各个节点的颜色绘制到屏幕上（渲染）
+
+      这五个步骤不一定按照顺序执行，可能会反复执行并执行多次，如果dom树或者cssom树被修改了，可能会执行多次布局和渲染。
+      往往实际页面中，这几个步骤都会执行多次。
+
+      6. 断开连接
+      TCP的四次挥手
+      - 第一次挥手：由 浏览器 发起，发送给 服务器 ，我东西发送完了（请求报文），你准备关闭把
+      - 第二次挥手：由 服务器 发起，发送给 浏览器， 我东西接收完了（请求报文），我准备关闭了， 你也准备把
+      - 第三次挥手：由  服务器 发起：告诉浏览器，我东西发送完了（响应报文），你准备关闭把
+      - 第四次挥手：由 浏览器 发起，告诉 服务器，我东西接收完了（响应报文），我准备关闭了，你也准备关闭把
+
+      服务器先关，浏览器在关闭。
+ 
+
+
+      https://www.bilibili.com/video/av59639585?p=16
+     -->
+   <script>
+    console.log(test)
+    function test(){
+      console.log('12')
+    }
+    </script>
+  </body>
+</html>

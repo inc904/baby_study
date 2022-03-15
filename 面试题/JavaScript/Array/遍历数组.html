@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  // for in
+  var arr = [1, 2, 3, 4, 5]
+  arr.name = 'arrrr'
+  for (let i in arr) {
+    console.log(i, i + 1, typeof i, arr[i])
+  }
+  var obj = {
+    name: 'reduce',
+    age: 12
+  }
+  for (let key in obj) {
+    console.log(key, obj[key])
+  }
+
+  // for of
+  var arr2 = ['apple', 'orange', 'banana']
+  for (let value of arr2) {
+    console.log(value)
+  }
+
+
+  Object.prototype.method = function() {
+    console.log(this);
+  }
+  var myObject = {
+    a: 1,
+    b: 2,
+    c: 3
+  }
+  for (var key in myObject) {
+    console.log(key);
+  }
+  console.log('----')
+  for (var key in myObject) {
+    if (myObject.hasOwnProperty(key)) {
+      console.log(key);
+    }
+  }
+  console.log(Object.keys(myObject))
+
+
+  // 通过默认参数 校验参数
+  function required(key) {
+    console.warn(`${key} is null, pls check!`)
+  }
+
+  function hello(obj) {
+    let { name = required('name'), age = required('age') } = obj
+    return `${name}: ${age}`
+  }
+
+  // 扩展运算符 克隆数组
+  const test1 = [1, 2, 3];
+  const test2 = [...test1];
+  test1[1] = 5
+  console.log(test1, test2)
+  // find
+  const data = [{
+      type: 'test1',
+      name: 'abc'
+    },
+    {
+      type: 'test2',
+      name: 'cde'
+    },
+    {
+      type: 'test1',
+      name: 'fgh'
+    },
+  ]
+  filteredData = data.find(item => item.type === 'test1' && item.name === 'fgh');
+  console.log(filteredData);
+  function Student(){
+  	console.log(this)
+  }
+  student = new Student()
+  console.log(Student.prototype)
+
+  </script>
+</body>
+
+</html>

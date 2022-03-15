@@ -1,0 +1,40 @@
+/* pages/list/list.wxss */
+
+.film {
+  background-color: #eee;
+}
+
+.file-type {
+  margin-bottom: 14rpx;
+  background-color: #fff;
+}
+
+.type-title {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24rpx;
+  padding-bottom: 24rpx;
+}
+
+.type-title .title {
+  font-size: 24rpx;
+  padding-left: 30rpx;
+  border-left: 6rpx solid #1f4ba5;
+}
+
+.type-title  .more {
+  font-size: 24rpx;
+  margin-right: 20rpx;
+  color: #1f4ba5;
+}
+
+
+.film-list {
+  width: 100%;
+}
+
+.items{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}

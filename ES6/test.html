@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id='parent1'>
+        <div id="test">
+            <p>p1</p>
+
+            <p>p1</p>
+        </div>
+    </div>
+    <h1>h1</h1>
+    <div name='aa' id='aa'></div>
+    <p id="p2"></p>
+    <script>
+        window.οnlοad = function () {
+            var el = document.getElementById('test');
+            //子节点
+            var childs = getChildNodes(el);
+            //父节点
+            var parent = el.parentElement;
+            var aaDiv = document.getElementById('aa');
+            //aaDiv的下一兄弟节点元素(下一兄弟节点使用aaDiv.nextSibling)
+            var ns = aaDiv.nextElementSibling;
+            //aaDiv的上一个兄弟节点元素(上一兄弟节点使用	aaDiv.previousSibling)
+            var ps = aaDiv.previousElementSibling;
+            console.log(123);
+            console.log(childs);
+            console.log(parent);
+            console.log(ns);
+            console.log(ps);
+        }
+
+        //子节点获取方法
+        var getChildNodes = function (el) {
+            var childs = el.children;
+            var childArr = new Array();
+            for (var i = 0; i < childs.length; i++) {
+                if (childs[i].nodeType == 1) {
+                    childArr.push(childs[i]);
+                }
+            }
+            return childArr;
+        }
+    </script>
+</body>
+
+</html>

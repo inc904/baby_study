@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="父组件按钮" @click="pclick(Date.now())">
+		<son-com :parentmsg='pmsg' @parent-click="pclick"></son-com>
+	</div>
+	<template id="tpl">
+		<div>
+			<h1>{{ sonmsg }}</h1>
+			<p>从父组件获取的数据：{{ parentmsg }}</p>
+			<input type="button" value="调用子组件自己的方法" @click="myclick">
+			<input type="button" value="调用父组件的方法" @click="pclick">
+		</div>
+	</template>
+	<script>
+
+		var vm = new Vue({
+			el: '#app',
+			data: {
+				pmsg: 'this is parent message!'
+			},
+			methods:{
+				pclick(data){
+					console.log('调用了父组件的方法,值是：'+ data )
+				}
+			},
+			components:{
+				sonCom:{
+					template: '#tpl',
+					data: function () {
+						return {
+							sonmsg: 'this is son component!'
+						}
+					},
+					props:['parentmsg'],
+					methods:{
+						myclick(){
+							console.log('调用了自己的方法')
+						},
+						pclick(){
+							this.$emit('parent-click', Date.now())
+						}
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

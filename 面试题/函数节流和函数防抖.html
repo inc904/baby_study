@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>函数防抖和函数节流</title>
+  <style>
+    html,
+    body {
+      height: 500%;
+    }
+  </style>
+</head>
+<body>
+  <button>防抖</button>
+  <script>
+    // 防抖 就是 只执行最后一次；节流 就是在一定时间内只能触发一次
+      /* 
+        防抖函数： 
+        - 一个需要频繁触发的函数，再规定的某个时间内，只让最后一次生效，前面的不生效.
+        - 在第一次触发后的n秒内，只执行一次。如果在n秒内，再次被触发，则重新计算时间。（依据最后一次的触发计算）
+        - 缺点：
+          - 如果事件在规定的时间间隔内被不断的触发，则调用方法会被不断的延迟
+
+        */
+        function debunce(fn, delay) {
+        // 记录上一次的延时器
+        var timer = null
+        // 清除上一次的延时器
+        return function() {
+          clearInterval(timer)
+          timer = setTimeout(() => {
+            fn()
+          }, delay)
+        }
+      }
+      document.querySelector('button').onclick = debunce(function() {
+        console.log('点击事件被触发了' + Date.now())
+      }, 200)
+
+      /*
+        函数节流：
+        - 当一个函数执行一次后，只有大于设定的周期后才会执行第二次。
+        - 有一个需要频繁触发的函数，处于优化性能的角度，在规定时间内，只让函数触发的第一次生效，后面的不生效。
+        */
+
+        function throttle(fn, delay) {
+        // 记录上一次函数触发的时间
+        var lastTime = 0
+        return function() {
+          // 记录当前函数触发的时间
+          var nowTime = Date.now()
+          if (nowTime - lastTime > delay) {
+            // 修正this指向
+            fn.call(this)
+            // 同步时间
+            lastTime = nowTime
+          }
+        }
+      }
+      document.onscroll = throttle(function() {
+        console.log('scroll 被触发了' + Date.now())
+      }, 200)
+
+  /*
+    区别：
+     函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。
+
+     https://blog.csdn.net/zuorishu/article/details/93630578 */
+    </script>
+  </body>
+  </html>

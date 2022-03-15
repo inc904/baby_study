@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer {
+            background-color: #ccc;
+            display: flex;
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 10px;
+        }
+    </style>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="outer">
+        <!-- <div class="inner">1</div>
+        <div class="inner">2</div>
+        <div class="inner">3</div>
+        <div class="inner">4</div>
+        <div class="inner">5</div>
+        <div class="inner">6</div> -->
+        <table>
+            <td>123</td>
+        </table>
+        我去
+        <p class="text">你好 </p>
+        <!-- <p class="tex">你好 </p> -->
+        <div class="box">
+            大家好
+            <p>qeqw </p>
+            <span>8989</span>
+        </div>
+    </div>
+
+    <div id="myDiv">
+        12323
+        <p>html</p>
+        <p>css</p>
+        <p>javascript</p>
+    </div>
+    <p>jquery</p>
+
+    <script>
+        var div = document.getElementById("myDiv");
+        console.log(div.childNodes)
+
+        alert(div.childNodes.length)
+    </script>
+    <script>
+        // document.getElementsByClassName('text')
+        $(function () {
+
+            var str = $('.box').html()
+            console.log(str)
+            $('.box').css('fontSize', 0)
+            $('.box p').css('fontSize', '12px')
+            var par = $('.box')
+            var node = par.childNodes
+            console.log(node.length)
+            // console.log($('.box').childNodes())
+
+
+
+
+            //     var ret = /好/;
+            //     console.log($('.text').prev())
+            //     // console.log(($('.outer').text()))
+            //     if(ret.test($('.outer').text())){
+            //         console.log(555)
+            //     }
+            //     // $('.outer').text().replace(ret, '')
+            //     var str = '大家好'
+            //     console.log(ret.test(str))
+            //     console.log(ret.test($('.outer').text().trim()))
+            //     $('.outer').text().replace(ret, 'aa')
+            //    console.log(str.replace(ret, 'aa'))
+            //    console.log(str)
+            // $('.text').nextAll()
+        })
+        // var arr = []
+        // for (var i = 0; i < 3; i++) {
+        //     arr[i] = function () {
+        //         console.log(i)
+        //     }
+        // }
+        // arr[0]()
+        // arr[1]()
+
+        function f() { console.log('I am outside!'); }
+
+        (function () {
+            if (true) {
+                // 重复声明一次函数f
+                function f() { console.log('I am inside!'); }
+            }
+            f();
+        }());
+        /*
+        function f1() {
+            let n = 5;
+            var a ;
+            if (true) {
+                let a = 10;
+            }
+            console.log(n); // 5
+            console.log(a); // 5
+
+        }
+        f1()
+        if (true) {
+                let a = 10;
+                console.log('hhh')
+            }
+
+            console.log(typeof a)
+            console.log(a)
+        */
+    </script>
+</body>
+
+</html>

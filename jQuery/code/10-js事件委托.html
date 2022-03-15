@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    let div = document.getElementById('div');
+
+    div.addEventListener('click', function (e) {
+      console.log(e.target)
+    })
+
+    let div3 = document.createElement('div');
+    div3.setAttribute('class', 'div3')
+    div3.innerHTML = 'div3';
+    div.appendChild(div3)
+  }
+</script>
+
+<style>
+  div {
+
+    margin: 20px;
+    border: 1px solid red;
+  }
+</style>
+
+<body>
+  <div id="div">
+    <div class="div1 s">div1</div>
+    <div class="div2 s">div2</div>
+  </div>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <input type="button" value="添加" id="btn">
+  <script>
+    var li = document.getElementsByTagName('li')
+    var btn = document.getElementById('btn')
+    var ul = document.getElementsByTagName('ul')[0]
+
+    // 使用 addEventListener 可以给动态创建得元素添加事件
+
+    // ul.addEventListener('click', function(e){
+    //   var target = event.target;
+    //   if(target.nodeName === 'LI'){
+    //     console.log(target.innerHTML)
+    //   }
+    // })
+    var index = 4
+    btn.onclick = function () {
+      var oli = document.createElement('li')
+      oli.innerHTML = ++index
+      ul.appendChild(oli)
+    }
+    
+    // 传统遍历后添加事件 不能给 动态创建得元素添加事件
+
+    for (let i = 0; i < li.length; i++) {
+      li[i].onclick = function () {
+        console.log(this.innerHTML)
+      }
+
+    }
+  </script>
+</body>
+
+</html>

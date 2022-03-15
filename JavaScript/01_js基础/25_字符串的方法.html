@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 字符串的所有方法都不会对原字符串产生影响 -->
+    <script>
+        /*
+            charAt()
+            - 返回字符串中指定位置的字符
+            - 根据索引获取指定字符
+            
+        */
+        var str = "hello world"
+        var res = str.charAt(6);
+
+        console.log(res)
+
+        /*
+            charCodeAt()
+            - 返回指定位置的字符编码（Unicode编码）
+        */
+        res = str.charCodeAt(6)
+
+        console.log(res)
+
+         /*
+            fromCharCodeAt()
+            - 返回指定位置的字符编码（Unicode编码）
+        */
+
+        res = String.fromCharCode(119)
+
+        console.log(res)
+
+        /*
+            concat()
+            - 拼接字符串
+        */
+        console.log(str.concat("你好","世界"));
+
+        /*
+            indexOf()
+            - 检索字符串中是否含有指定内容
+            - 返回 指定内容第一次出现位置的index值
+            - 返回值为 -1 时，表示没有
+        */
+        str = "abcdef fg";
+        console.log(str.indexOf("e"))
+        console.log(str.indexOf("c", 4)) 
+        console.log( str.lastIndexOf("d"))
+
+        /*
+            slice
+            
+        */
+          /*
+            split()
+            - 将字符串拆分组成数组
+            
+        */
+
+        str = "asdn,snd,fd,asdw,gfg";
+        console.log( str.split() instanceof Array);
+        /*
+            toLowerCase
+            toUpperCase
+        */
+    </script>
+</body>
+
+</html>

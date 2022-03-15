@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            vertical-align: middle;
+            width: 500px;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .clearfix::after {
+            content: '';
+            height: 0;
+            overflow: hidden;
+            clear: both;
+            display: block;
+        }
+
+        .swiperContainer {
+            border: 1px dotted red;
+            width: 500px;
+            height: 250px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imgList {
+            /* margin-left: -500px; */
+        }
+
+        .imgList li {
+            float: left;
+
+        }
+
+        .imgList li:nth-child(1) {
+            /* margin: -500px; */
+        }
+
+        .dot {
+            position: absolute;
+            top: 0;
+            font-size: 50px;
+            line-height: 250px;
+            color: red;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dot .pre {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+        }
+
+        .dot .next {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .pre:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .indicator {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            color: red;
+        }
+
+        .indicator span {
+            width: 10px;
+            height: 10px;
+            padding: 5px;
+            background-color: orange;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiperContainer">
+        <ul class="imgList clearfix" style="margin-left:0px;">
+            <li><img src="./imgs/1.jpg"></li>
+            <li><img src="./imgs/2.jpg"></li>
+            <li><img src="./imgs/3.jpg"></li>
+            <li><img src="./imgs/4.jpg"></li>
+            <li><img src="./imgs/5.jpg"></li>
+        </ul>
+        <div class="dot clearfix">
+            <div class="pre">&lt; </div>
+            <div class="next"> &gt;</div>
+        </div>
+        <div class="indicator"></div>
+    </div>
+    <script>
+        // window.onload = init()
+        // function init() {
+        let dot = document.getElementsByClassName('dot')[0]
+        let indicator = document.getElementsByClassName('indicator')[0]
+        let imgList = document.getElementsByClassName('imgList')[0]
+        let pre = document.getElementsByClassName('pre')[0]
+        let next = document.getElementsByClassName('next')[0]
+        let current = 0
+        console.log(imgList.children)
+        for (let i = 0; i < imgList.children.length; i++) {
+            console.log(i)
+            let span = document.createElement('span')
+            span.innerText = i + 1
+            indicator.appendChild(span)
+        }
+        pre.onclick = function () {
+            move(1)
+        }
+        next.onclick = function () {
+            move(-1)
+        }
+        // }
+        function move(a) {
+            let value = parseInt(imgList.style.marginLeft)
+            let i = 2
+            value += a * 500
+            console.log(1)
+            console.log(parseInt(imgList.style.marginLeft))
+            if (value > 0) {
+                value = -500 * 4
+            } else if (value < -2000) {
+                value = 0
+            }
+            imgList.style.marginLeft = value + 'px'
+            console.log(current + 'a')
+        }
+        setInterval(function () {
+            move(-1)
+        }, 1000)
+
+
+
+
+    </script>
+</body>
+
+</html>

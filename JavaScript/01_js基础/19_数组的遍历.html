@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的遍历</title>
+</head>
+
+<body>
+    <!-- 数组的遍历 -->
+    <script>
+        // var array = ['唐僧','孙悟空','猪八戒','沙和尚','小白龙','紫霞仙子'];
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        var per = new Person('孙悟空', 18);
+        var per1 = new Person('唐三藏', 4);
+        var per2 = new Person('猪八戒', 56);
+        var per3 = new Person('沙和尚', 4);
+        var per4 = new Person('白骨精', 9);
+        var per5 = new Person('玉兔精', 38);
+        var perArr = [per, per1, per2, per3, per4, per5];
+        console.log(perArr)
+
+        function getAdult(perArr) {
+            var newArr = [];
+            for (let i = 0; i < perArr.length; i++) {
+                if (perArr[i].age >= 18) {
+                    newArr.push(perArr[i])
+                }
+            }
+            return newArr;
+        }
+        var result = getAdult(perArr);
+        console.log(result);
+        /*
+            - 记得将obj返回
+        function Dog(name, age){
+            var obj = new Object;
+            obj.name = name;
+            obj.age = age;
+            return obj;
+        }
+        var ndog = new Dog('大黄',16);
+        console.log(ndog);
+        */
+        perArr.forEach((i) => {
+                var newArr = [];
+            if(i.age >= 18){
+                newArr.push(i)
+            }
+        console.log(newArr);
+            // return newArr;
+        });
+    </script>
+</body>
+
+</html>

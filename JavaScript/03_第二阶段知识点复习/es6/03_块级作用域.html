@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	{
+		var a = 21;
+	}
+	console.log(a);
+	{
+		let b = "beauty";
+		// 块级作用域，出了这个花括号，就不能访问了
+		console.log("里面的b：", b);
+	}
+	// console.log("外面的b", b); // b is not defined
+	</script>
+</body>
+</html>

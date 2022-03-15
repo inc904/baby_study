@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "filmItem": "/components/filmitem/filmitem"
+  }
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clearfix::after {
+            content: '';
+            height: 0;
+            overflow: hidden;
+            clear: both;
+            display: block;
+        }
+
+        .wrap {
+            border: 5px solid #ccc;
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .swiper-container {
+            /* margin-left: -800px; */
+            position: absolute;
+            height: 300px;
+            /* left: -400px; */
+        }
+
+        .item {
+            width: 400px;
+            height: 300px;
+            list-style: none;
+            float: left;
+        }
+
+        .item:nth-of-type(odd) {
+            background-color: cyan;
+        }
+
+        .item:nth-of-type(even) {
+            background-color: green;
+        }
+
+        .dot {
+            position: absolute;
+            bottom: 0;
+            z-index: 99;
+        }
+
+        .dot span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin: 5px;
+            background-color: red;
+            float: left;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .next,
+        .prev {
+            width: 30px;
+            height: 60px;
+            line-height: 60px;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            margin-top: -40px;
+            font-size: 40px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .dot span.on {
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="swiper-container" style="left: 0">
+            <li class="item">1</li>
+            <li class="item">2</li>
+            <li class="item">3</li>
+            <li class="item">4</li>
+            <li class="item">5</li>
+        </ul>
+        <div class="dot">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+        <div class="arrow">
+            <div class="prev">
+                <</div> <div class="next">>
+            </div>
+        </div>
+    </div>
+    <script>
+        let swiper = document.querySelector('.swiper-container '),
+            liArr = document.querySelectorAll('.item'),
+            idx = 0,
+            dot = document.querySelector('.dot'),
+            next = document.querySelector('.next'),
+            prev = document.querySelector('.prev'),
+            span = document.querySelectorAll('span'),
+            timer = null
+
+        for (let i = 0; i < span.length; i++) {
+            span[i].setAttribute('index', i)
+
+            span[i].addEventListener('click', function () {
+                console.log(i)
+                swiper.style.left = -i * 400 + 'px'
+                idx = i
+                showbBtn()
+            })
+        }
+        next.onclick = function () {
+            var p = parseInt(swiper.style.left)
+            p == -1600 ? p = 400 : p
+            swiper.style.left = parseInt(p) - 400 + 'px'
+            idx++
+            showbBtn()
+        }
+        prev.onclick = function () {
+            var p = parseInt(swiper.style.left)
+            p == 0 ? p = -(liArr.length) * 400 : p
+            swiper.style.left = parseInt(p) + 400 + 'px'
+            idx--
+            showbBtn()
+        }
+        function showbBtn() {
+            for (let i = 0; i < span.length; i++) {
+                if (span[i].className == 'on') {
+                    span[i].className = ''
+                }
+                span[idx].className = 'on'
+            }
+        }
+        function setIdx() {
+            var p = parseInt(swiper.style.left)
+            var q = p % 400
+            console.log(q)
+        }
+        function play() {
+            timer = setInterval(function () {
+                var p = parseInt(swiper.style.left)
+                p == -1600 ? p = 400 : p
+                swiper.style.left = parseInt(p) - 400 + 'px'
+                idx++
+                if (idx > 4) {
+                    idx = 0
+                }
+                showbBtn()
+            }, 1500)
+            setIdx()
+        }
+        function pause() {
+            clearInterval(timer)
+        }
+        swiper.onmouseover = function () {
+            pause()
+        }
+        swiper.onmouseleave = function () {
+            play()
+        }
+        function init() {
+            play()
+            showbBtn()
+        }
+        init()
+    </script>
+</body>
+
+</html>

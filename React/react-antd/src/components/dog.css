@@ -1,0 +1,13 @@
+.box {
+  width: 200px;
+  height: 200px;
+  background: url(../images/GitHub.jpg) no-repeat;
+  background-size: cover;
+}
+.ttile {
+  color: red;
+}
+img {
+  width: 200px;
+  height: 200px;
+}

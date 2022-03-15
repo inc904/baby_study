@@ -1,0 +1,11 @@
+<!--pages/list/list.wxml-->
+<view class="film">
+  <view class="file-type" wx:for="{{ typeList }}" wx:key="{{ index }}">
+    <view class="type-title">
+      <text class="title">{{ item }}</text>
+    </view>
+    <view class="items">
+      <filmItem wx:for="{{ 5 }}" wx:key="{{ index }}"></filmItem>
+    </view>
+  </view>
+</view>

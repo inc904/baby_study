@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#box {
+				width: 150px;
+				height: 150px;
+				background-color: #BBFFCC;
+				position: absolute;
+			}
+			#box2 {
+				width: 150px;
+				height: 150px;
+				background-color: greenyellow;
+				position: absolute;
+				left: 150px;
+				top: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<div id="box2"></div>
+		<script>
+			/*
+				1.获取被拖拽的元素
+				2.获取鼠标的坐标
+				3.按下的时候开始拖拽
+				拖拽的过程
+				4.松开的时候，结束拖拽
+			*/
+			let box = document.getElementById("box");
+			box.onmousedown = function(event) {
+				event = event || window.event;
+				let ol = event.clientX - box.offsetLeft
+				let ot = event.clientY - box.offsetTop
+				console.log(ol, ot);
+
+				console.log("i am pressed!")
+				console.log(box.offsetLeft);
+				// return false;
+				document.onmousemove = function(event) {
+					event = event || window.event;
+					console.log("i am moving!")
+					box.style.left = event.clientX - ol + "px";
+					box.style.top = event.clientY - ot + "px";
+					document.onmouseup = function(){
+						
+					document.onmousemove = null ;
+					}
+					
+				}
+			}
+			// console.log(navigator.userAgent)
+			// alert("ActiveXObject" in window)
+			alert(window.location.href)
+		</script>
+	</body>
+</html>

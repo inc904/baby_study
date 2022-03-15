@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+  #app{
+    width: 200px;
+    height: 100px;
+    background-color: pink;
+  }
+  #app .p{
+    border-bottom: 1px solid black;
+    clear: both;
+    float: left;
+    width: 100%;
+  }
+  #app .p span{
+    display: block;
+    width: 50%;
+    float: left;
+    border-right: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+  }
+
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    .fade-enter-actice,
+    .fade-leave-active{
+      /* position: absolute; */
+      transition: all 0.5s ease;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="p">
+      <span @click="comName='register'">注册页面</span>
+      <span @click="comName='login'">登录页面</span>
+    </div>
+    <transition name='fade' mode="out-in">
+      <component :is="comName"></component>
+    </transition>
+  </div>
+  <template id="login">
+    <div>
+      登录：<input type="text">
+    </div>
+  </template>
+  <template id="register">
+    <div>
+      注册：<input type="text">
+    </div>
+  </template>
+  <script>
+    Vue.component('ulcomp', {
+      template: '#tpl',
+      data: function () {
+        return {}
+      }
+    })
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        flag: true,
+        comName: 'login'
+      },
+      methods: {
+        addClass(el){
+          // this.flag = !this.flag
+          // el.style.backgroundColor='#fff'
+        }
+      },
+      mouted(){
+        // addClass()
+      },
+      components: {
+        login: {
+          template: '#login'
+        },
+        register: {
+          template: '#register'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

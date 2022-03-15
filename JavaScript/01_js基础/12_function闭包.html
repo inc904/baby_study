@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var a = 0,
+            b = 0;
+
+        function A(a) {
+            A = function (b) {
+                console.log(a + b++)
+            }
+            console.log(a++)
+        }
+        console.log(A,a,b)
+        console.log(A)
+        A(1);
+        console.log(A,a,b)
+        A(2);
+        /*
+            A(1) => 运行 functionA(1) => 执行函数内部的代码 第一步: 把 A 重新定义成另外一个函数 A = function(b){...} 第二部: alert(a++)  弹出值为 1
+
+            此时,继续执行 A(2) , 调用的函数为 A = function(b){alert a + b++} 此时,a 只是一个形参,只做一个变量使用,值为上一步得到的 1,运算过程为 1 + 2++ =4 ,弹出值为4
+        */
+       /*
+        渡一解释:
+            1.考点: 闭包
+            2.在第一次调用A函数的时候,A函数被重新赋值为了function(b){alert(a+b++)}
+            3.alert输出a之后,a的值加1,此时注意,在初始的A当中,形参a其实是一个局部变量,当充值A韩式的时候,新的A函数调用了原有A函数作用域中的局部变量a,构成了闭包,a这个局部变量被保存.
+       */
+    </script>
+</body>
+
+</html>

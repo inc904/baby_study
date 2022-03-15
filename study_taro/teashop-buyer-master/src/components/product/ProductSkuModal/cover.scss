@@ -1,0 +1,76 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+@import '~taro-ui/dist/style/components/modal.scss';
+@import '~taro-ui/dist/style/components/tag.scss';
+@import '~taro-ui/dist/style/components/button.scss';
+
+.at-modal {
+  &__container {
+    width: 680px;
+    border-radius: 0;
+  }
+
+  &__header {
+    padding: 20px 30px;
+
+    &::after {
+      border-bottom-color: transparent;
+    }
+  }
+
+  &__content,
+  &__footer {
+    padding: 12px 30px;
+  }
+
+  &__content {
+    min-height: 184px;
+  }
+
+  &__footer {
+    background: rgba(244, 245, 245, 1);
+
+    &::before {
+      border-color: transparent;
+    }
+  }
+}
+
+.at-tag {
+  border-color: #999;
+  background-color: transparent;
+  border-radius: 10px;
+  font-size: 24px;
+  height: 64px;
+  line-height: 64px;
+  margin: 0 24px 24px 0;
+  font-weight: 500;
+
+  &--disabled {
+    background: rgba(230, 230, 230, 1);
+    border-color: rgba(230, 230, 230, 1);
+    opacity: 1;
+  }
+
+  &--active {
+    border-color: #ff4000;
+    background: rgba(255, 234, 229, 1);
+    color: #ff4000;
+  }
+}
+
+.at-button {
+  &--small {
+    display: flex;
+    height: 64px;
+    line-height: 64px;
+    font-size: 24px;
+    padding: 0 40px;
+    margin-top: 4px;
+    align-items: center;
+  }
+}

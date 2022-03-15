@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>阶乘</title>
+  </head>
+  <body>
+    <div name="13" id="123" aria-valuemax="1312"></div>
+    <script>
+      // 阶乘
+      function factorial(n) {
+        if (n === 1) return 1
+        return n * factorial(n - 1)
+      }
+      console.log(factorial(3))
+      // 斐波那契数列
+      function fibo(n) {
+        if (n === 1 || n === 2) return 1
+        return fibo(n - 1) + fibo(n - 2)
+      }
+      console.log(fibo(6))
+      //
+      var data = [
+        {
+          id: 1,
+          name: '家电',
+          goods: [
+            { id: 11, gname: '冰箱' },
+            { id: 12, gname: '洗衣机' }
+          ]
+        },
+        { id: 2, name: '服饰' }
+      ]
+      let arr = [
+        { org: 'beijing', attr: 'va' },
+        { org: 'beijing', attr: 'va' }
+      ]
+      console.log('--------------')
+
+      // 实现深拷贝
+      var obj = {
+        id: 1,
+        name: 'andy',
+        msg: {
+          age: 18
+        },
+        color: ['red', 'pink']
+      }
+      var o = {}
+      function deepCopy(newObj, oldObj) {
+        for (var k in oldObj) {
+          // 判断数据类型 k 是属性名 obj[k] 是属性值
+          // 获取属性值
+          var item = oldObj[k]
+          // 判断数据类型
+          if (item instanceof Array) {
+            newObj[k] = []
+            deepCopy(newObj[k], item)
+          } else if (item instanceof Object) {
+            newObj[k] = {}
+            deepCopy(newObj[k], item)
+          } else {
+            newObj[k] = item
+          }
+        }
+      }
+      deepCopy(o, obj)
+      console.log(o)
+      o.msg.age = 20
+      console.log(obj)
+      encodeURIComponent
+      encodeURIComponent
+    </script>
+  </body>
+</html>

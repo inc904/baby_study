@@ -1,0 +1,96 @@
+/* pages/goods_detail/index.less */
+.goods_detail_page {
+  padding-bottom: 90rpx;
+}
+.goods_detail_page .swiper {
+  height: 70vw;
+  text-align: center;
+}
+.goods_detail_page .swiper .swiper-image {
+  width: 60%;
+  height: 6k40rpx;
+}
+.goods_detail_page .goods_price {
+  color: var(--themeColor);
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  font-weight: 600;
+}
+.goods_detail_page .goods_name_wrap {
+  padding: 0 20rpx;
+  display: flex;
+}
+.goods_detail_page .goods_name_wrap .goods_name {
+  flex: 8;
+  color: #999;
+  font-size: 28rpx;
+  padding: 0 16rpx;
+  overflow: hidden;
+  text-overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.goods_detail_page .goods_name_wrap .goods_favrite {
+  border-left: 5rpx solid #888;
+  color: #999;
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.goods_detail_page .detail {
+  padding: 40rpx;
+}
+.goods_detail_page .detail .title {
+  display: block;
+  color: var(--themeColor);
+  font-size: 40rpx;
+  border-bottom: 2rpx solid #0f0f0f;
+  padding-bottom: 40rpx;
+}
+.goods_detail_page .btm_tool {
+  width: 100%;
+  height: 90rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 1rpx solid #ccc;
+}
+.goods_detail_page .btm_tool .tool_item {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  position: relative;
+}
+.goods_detail_page .btm_tool .tool_item button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.goods_detail_page .btm_tool .btn_cart {
+  flex: 2;
+  background-color: orange;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #fff;
+}
+.goods_detail_page .btm_tool .btn_buy {
+  flex: 2;
+  background-color: var(--themeColor);
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #fff;
+}

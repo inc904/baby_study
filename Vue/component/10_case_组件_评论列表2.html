@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <link rel="stylesheet" href="../lib/bootstrap.min.css">
+  <style>
+    .list-group-item {
+      min-height: 40px;
+    }
+  </style>
+  <script>
+    /*
+      使用本地存储来保存数据
+    */
+
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <cmt-box @pfn-getcomment="getComment"></cmt-box>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="item in list" :key="item.id">
+          <span class="badge">评论人：{{ item.user }}</span>
+          {{ item.content }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <template id="tpl">
+    <div>
+      <div class="form-group">
+        <label for="">评论人</label>
+        <input type="text" class="form-control" v-model="user" v-focus>
+      </div>
+      <div class="form-group">
+        <label for="">内容</label>
+        <textarea type="text" class="form-control" v-model="content"></textarea>
+      </div>
+      <div class="form-group">
+        <input type="text" value="发表评论" class="btn btn-primary" @click="postComment" @keyup.enter="postComment">
+      </div>
+    </div>
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: []
+      },
+      methods: {
+        renderList() { },
+        getComment() {
+          // this.list = localStorage.getItem('cmts')
+          this.list = JSON.parse(localStorage.getItem('cmts') || '[]')
+
+        }
+      },
+
+      created() {
+        this.getComment()
+      },
+      components: {
+        cmtBox: {
+          template: '#tpl',
+          data() {
+            return {
+              user: '',
+              content: ''
+            }
+          },
+          methods: {
+            postComment() {
+              var comment = { user: this.user, content: this.content, date: Date.now() }
+              // localstorage 中获取评论
+              var list = JSON.parse(localStorage.getItem('cmts') || '[]')
+              list.unshift(comment)
+              localStorage.setItem('cmts', JSON.stringify(list))
+              this.$emit('pfn-getcomment')
+              this.user = this.content = ''
+            }
+          },
+          directives: {
+            focus: {
+              inserted: function (el) {
+                el.focus()
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

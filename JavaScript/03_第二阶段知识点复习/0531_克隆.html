@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         // 4.浅克隆 
+        // var obj = {
+        //     name: "li",
+        //     age: 18,
+        //     card: ['visa','ailipay']
+        // }
+        // var obj1 ={}
+        // function clone(origin, target){
+        //     target = target || {};
+        //     var prop;
+        //     for( prop in origin){
+        //         target[prop] = origin[prop]
+        //     }
+        // }
+        // clone(obj, obj1)
+
+        // 5.深克隆
+        var obj = {
+            name: "li",
+            age: 18,
+            card: ['visa', 'ailipay'],
+            wife: {
+                name: 'ahua'
+            }
+        };
+        var obj1 = {};
+        function clone(origin, target) {
+            var target = target || {},
+                toStr = Object.prototype.toString,
+                arrStr = '[object Array]';
+            for (var prop in origin) {
+                if (origin.hasOwnProperty(prop)) {
+                    if (typeof origin[prop] === 'object') {
+                        // if (origin[prop] instanceof Array) {
+                        // if (toStr.call(origin[prop]) === arrStr) {
+                        if (toStr.call(origin[prop]) === arrStr) {
+                            target[prop] = []
+                            console.log(1)
+                        } else {
+                            target[prop] = {}
+                            console.log(2)
+                        }
+                        clone(origin[prop], target[prop]);
+                    } else {
+                        target[prop] = origin[prop];
+                    }
+                }
+            }
+        }
+        clone(obj, obj1)
+        function clone1s(origin, target) {
+            var target = target || {},
+                toStr = Object.prototype.toString,
+                arrStr = '[object Array]';
+            for (var prop in origin) {
+                if (origin.hasOwnProperty(prop)) {
+                    if (typeof origin[prop] === 'object') {
+                        if (toStr.call(origin[prop]) === arrStr) {
+                            target[prop] = [];
+                        } else {
+                            target[prop] = {};
+                        }
+                        clone(origin[prop], target[prop]);
+                    } else {
+                        target[prop] = origin[prop]
+                    }
+                }
+            }
+            return target;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../lib/vue-2.6.10.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <account /> -->
+      <my-com></my-com>
+      <button-counter></button-counter>
+      <alert-box>
+        Something bad happened.
+      </alert-box>
+    </div>
+    <script id="account" type="x-tempalte">
+      <div> <a>登录</a> | <a>注册</a> </div>
+    </script>
+
+    <script>
+      // 插槽
+      Vue.component('alert-box', {
+        template: `
+          <div class="demo-alert-box">
+            <strong>Error!</strong>
+            <slot></slot>
+          </div>
+        `
+      })
+
+      // 方法一
+      // 定义一个名为 button-counter 的新组件
+      Vue.component('button-counter', {
+        data: function() {
+          return {
+            count: 0
+          }
+        },
+        template:
+          '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+      })
+
+      // 方法二
+      // 1.1使用 Vue.extend() 来创建全局的 Vue 组件
+      var comp = Vue.extend({
+        template: '<h3>这是一个 Vue.extend()创建的 h3 组件</h3>'
+      })
+      // 1.2 Vue.component('组件的名称', 创建出来的模板对象)
+      Vue.component('myCom', comp)
+      // 1.3使用组件，把组件的名称，以html标签的形式，用在实例中
+
+      // 方法三
+      Vue.component('account', {
+        template: '#account'
+      })
+
+      let vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {}
+      })
+    </script>
+  </body>
+</html>

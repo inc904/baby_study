@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-model</title>
+  <script src="vue.js"></script>
+  <style>
+    .red{
+      color: red;
+    }
+    .weight{
+      font-weight: 800;
+    }
+    .big{
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+    Vue中的样式：
+    class=""
+    1. 传统方式添加class
+
+    v-bind:class=""
+    2. 对象语法
+    3. 数组语法
+   -->
+  <div id="app">
+    <p class="red weight">{{msg}}</p>
+    <p :class="{red:red, weight}">{{msg}}</p>
+    <p :class="[red, big]">{{msg}}</p>
+    <input type="text" v-model="msg">
+    <br>
+    <input type="text" v-model="n1">
+    <select name="" id="" v-model="optinos">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+    </select>
+    <input type="text" v-model="n2">
+    <!-- <span>=</span> -->
+    <input type="button" value="=" @click="cal">
+    <input type="text" v-model="n3">
+
+  </div>
+  <div id="box">
+    <p @click="click">{{message}}</p>
+    <p @click="mClick">{{message}}</p>
+    <p @click="nClick">{{message}}</p>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'input 的值',
+        n1: 0,
+        n2: 0,
+        n3: 0,
+        optinos: '+',
+        red: true,
+        weight: false,
+        big: 'big'
+      },
+      methods: {
+        cal() {
+          switch (this.optinos) {
+            case '+':
+              this.n3 = parseInt(this.n1) + parseInt(this.n2)
+              break;
+            case '-':
+              this.n3 = parseInt(this.n1) - parseInt(this.n2)
+              break;
+            case '*':
+              this.n3 = parseInt(this.n1) * parseInt(this.n2)
+              break;
+            case '/':
+              this.n3 = parseInt(this.n1) / parseInt(this.n2)
+              break;
+          }
+        }
+      }
+    })
+    var vm2 = new Vue({
+      el: '#box',
+      data:{
+        message: 'hhhh'
+      },
+      methods:{
+        click(){
+          alert(this.message)
+        },
+        mClick: function(){
+          alert(this.message)
+        },
+        nClick: ()=>{
+          alert(this.message)
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

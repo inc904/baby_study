@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.wrap {
+			width: 100%;
+		}
+
+		.wrap::after {
+			display: block;
+			content: '';
+			font-size: 0;
+			height: 0;
+			clear: both;
+			zoom: 1;
+		}
+
+		.main-content {
+			float: left;
+			width: 100%;
+		}
+
+		.main {
+			height: 100px;
+			background-color: green;
+			margin-left: 110px;
+			margin-right: 110px;
+		}
+
+		.left {
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			margin-left: -100%;
+		}
+
+		.right {
+			float: left;
+			width: 100px;
+			height: 100px;
+			background-color: orange;
+			margin-left: -100px;
+		}
+	</style>
+	<body>
+		<!--  -->
+		<p>
+			双飞翼布局出自淘宝UED团队，它将内容比作鸟的身体，左右比作双翼，所以叫作双飞翼，其实就是为了解决三栏布局。我们来看一下它的实现方法。它与圣杯布局很像，也是全部往左浮动，但是在内容div里再嵌套一个div，设置子div的margin为左右div预留位置，左右div只设置margin负值即可实现。与圣杯布局相比，少了position:relative，多了一个div。
+		</p>
+		<div class="wrap">
+			<div class="main-content">
+				<div class="main"></div>
+			</div>
+			<div class="left"></div>
+			<div class="right"></div>
+		</div>
+
+	</body>
+</html>

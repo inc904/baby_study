@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>策略模式之表单校验</title>
+  </head>
+  <body>
+    <form action="#" method="get" id="regForm" onsubmit="return onsub()">
+      输入用户名：<input type="text" name="username">
+      输入密码：<input type="text" name="password">
+      输入手机号：<input type="text" name="phone_number">
+      <input type="submit" value="立即提交" />
+    </form>
+    <script>
+      var strategies = {
+        isEmpty: function(value, errorMsg) {
+          if (value == '') {
+            return errorMsg
+          }
+        },
+        minLength: function(value, length, errorMsg) {
+          if (value.length < length) {
+            return errorMsg
+          }
+        },
+        isMobile: function(value, errorMsg) {
+          if (!/^1[3|5|8][0-9]{9}$/.test(value)) {
+            return errorMsg
+          }
+        }
+      }
+
+      // var validataFunc = function() {
+      //   validator.add(regForm.username, 'isEmpty', '用户名不能为空')
+      //   validator.add(regForm.password, 'minlength:6', '用户密码不能小于6位！')
+      //   validator.add(regForm.phone_number, 'isMobile', '手机号格式不正确！')
+
+      //   var errMsg = validator.start()
+      //   return errMsg
+      // }
+
+      var Validator = function() {
+        this.cache = []
+      }
+      // Validator.prototype.add = function(dom, rule, errMsg) {
+      //   this.cache.push(function() {
+      //     console.log(rule)
+      //     var array = rule.split(':')
+      //     var strategy = array.shift()
+      //     array.unshift(dom.value)
+      //     array.push(errMsg)
+      //     return strategies[strategy].apply(dom, array)
+      //   })
+      // }
+      Validator.prototype.add = function(dom, rules) {
+        console.log(dom)
+        var self = this
+        for (let i = 0; i < rules.length; i++) {
+          self.cache.push(function() {
+            var rule = rules[i]
+            var startegyArr = rule.startegy.split(':')
+            var startegy = startegyArr.shift()
+            startegyArr.unshift(dom.value)
+            startegyArr.push(rule.errorMsg)
+
+            return strategies[startegy].apply(dom, startegyArr)
+          })
+        }
+      }
+
+      Validator.prototype.start = function() {
+        for (var i = 0, validatorFunc; validatorFunc = this.cache[i++];) {
+          var errorMsg = validatorFunc()
+          if (errorMsg) {
+            return errorMsg
+          }
+        }
+      }
+    </script>
+    <script type="text/javascript">
+      // 调用
+      var regForm = document.querySelector('#regForm')
+      console.log(regForm.username)
+
+      var validataFunc = function() {
+        var validator = new Validator()
+        validator.add(regForm.username, [{
+          startegy: 'isNonEmpty',
+          errorMsg: '用户名不能为空',
+        }, {
+          startegy: 'minLength:3',
+          errorMsg: '密码长度不能小于3位',
+        }])
+        validator.add(regForm.password, [{
+          startegy: 'minLength:6',
+          errorMsg: '密码长度不能小于6位',
+        }])
+        validator.add(regForm.phone_number, [{
+          startegy: 'isMobile',
+          errorMsg: '手机号码格式不正确',
+        }])
+
+        var errorMsg = validator.start()
+        return errorMsg
+      }
+
+
+
+      function onsub() {
+        console.log('111')
+        var errorMsg = validataFunc()
+        if (errorMsg) {
+          alert(errorMsg)
+          return false
+        }
+      }
+    </script>
+  </body>
+</html>

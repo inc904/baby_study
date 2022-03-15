@@ -1,0 +1,17 @@
+.pname {
+  color: gold;
+}
+
+.user {
+  background-color: #eee;
+  .avatar {
+    width         : 30px;
+    height        : 30px;
+    border-radius : 50%;
+    vertical-align: middle;
+    border: gold 1px solid;
+    padding: 3px;
+    background-color: cyan;
+  }
+  
+}

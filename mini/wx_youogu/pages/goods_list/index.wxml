@@ -1,0 +1,24 @@
+<!--pages/goods_list/index.wxml-->
+<view class="good_list">
+	<SearchInput/>
+	<Tabs tabs="{{tabs}}" bind:tabsItemChange="handletabsItemChange">
+		<block wx:if="{{tabs[0].isActive}}">
+			<view class="goods_item_wrap" wx:for="{{goodsList}}" wx:key="goods_id">
+				<navigator url="" class="goods_item" url="/pages/goods_detail/index?goods_id={{item.goods_id}}">
+					<view class="logo">
+						<image mode="widthFix" src="{{item.goods_small_logo ? item.goods_small_logo : 'http://image4.suning.cn/uimg/b2c/newcatentries/0000000000-000000000606013705_1_800x800.jpg'}}" />
+					</view>
+					<view class="detail">
+						<text class="title">{{item.goods_name}}</text>
+						<text class="price">￥{{item.goods_price}}</text>
+					</view>
+				</navigator>
+			</view>
+		</block>
+		<block wx:if="{{tabs[1].isActive}}">1</block>
+		<block wx:if="{{tabs[2].isActive}}">2</block>
+	</Tabs>
+	<view class="all-tip" style="display: {{hasLoadAll ? 'block':'none'}}">没有更多数据啦(*^__^*)~~</view>
+	<!-- <button bindtap="show">click</button> -->
+</view>
+

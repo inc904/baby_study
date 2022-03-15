@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>课堂练习</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  </head>
+
+  <body>
+    <span id="1">
+      <input
+        class="button"
+        style="display: inline"
+        onclick="button_click(this,'js:doForm(1)','0','listFrame','00010')"
+        type="button"
+        jQuery1573012087814="41"
+        value="保存 "
+      />
+    </span>
+
+    <span id="2">
+      <input
+        class="button"
+        style="display: inline"
+        onclick="button_click(this,'js:doForm(1)','0','listFrame','00010')"
+        type="button"
+        jQuery1573012087814="41"
+        value="确定"
+      />
+    </span>
+
+    <span id="btn_332275">
+      <input type="button" name="hello" fid="234" task="你好" value="123" />
+    </span>
+    <script>
+      var a = '123'
+      var b = '456'
+      if (a === '123' && b === '456') {
+        console.log(999)
+      }
+      // var a = document.getElementById('3').getElementsByTagName('input')[0]
+      // console.log(a)
+      var aa = document.createElement('input')
+      aa.setAttribute('id', '89')
+      document.getElementById('1').appendChild(aa)
+      $('#btn_332275 input').hide()
+
+      let iframe = document.getElementById('demo')
+      let iwindow = iframe.contentWindow // 获取iframe的window对象
+      let idoc = iframe.contentDocument // 获取iframe的document对象
+      var btn = idoc.getElementById('btn_332275')
+      cnosole.log(btn)
+      // // var btn = $('[value|="保存"]').css("border", "2px solid red");
+      // var btn = $('input[class][value="保存"]')
+      // var btn1 = $('input').val()
+      // var btn2 = $('input')
+      // // var btn3 = $("input['value'='保存']")
+      // var btn4 = $('input[value|="保存"]')
+      // // console.log(btn4)
+      // $('input[class][value="保存"]').val('only this one')
+      // // var m = $('input[name="hello"]')
+      // // var m = $(':button')[1]
+      // // // var s = $('input')[1]
+      // // var n = $(m)
+      // // n.hide()
+      // var m = $(':button')
+      // for (let i = 0; i < m.length; i++) {
+      //     console.log(1)
+      //     if (m[i].value === '123') {
+      //         console.log(456)
+      //         $(m[i]).hide()
+      //     } else {
+      //         console.log(345)
+      //     }
+      // }
+    </script>
+    <script type="text">
+      console.log(1256);
+      /*
+      var f = (
+          function f(){
+              return "1";
+          },
+          function g(){
+              return 2;
+          }
+      );
+      console.log(f);
+      console.log(typeof f);
+      var str = "asd";
+      console.log(str.name)
+      str +=1;
+      var  test = typeof(str)
+
+      console.log(test);
+      if(test.length == 6){
+          test.sign = "nihaoi";
+      }
+      console.log(str);
+      console.log(test.sign);
+      var arr = "hello";
+      arr.name = "ni";
+      console.log(arr.name) // undefined
+      */
+      //    var a = 5;
+      //    function test(){
+      //        a = 0;
+      //        alert(a);
+      //        alert(this.a)
+      //        var a;
+      //        alert(a)
+      //    }
+      //    test();
+      function Dog(name, age, sex) {
+          var a = 0;
+          this.name = name;
+          this.age = age;
+          this.sex = sex;
+          function sss() {
+              a++;
+              document.write(a)
+          }
+          this.say = sss;
+      }
+      var o1 = new Dog();
+      o1.say();
+      o1.say();
+      var o2 = new Dog()
+      o2.say()
+
+
+      var x = 1, y = z = 0;
+      function add(n) {
+          return n = n + 1;
+      }
+      y = add(x);
+
+      function add(n) {
+          return n = n + 3;
+      }
+      z = add(x);
+      console.log(x, y, z);
+      (function foo(x) {
+          console.log(arguments)
+          return x
+      })(1, 2, 3, 4, 5)
+      //    console.log(foo(1,2,3,4,5))
+      function b(x, y, z) {
+          z = 10;
+          console.log(arguments[2])
+      }
+      b(1, 2, 3)
+
+      console.log("========")
+      function Person(name, age) {
+          this.name = name;
+          this.age = age;
+          return 123;
+          // return {};
+      }
+      var person = new Person('zhangsaan', 18);
+      var person1 = new Person('zhangsaan', 28);
+      function hello() {
+          this.name = 'a';
+          this.say = function () {
+              console.log(this.name)
+          }
+          function h2() {
+              this.name = 'b'
+              this.say();
+          }
+          this.say();
+          h2();
+
+      }
+      hello();
+      // hello.say(); // 报错
+      var obj = {
+          name: 'a',
+          say: function () {
+              console.log(this.name)
+          },
+          obj2: {
+              name: 'b'
+          }
+      }
+      obj.say();
+      // obj.obj2.say(); // 错误
+      function Dogs() {
+
+      }
+      function Pig() {
+
+      }
+      var dog = new Dogs();
+      var pig = new Pig();
+      console.log(dog.constructor);
+      console.log(dog.__proto__);
+      console.log(pig.constructor);
+      console.log(pig.__proto__);
+      console.log("========")
+      function Car(name, color, height) {
+          this.name = name;
+          this.color = color;
+          this.height = height;
+      }
+      var car = new Car('BMW', 'pink');
+      console.log(car);
+      console.dir(car);
+      var arr = [
+          'BMW',
+          'red',
+          140
+      ]
+      var car1 = new Car(...arr)
+      console.log(car1);
+    </script>
+  </body>
+</html>

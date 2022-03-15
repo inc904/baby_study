@@ -1,0 +1,67 @@
+.couponCardWrap {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  align-self: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+
+  .cardPriceWrap {
+    width: 230px;
+    background-color: #ff6140;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-position: top right;
+    background-repeat: repeat-y;
+    background-size: 8px 14px;
+    background-image: url(../../../assets/images/cdn/coupon-border.png);
+
+    &.unavailable {
+      background-image: url(../../../assets/images/cdn/coupon-border-dis.png);
+      background-color: #ccc;
+    }
+
+    .price {
+      font-size: 72px;
+
+      .priceSub {
+        font-size: 32px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .cardInfoWrap {
+    flex: 1;
+    padding: 20px 36px 12px 24px;
+    color: #999;
+    font-size: 24px;
+
+    .info {
+      min-height: 108px;
+    }
+
+    .title {
+      font-size: 30px;
+      line-height: 40px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .warn {
+      color: #ffb540;
+    }
+
+    .divideLine {
+      width: 100%;
+      // prettier-ignore
+      height: 1Px;
+      box-sizing: border-box;
+      // prettier-ignore
+      border-bottom: 1Px dashed rgba(228, 228, 228, 1);
+      margin-bottom: 8px;
+    }
+  }
+}

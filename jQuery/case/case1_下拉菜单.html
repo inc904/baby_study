@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .nav>li {
+            list-style: none;
+            float: left;
+            padding: 10px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .nav-items {
+            display: none;
+        }
+    </style>
+    <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>
+            <a href="">三国演义</a>
+            <ul class="nav-items">
+                <li>张飞</li>
+                <li>关羽</li>
+                <li>刘备</li>
+            </ul>
+        </li>
+        <li>
+            <a href="">西游记</a>
+            <ul class="nav-items">
+                <li>孙悟空</li>
+                <li>猪八戒</li>
+                <li>沙僧</li>
+            </ul>
+        </li>
+        <li>
+            <a href="">水浒传</a>
+            <ul class="nav-items">
+                <li>林冲</li>
+                <li>鲁智深</li>
+                <li>戴宗</li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        $(function(){
+            $(".nav > li").mouseover(function(){
+                // console.log($(this)[0].length)
+                // console.log(index);
+                // $(".nav > li> nav-items").css("dispaly","block");
+                $(this).children('ul').stop().fadeIn(500);
+            }).mouseout(function(){
+                $(this).children('ul').stop().fadeOut(500);
+            })
+        })
+    </script>
+</body>
+
+</html>

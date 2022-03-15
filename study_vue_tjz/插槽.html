@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插槽</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <button @click="handleShow">Click</button>
+      <div>
+        <my-com>
+          <p>插槽</p>
+          <p>哈哈</p>
+        </my-com>
+        ----
+        <my-com />
+      </div>
+      <div>
+        <my-com1>
+          <p>
+            {{message}}
+          </p>
+          <p>编译作用域1</p>
+        </my-com1>
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: '#app',
+        data: { message: 'rootData: hello world!' },
+        methods: {
+          handleShow() {
+            console.log(this.message)
+          },
+        },
+        components: {
+          myCom: {
+            template: `
+                <div>
+                  <slot>预置内容</slot>
+                </div>
+            `,
+          },
+          myCom1: {
+            template: `
+                <div>
+                  {{msg}}
+                  <slot></slot>
+                </div>
+            `,
+            data: function () {
+              return {
+                msg: '插槽内部msg',
+              }
+            },
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

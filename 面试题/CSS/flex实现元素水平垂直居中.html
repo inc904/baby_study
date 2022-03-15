@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>flex实现水平垂直居中</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrap {
+    width: 500px;
+    height: 500px;
+    background-color: gray;
+  }
+
+  .wrap .box {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+  }
+
+  /* 实现方式一 */
+  /* .wrap {
+        position: relative;
+      }
+      .box {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      } */
+
+  .wrap1 {
+    position: relative;
+  }
+
+  .box1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* 实现方法二 */
+    /* margin 为负值 自身的一半 */
+    /* margin-left: -100px;
+        margin-top: -100px; */
+
+    /* 实现方法三 */
+    transform: translate(-50%, -50%);
+  }
+
+  /* 4。 flex 伸缩布局 */
+  /* .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      } */
+
+  /* 5. 老版本 */
+  .wrap {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    /* 水平位置*/
+    -webkit-box-align: center;
+    /* 垂直位置 */
+  }
+
+  /* 实现三角形 */
+  .angle {
+    width: 0px;
+    height: 0px;
+    background-color: lightskyblue;
+    border: 50px solid;
+    border-bottom-color: lightcoral;
+    border-top-color: lightseagreen;
+    border-left-color: gold;
+    border-right-color: green;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="box"></div>
+  </div>
+  <div class="angle"></div>
+</body>
+
+</html>

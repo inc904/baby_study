@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单张图片延迟加载</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .imgBox {
+    width: 100%;
+    height: 450px;
+    margin: 1000px auto;
+    background-color: #888;
+  }
+
+  .imgbox img {
+    width: 100%;
+    vertical-align: middle;
+    display: none;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="imgBox">
+      <img src="" alt="" data-imgURL="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8a4efa031fe94c4a259c65e30b652423.jpg?thumb=1&w=1226&h=460&f=webp&q=90">
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+  let tempURL = 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8a4efa031fe94c4a259c65e30b652423.jpg?thumb=1&w=1226&h=460&f=webp&q=90'
+  let $imgBox = $('.imgBox'),
+    $window = $(window),
+    $img = $imgBox.children('img')
+  $window.on('load scroll', function() {
+    if ($img.attr('isLoad') === 'true') {
+      // =>之前加载过则不会重新加载
+      return
+    }
+    // 当前图片区域底部距离页面顶端的距离：图片高度+图片距离页面顶端的距离
+    $A = $imgBox.outerHeight() + $imgBox.offset().top
+    // 当前窗口的底边距离页面顶端的距离：当前窗口高度+滚动条滚动的高度 
+    $B = $window.outerHeight() + $window.scrollTop()
+    if ($A <= $B) {
+      $img.attr('src', $img.attr('data-imgURL'))
+      $img.stop().fadeIn()
+      $img.attr('isLoad', true)
+    }
+  })
+  </script>
+</body>
+
+</html>

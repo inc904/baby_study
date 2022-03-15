@@ -1,0 +1,194 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+@import '~taro-ui/dist/style/components/swipe-action.scss';
+@import '~taro-ui/dist/style/components/checkbox.scss';
+@import '~taro-ui/dist/style/components/button.scss';
+
+$checkboxcomp: '.at-checkbox';
+
+#{$checkboxcomp} {
+  background-color: #fff;
+
+  &__option-wrap {
+    padding: 24px 12px 24px 0;
+  }
+
+  &::before {
+    border-top: none;
+  }
+
+  &::after {
+    border: none;
+  }
+
+  &__icon-cnt {
+    border: none;
+    margin-right: 0;
+
+    .at-icon-check {
+      width: 40px;
+      height: 40px;
+      background-image: url('../../assets/images/icon/icon-check-o-dis.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+  }
+
+  &__option {
+    padding-left: 10px;
+
+    &:active {
+      background-color: #fff;
+    }
+
+    &--disabled {
+      #{$checkboxcomp}__option-cnt,
+      #{$checkboxcomp}__desc {
+        opacity: $opacity-disabled;
+      }
+
+      &:active {
+        background-color: $color-bg;
+      }
+    }
+
+    &--selected {
+      #{$checkboxcomp}__icon-cnt {
+        .at-icon-check {
+          background-image: url('../../assets/images/icon/icon-check.png');
+        }
+
+        border: none;
+        background-color: $at-checkbox-icon-color;
+      }
+    }
+  }
+}
+
+.at-button {
+  height: 70px;
+  line-height: 70px;
+  font-size: 36px;
+  font-weight: 500;
+  padding: 0 40px;
+  min-width: 210px;
+  display: flex;
+  align-items: center;
+
+  &--primary {
+    color: $color-brand;
+    // prettier-ignore
+    border: 1Px solid #fff;
+    background-color: #fff;
+  }
+
+  &--disabled {
+    opacity: 0.5;
+  }
+}
+
+.at-swipe-action {
+  overflow: initial;
+
+  .removeBtn {
+    width: 170px;
+    box-sizing: border-box;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-image: url(../../assets/images/icon/icon-close.png);
+    background-size: 32px 32px;
+    background-position: 76px center;
+    background-repeat: no-repeat;
+    margin-left: -20px;
+  }
+
+  &__content {
+    border-radius: 10px;
+  }
+}
+
+.cartPage {
+  margin: 25px 20px;
+  padding-bottom: 132px;
+}
+
+.at-checkbox__option--selected .at-checkbox__icon-cnt {
+  background-color: $color-brand;
+}
+
+.checkAll {
+  flex: 1;
+
+  .at-checkbox {
+    background-color: $color-brand;
+
+    &__option-wrap {
+      padding: 16px 12px 16px 0;
+    }
+
+    &__icon-cnt {
+      background-color: #fff;
+      margin-top: 0;
+
+      .at-icon-check {
+        background-image: url('../../assets/images/icon/icon-check-dis.png');
+      }
+    }
+
+    &__option--selected {
+      .at-icon-check {
+        background-image: url('../../assets/images/icon/icon-check-theme.png');
+      }
+    }
+
+    &__option {
+      &:active {
+        background-color: $color-brand;
+      }
+    }
+
+    &__title {
+      color: #fff;
+      font-size: 28px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.cartBottomMenu {
+  margin: 0 20px;
+  background-color: $color-brand;
+  border-radius: 20px 20px 0 0;
+  padding: 20px;
+  align-items: center;
+  color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  z-index: 9;
+
+  .priceWrap {
+    font-size: 36px;
+    font-weight: 600;
+    margin-right: 20px;
+  }
+
+  .btnWrap button {
+    color: $color-brand;
+    background-color: #fff;
+    border-radius: 20px 20px 0 0;
+    border-radius: 10px;
+    height: 70px;
+    line-height: 70px;
+    padding: 0 30px;
+    font-size: 36px;
+    font-weight: 500;
+  }
+}

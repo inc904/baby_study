@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发表评论</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cmt-box @refresh-page="refreshPage"></cmt-box>
+        <div v-for="item in list" :key="item.id">
+            <p>
+                <span>{{item.content}}</span>
+                评论人：<span>{{item.user}}</span>
+            </p>
+        </div>
+    </div>
+    <template id="tpl">
+        <div>
+            <label for="">
+                评论人：<input type="text" v-model="user">
+            </label>
+            <br>
+            <label for="">
+                评论内容：<input type="text" v-model="content">
+            </label>
+            <br>
+            <input type="button" value="发送" @click="postCmt">
+        </div>
+    </template>
+    <script>
+        var cmtBox = {
+            template: '#tpl',
+            data() {
+                return {
+                    user: '',
+                    content: ''
+                }
+            },
+            methods: {
+                postCmt() {
+                    var newCmt = { id: Date.now(), user: this.user, content: this.content }
+                    console.log(newCmt)
+                    var cmts = JSON.parse(localStorage.getItem('cmts') || '[]')
+                    // if(cmts){}
+                    cmts.push(newCmt)
+                    console.log(cmts)
+                    localStorage.setItem('cmts', JSON.stringify(cmts))
+                    this.$emit('refresh-page')
+                    this.user = this.content = ''
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: Date.now(), user: 'zcc', content: 'jkdasjd' },
+                    { id: Date.now(), user: 'zcx', content: 'jkdasjd' }
+                ]
+            },
+            created() {
+                this.refreshPage()
+            },
+            methods: {
+                refreshPage() {
+                    // var list = localStorage.getItem('cmts')
+                    this.list = JSON.parse(localStorage.getItem('cmts'))
+                }
+            },
+            components: {
+                'cmt-box': cmtBox
+            }
+        })
+    </script>
+</body>
+
+</html>

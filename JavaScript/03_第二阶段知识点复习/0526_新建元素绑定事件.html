@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <script>
+        var ul = document.getElementsByTagName('ul')[0];
+        var liArr = document.getElementsByTagName('li');
+       
+        console.log(liArr.length)
+        for(var i = 0; i < liArr.length;i++){
+            liArr[i].onclick = function() {
+                console.log('123');
+            }
+        }
+        // for(var i = 0; i < liArr.length;i++){
+        //     ul.addEventListener("li","click",function(){
+        //         alert(1);
+        //     })
+        // }
+        var oli = document.createElement('li');
+        oli.innerHTML = "12"
+        // oli.onclick = function(){
+        //     console.log(123)
+        // }
+        console.log(ul)
+        ul.appendChild(oli);
+        console.log(ul)
+
+        console.log(liArr.length)
+        
+    </script>
+</body>
+</html>

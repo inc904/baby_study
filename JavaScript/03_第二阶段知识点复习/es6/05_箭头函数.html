@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>箭头函数</title>
+</head>
+<body>
+	<script>
+		// let arr = [12,5,67,8,56];
+		// arr.sort(function(n1, n2){
+		// 	return n1-n2;
+		// })
+
+		// let arr = [12,5,67,8,56];
+		// arr.sort((n1, n2) => n1 - n2);
+		// console.log(arr);
+		// 
+		 /*
+		let json = {
+			a : 12,
+			fn : function(){
+				console.log(this);
+				alert(this.a);
+			} 
+		}
+		*/
+		// 修正this
+		class Json{
+			constructor(){
+				this.a = 12;
+				this.fn=() => {
+					alert(this.a);
+				}
+			}
+		}
+		let json = new Json;
+		// json.fn();
+
+		let oDate = new Date();
+		oDate.fn = json.fn;
+		oDate.fn();
+	</script>
+</body>
+</html>

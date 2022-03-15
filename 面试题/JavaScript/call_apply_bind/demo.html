@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="create_call_bind_apply.js"></script>
+  <script>
+  // 调用
+  var name = 'Hero'
+  var obj = {
+    'name': "Jack"
+  }
+
+
+  function fun() {
+    console.log(this.name)
+    console.log(...arguments)
+  }
+  fun()
+
+
+  // call
+  fun._call(obj)
+  console.log('newObj', obj)
+
+  function showName(obj) {
+    console.log('showName:', obj.name)
+  }
+  showName(obj)
+
+  var obj2 = {
+    name: 'Juddy',
+    show: function() {
+      console.log(this)
+      console.log(this.name)
+    }
+  }
+  obj2.show()
+
+  // bind 
+  var boo = {
+    a: 1
+  }
+  var fn = fun._bind(boo, 2)
+
+  fn(obj)
+  </script>
+  <script>
+  function demo() {
+    console.log("this is demo's result")
+    console.log(this)
+  }
+  demo()
+  window.demo()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 闭包的作用
+        // 函数累加器
+        function add() {
+            var count = 0;
+            function demo() {
+                count++;
+                console.log(count);
+            }
+            return demo;
+        }
+        var counter = add();
+        counter();
+        counter();
+        counter();
+        counter();
+        counter();
+        // 可以做缓存（存储结构）
+        function test() {
+            var num = 100;
+            function a() {
+                num++;
+                console.log(num);
+            }
+            function b() {
+                num--;
+                console.log(num);
+            }
+            return [a, b];
+        }
+
+        var myArr = test();
+        myArr[0]();
+        myArr[1]();
+    </script>
+</body>
+
+</html>

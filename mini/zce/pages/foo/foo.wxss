@@ -1,0 +1,14 @@
+/* pages/foo/foo.wxss */
+text{
+  color: red;
+}
+.box{
+  width: 320rpx;
+  height: 100px;
+  background-color: aqua;
+}
+.box2{
+  width: 750rpx;
+  height: 100px;
+  background-color: #ff0;
+}

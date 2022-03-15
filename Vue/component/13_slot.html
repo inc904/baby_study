@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>slot 插槽</title>
+    <script src="../lib/vue-2.6.10.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <alert-box>
+        Something bad happened.
+      </alert-box>
+      <alert-box>
+        <!-- Something is failed!{{student.name}} -->
+        Something is failed! {{school.name}}
+      </alert-box>
+      <success-box>
+        <!-- <template v-slot:success>
+          everything is ok !
+        </template> -->
+        <p slot="success">
+          everything is ok !
+        </p>
+        <template v-slot:ma-in*>
+          go for a breast。
+        </template>
+      </success-box>
+      <info-box>
+        <template v-slot:info="student">
+          <p>
+            school: {{school.name}}
+          </p>
+          <p>
+            name:{{student.student.name}}
+          </p>
+          <p>
+            age:{{student.student.age}}
+          </p>
+        </template>
+      </info-box>
+      <info-box>
+        <template v-slot:info="{student}">
+          <p>
+            <-解构prop->
+          </p>
+          <p>
+            school: {{school.name}}
+          </p>
+          <p>
+            name:{{student.name}}
+          </p>
+          <p>
+            age:{{student.age}}
+          </p>
+        </template>
+      </info-box>
+    </div>
+
+    <script>
+      /*
+       * 插槽
+       * 具名插槽 和 作用域插槽
+       * 插槽中可以访问 vue实例 中的 实例属性，但是不能访问 插槽所在组件的属性
+       */
+
+      Vue.component('AlertBox', {
+        template: `
+          <div class="demo-alert-box">
+            <strong>普通插槽：Error!</strong>
+            <slot></slot>
+          </div>
+        `
+      })
+      Vue.component('success-box', {
+        template: `
+          <div class="demo-alert-box">
+            <strong>具名插槽：success!</strong>
+            <p>
+              成功：              
+              <slot name="success" />
+            </p>
+            <p>
+              下一步：
+              <slot name="ma-in*" />
+            </p>
+          </div>
+        `
+      })
+      Vue.component('info-box', {
+        data() {
+          return {
+            student: {
+              name: 'jax',
+              age: 13
+            }
+          }
+        },
+        template: `
+          <div class="demo-alert-box">
+            <strong> 作用域插槽：infomation:</strong>
+            <slot name="info" :student="student"></slot>
+          </div>
+        `
+      })
+
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          school: {
+            name: '清华'
+          }
+        },
+        methods: {}
+      })
+    </script>
+  </body>
+</html>

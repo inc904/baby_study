@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/axios/0.19.2/axios.js"></script>
+  </head>
+  <body>
+    <script>
+      axios.defaults.withCredentials = true
+      axios.defaults.crossDomain = true
+      axios.defaults.headers.post['Content-Type'] =
+        'application/x-www-form-urlencoded'
+      // let url =
+      //   'https://www.fastmock.site/mock/6145a47aab15ddd6d18196d8e2b5f630/api/getlist'
+      let url = 'https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5'
+      axios.get(url).then((ret) => {
+        console.log(ret)
+        console.log(ret.data)
+      })
+    </script>
+  </body>
+</html>

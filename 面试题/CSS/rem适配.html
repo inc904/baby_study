@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>rem适配</title>
+  </head>
+  <body>
+    <script>
+      {
+        var width = document.documentElement.clientWidth
+        var htmlNode = document.querySelector('html')
+        htmlNode.style.fontSize = width + 'px'
+      }
+
+      // 作用域和变量提升
+
+      /**/
+      function Foo() {
+        getname = function() {
+          console.log(1)
+        }
+        return this
+      }
+      Foo.getname = function() {
+        console.log(2)
+      }
+
+      Foo.prototype.getname = function() {
+        console.log(3)
+      }
+      var getname = function() {
+        console.log(4)
+      }
+      function getname() {
+        console.log(5)
+      }
+
+      Foo.getname() // 2  2
+      getname() // 5  4
+      Foo().getname() // 1  1
+      new Foo.getname() // 3  2
+      new Foo().getname() // .  3
+      new new Foo().getname() // . 3
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>全局注册组件</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <hr>
+        <login></login>
+        <register></register>
+        <account></account>
+    </div>
+    <hr>
+    <div id="app2">
+        <login></login>
+        <register></register>
+    </div>
+    <script id="tmpl" type="x-template">
+            <div> <a href="#">登录</a> | <a href="#">注册</a> </div>
+    </script>
+    <script>
+        // 方法一
+        var login = Vue.extend({
+            template: '<h1>登录</h1>'
+        })
+        Vue.component('login', login)
+        // 方法二
+        Vue.component('register', {
+            template: '<h1>注册</h1>'
+        })
+        // 方法三
+        // 先在script里写一段模板
+        // 注册组件
+        Vue.component('account', {
+            template: '#tmpl'
+        })
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '全局组件注册练习'
+            },
+            methods: {}
+        })
+
+        var vm = new Vue({
+            el: '#app2',
+            data: {
+                msg: '全局组件注册练习'
+            },
+            methods: {}
+        })
+
+
+    </script>
+</body>
+
+</html>

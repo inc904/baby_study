@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.onload = function(){
+				var tab = document.getElementById("tab");
+				var name = document.getElementById("name");
+				var email = document.getElementById("email");
+				var salary = document.getElementById("salary");
+				var submit = document.getElementById("submit");
+				var allA = document.getElementsByTagName('a');
+				for(var i = 0;i<allA.length;i++){
+					console.log(12)
+					console.log(this)
+					allA[i].addEventListener("click", function(){
+					var tr = this.parentNode.parentNode
+				
+						console.log(  this.parentNode.parentNode)
+						// console.log(tr)
+						this.parentNode.parentNode.parentNode.removeChild(tr)
+						
+					})
+				// 	allA[i].onclick =function(){
+				// 	var tr = this.parentNode.parentNode
+				// 
+				// 		console.log(  this.parentNode.parentNode)
+				// 		// console.log(tr)
+				// 		this.parentNode.parentNode.parentNode.removeChild(tr)
+				// 		
+				// 	}
+				}
+				function delSb(){
+					// 删除一条记录
+					console.log(12)
+					console.log(this);
+				}
+				submit.onclick = function(){
+					var newArr = [name.value, email.value, salary.value]
+					var newTr = document.createElement("tr");
+					var deTd = document.createElement("td");
+					newTr.appendChild(deTd);
+					deTd.innerHTML = "<a href=\"javascript:;\" >Delete</a>";
+					console.log(newArr.length)
+					for(var i = 0; i<newArr.length;i++){
+						var td = document.createElement("td");
+						td.innerHTML = newArr[i];
+						newTr.insertBefore(td, deTd);
+					}
+					tab.appendChild(newTr);
+					// var newName = document.createElement(td);
+					// var newEmail = document.createElement(td);
+					// var newSalary = document.createElement(td);
+					// console.log(name.value+email.value+salary.value);
+					// document.createElement(td)
+				}
+			}
+		</script>
+		<div style="width: 400px; margin-left: 200px;margin-bottom: 20px; ">
+			<caption>员工信息登记表</caption>
+			<table border="1" cellspacing="0" cellpadding="10" id="tab">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Salary</th>
+					<th>操作</th>
+				</tr>
+				<tr>
+					<td>Tom</td>
+					<td>tom@tom.com</td>
+					<td>5000</td>
+					<td>
+						<a href="javascript:;" >Delete</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="up" style="width: 300px; margin-left: 200px; ">
+			<label for="name">
+				输入姓名
+			</label>
+			<input type="" name="name" id="name" value="" />
+			<br />
+			<label for="email">
+				输入邮箱
+			</label>
+			<input type="" name="email" id="email" value="" />
+			<br />
+			<label for="salary">
+				输入工资
+			</label>
+			<input type="" name="salary" id="salary" value=""  />
+			<br />
+			<input type="button" value="提交" id="submit">
+		</div>
+		
+	</body>
+</html>

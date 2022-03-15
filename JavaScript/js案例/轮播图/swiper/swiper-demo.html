@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        h3,
+        ul,
+        li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #banner {
+            width: 820px;
+            height: 380px;
+            margin-left: 500px;
+            margin-top: 200px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #imgList {
+            width: 820px;
+            height: 340px;
+            overflow: hidden;
+        }
+
+        #imgList li {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+        }
+
+        #imgList li img {
+            /* display: none; */
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #dots li {
+            width: 164px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            float: left;
+            margin-right: 0px;
+            background: #b7b7b7;
+        }
+
+        #back {
+            height: 340px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #d3d3d3;
+            opacity: 0.1;
+        }
+
+        #back {
+            height: 340px;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #d3d3d3;
+            opacity: 0.1;
+        }
+
+        #go {
+            height: 340px;
+            text-align: center;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #d3d3d3;
+            opacity: 0.1;
+        }
+
+        #back span {
+            line-height: 350px;
+            font-size: 40px;
+        }
+
+        #go span {
+            line-height: 350px;
+            font-size: 40px;
+        }
+
+        .dots li span {
+            font-size: 18px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var dots = document.getElementById("dots").getElementsByTagName("li"); //获取"dot"数组
+            var imgList = document.getElementById("imgList").getElementsByTagName("img"); //获取图像数组
+            var back = document.getElementById("back"); //返回按钮
+            var go = document.getElementById("go"); //前进按钮
+
+            var dotslen = dots.length;
+            var opacity = new Array(dotslen); //透明度,每个"图片"的透明度
+            for (var i = 0; i < opacity.length; i++) //将透明度初始化为0
+                opacity[i] = 0;
+
+            var nowIndex = 0; //当前要轮播的图片下标
+            var loop = null; //轮播计时器
+            var loop0 = new Array(opacity.length); //over计时器
+            var loop1 = new Array(opacity.length); //leave计时器
+
+            changeImgeOver(dots[nowIndex], "初始"); //初始轮播nowIndex图片
+            setDotOver(dots[nowIndex++]);
+            GO(); //开始轮播
+
+            /* 轮播方法 */
+            function GO() {
+                if (loop != null) {
+                    clearInterval(loop); //清理之前残留的loop,以免出现bug
+                }
+                loop = setInterval(function () {
+                    setDotLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen -
+                        1]);
+                    changeImgeLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1],
+                        "轮播减少"); //nowIndex之前的图片透明度减少
+                    for (var i = 0; i < dotslen; i++) {
+                        console.log(i + "透明度" + opacity[i]);
+                    } //暗中观察
+                    console.log("-------");
+                    setDotOver(dots[nowIndex]);
+                    changeImgeOver(dots[nowIndex], "轮播增加"); //轮播nowIndex图片
+
+                    nowIndex = nowIndex >= dotslen - 1 ? 0 : nowIndex + 1; //轮播下一个图片
+                }, 1000);
+            }
+            /* 设置每个"dot"的触摸事件 */
+            for (var i = 0; i < 5; i++) {
+                //  console.log(dots.indexOf(dots[i]));
+                ! function (arg) {
+                    dots[arg].addEventListener("mouseover", function () {
+                        setDotLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen -
+                            1]);
+                        changeImgeLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1], "鼠标点击后退");
+                        //设置nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1图片透明度为0
+                        clearInterval(loop); //暂停轮播loop以免出现bug
+                        nowIndex = arg; //将当前轮播下标变成选择的"dot"下标
+                        changeImgeOver(this, "鼠标放上增加"); //显示选择的轮播
+                        setDotOver(this);
+                        nowIndex = nowIndex == dotslen - 1 ? 0 : nowIndex + 1;
+                    }); //放上去的事件
+                    dots[arg].addEventListener("mouseout", function () {
+                        setDotLeave(this);
+                        GO(); //启动轮播loop
+                    }); //移出来的事件
+                }(i);
+            }
+            /* 设置后退按钮 */
+            back.addEventListener("click", function () { //回退到nowindex下标之前二个
+
+                setDotLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen -
+                    1]); //设置nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1轮播原始化
+                changeImgeLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1], "鼠标点击前进");
+                clearInterval(loop); //暂停轮播loop
+                nowIndex = nowIndex - 2 >= 0 ? (nowIndex - 2) : (dotslen - (2 - nowIndex));
+                // console.log("--------");
+                console.log("回退到" + nowIndex);
+                console.log("-------");
+                setDotOver(dots[nowIndex]); //显示后退到的轮播图
+                changeImgeOver(dots[nowIndex], "back按键");
+                nowIndex = nowIndex >= dotslen - 1 ? 0 : nowIndex + 1; //设置轮播的下标
+                setTimeout(() => { //隔500毫秒后启动轮播
+                    GO();
+                }, 500);
+            });
+            back.addEventListener("mouseover", function () { //放上去时的特效
+                this.style.opacity = 0.5;
+            });
+            back.addEventListener("mouseleave", function () {
+                this.style.opacity = 0.1;
+            })
+
+            /* 设置前进按钮 */
+            go.addEventListener("click", function () { //其实就是无延时的GO了一下
+
+                setDotLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen -
+                    1]); //设置nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1轮播原始化
+                changeImgeLeave(dots[nowIndex - 1 >= 0 ? nowIndex - 1 : dotslen - 1], "鼠标放上减少");
+                clearInterval(loop); //暂停轮播loop
+                console.log("前进到" + nowIndex);
+                console.log("-------");
+                setDotOver(dots[nowIndex]); //显示后退到的轮播图
+                changeImgeOver(dots[nowIndex], "back按键");
+                nowIndex = nowIndex >= dotslen - 1 ? 0 : nowIndex + 1; //设置轮播的下标
+                setTimeout(() => { //隔500毫秒后启动轮播
+                    GO();
+                }, 500);;
+            });
+            go.addEventListener("mouseover", function () {
+                this.style.opacity = 0.5;
+            });
+            go.addEventListener("mouseleave", function () {
+                this.style.opacity = 0.1;
+            })
+
+            /* 给图片增加透明度的方法 */
+            function changeImgeOver(Q, K) {
+                var index = getIndex(dots, Q); //获取下标
+                clearInterval(loop1[index]);
+                loop0[index] = setInterval(changeOpacity0, 10); //开始增加透明度
+
+                function changeOpacity0() {
+                    if (opacity[index] >= 1) {
+                        opacity[index] = 1; //
+                        clearInterval(this); //如果透明度大于等于1停止增加透明度
+                    } else {
+                        opacity[index] += 0.02; //改变透明度
+                        // console.log("这是" + K + "计时器" + index + "透明度" + opacity[index]); //暗中观察
+                        imgList[index].style.opacity = opacity[index]; //设置图片透明度属性
+                    }
+                }
+            }
+            /* 给图片减少透明度的方法 */
+            function changeImgeLeave(Q, K) {
+                var index = getIndex(dots, Q); //获取下标
+                clearInterval(loop0[index]); //停止增加透明度
+                loop1[index] = setInterval(changeOpacity1, 10); //设置计时器开始减少透明度
+                function changeOpacity1() {
+                    if (opacity[index] <= 0) {
+                        opacity[index] = 0;
+                        clearInterval(this); //如果透明度少于等于0停止减少透明度
+                    } else {
+                        opacity[index] -= 0.02; //减少透明度
+                        // console.log("这是" + K + "号计时器" + index + "透明度" + opacity[index]); //暗中观察
+                        imgList[index].style.opacity = opacity[index]; //设置图片的透明度属性
+                    }
+                }
+            }
+
+            function getIndex(objArr, obj) { //获取obj在objarr的下标
+                for (var i = 0; i < objArr.length; i++)
+                    if (objArr[i] == obj)
+                        return i;
+            }
+
+            function setDotOver(Q) { //设置"dot"的颜色
+                Q.style.background = "#fff";
+                Q.style.fontcolor = "#eee8aa";
+            }
+
+            function setDotLeave(Q) { //设置"dot"的颜色
+                Q.style.background = "#b7b7b7";
+                Q.style.fontcolor = "#fff";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="banner">
+        <ul id="imgList">
+            <li><img src="./images/swiper-0.jpg"></li>
+            <li><img src="./images/swiper-1.jpg"></li>
+            <li><img src="./images/swiper-2.jpg"></li>
+            <li><img src="./images/swiper-3.jpg"></li>
+            <li><img src="./images/swiper-4.jpg"></li>
+        </ul>
+        <ul id="dots">
+            <li><span>甜咸大战</span></li>
+            <li><span>战斗学院全新上线</span></li>
+            <li><span>幸运六月</span></li>
+            <li><span>周边新品火爆降临</span></li>
+            <li><span>小恶魔崔丝塔娜</span></li>
+        </ul>
+        <div id="back">
+            <span>←</span>
+        </div>
+        <div id="go">
+            <span>→</span>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

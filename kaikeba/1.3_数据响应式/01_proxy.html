@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div class="box">
+
+  </div>
+  <script type="text/javascript">
+    var box = document.querySelector('.box')
+    var data = {
+      name: "zzc",
+      age: 20
+    }
+    box.innerHTML = data.age
+    //
+    // data.age = 21
+    // console.log(data)
+    let handler = {
+      set(target, prop, newValue) {
+        console.log('set...:' , target, prop, newValue)
+        target[prop] = newValue
+        // box.innerHTML = newValue
+        return Reflect.set(...arguments)
+
+      },
+      get(target,prop){
+        console.log('get:', target, prop)
+        // return target[prop]
+        return Reflect.get(...arguments)
+      }
+    }
+    let p = new Proxy(data, handler)
+    p.age = 21
+    console.log('p:',p);
+    console.log(p.name);
+
+
+    /*
+      proxy语法:
+        const p = new Proxy(target, handler)
+    */
+    
+  </script>
+</body>
+
+
+</html>

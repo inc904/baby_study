@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>axios</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <button @click="getSome">getSome</button>
+    </div>
+    <script>
+        // var url = 'https://v2.jinrishici.com/one.json'
+        var host = 'http://www.liulongbin.top:3005'
+        var url = host + '/api/getlunbo'
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '数据'
+            },
+            methods: {
+                getSome() {
+                    // axios.get(url).then(function (res) {
+                    //     console.log(res)
+                    // })
+                    // axios.get(url).then(res => {
+                    //     console.log(res.data)
+                    // })
+                    axios.get(url).then(res => {
+                        console.log(res.data)
+                    })
+                    .catch( error => {
+                        console.log(error)
+                    })
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>

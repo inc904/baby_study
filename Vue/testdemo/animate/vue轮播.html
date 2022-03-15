@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+    <template>
+      <div :class="isLarge ? 'swiper-box-large' : 'swiper-box'">
+        <!-- <div class="swiper-box"> -->
+        <transition-group tag="ul" name="carousel">
+          <li v-for="(item, index) in pic" :key="item.pid" v-show="index === mark">
+            <!-- <img :src="item.url" alt="" /> -->
+            <div
+              :style="'background-image: url(' + item.url + ')'"
+              class="banner-img"
+            ></div>
+          </li>
+        </transition-group>
+        <div class="bullet">
+          <span
+            v-for="(item, index) in pic.length"
+            :key="index"
+            :class="{ active: index === mark }"
+            @click="change(index)"
+          ></span>
+        </div>
+      </div>
+    </template>
+    <script>
+    export default {
+      props: ["pic", "size"],
+      data() {
+        return {
+          isLarge: this.size === "large",
+          test: "/images/product_list/product/chuzhou01.jpg",
+          mybanner: [
+            { id: 0, banner: "/images/product_list/product/chuzhou01.jpg" },
+            { id: 1, banner: "/images/product_list/product/chuzhou02.jpg" },
+            { id: 2, banner: "/images/product_list/product/huoli01.jpg" }
+          ],
+          mark: 0,
+          len: this.pic.length
+        };
+      },
+      created() {
+        // this.autoPlay();
+        // setInterval(this.autoPlay, 200)
+        // this.play();
+      },
+      methods: {
+        change(i) {
+          this.mark = i;
+        },
+        Play() {
+          this.mark++;
+          if (this.mark === this.len) {
+            //len在data中定义了，为banner的个数
+            this.mark = 0;
+            return;
+          }
+        },
+        autoPlay() {
+          setInterval(this.autoPlay, 3000);
+        }
+      }
+    };
+    </script>
+    <style lang="scss" scoped>
+    .swiper-box-large {
+      position: relative;
+      width: 100%;
+      height: 713px;
+    }
+    .swiper-box {
+      width: 381px;
+      height: 245px;
+    }
+    .swiper-box,
+    .swiper-box-large {
+      position: relative;
+    
+      ul {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0px;
+        overflow: hidden;
+        li {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          // img {
+          //   width: 100%;
+          //   height: 100%;
+          //   vertical-align: middle;
+          // }
+          .banner-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+      .bullet {
+        // width: 100%;
+        height: 30px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        span {
+          display: inline-block;
+          margin: 10px;
+          width: 10px;
+          height: 10px;
+          background-color: #a4a4a4;
+          border-radius: 50%;
+          &.active {
+            background-color: #fff;
+          }
+        }
+      }
+      /* 注意顺序不能错乱，-active的类名要配置在-enter类名之前 */
+      // .carousel-enter-active {
+      //   // transform: translateX(0);
+      //   opacity: 1;
+      //   transition: all 1s ease-in-out;
+      // }
+      // .carousel-leave-active {
+      //   // transform: translateX(-100%);
+      //   opacity: 0;
+      //   transition: all 1s ease-in-out;
+      // }
+      // .carousel-enter {
+      //   // transform: translateX(100%);
+      //   opacity: 1;
+      // }
+      // .carousel-leave {
+      //   // transform: translateX(0);
+      //   opacity: 0;
+      // }
+      .carousel-enter-active {
+        // transform: translateX(0);
+        animation: bounce-in 1s;
+      }
+      .carousel-leave-active {
+        // transform: translateX(-100%);
+        animation: bounce-in 1s reverse;
+      }
+      @keyframes bounce-in {
+        0% {
+          // transform: scale(0);
+          opacity: 0;
+        }
+        50% {
+          // transform: scale(1.5);
+          opacity: 0.5;
+        }
+        100% {
+          // transform: scale(1);
+          opacity: 1;
+        }
+      }
+      // 另外，li要添加position:absolute这个属性，它相对于carousel绝对定位。
+    }
+    </style>
+
+	</body>
+</html>

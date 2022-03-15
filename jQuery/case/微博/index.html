@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>评论 </title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index-two.css">
+    <script src="../js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+    <div class="pageWrapper">
+        <div class="header">
+            <img src="./images/nav.png" alt="">
+        </div>
+        <div class="contentWrapper clearfix">
+            <div class="left">
+                <img src="./images/left.png" alt="">
+            </div>
+            <div class="content">
+                <div class="main">
+                    <div class="cmt">
+                        <img src="images/comment.png" alt="">
+                        <textarea name="cmt" id="editCmt"></textarea>
+                        <input type="button" value="发送" id="send">
+                    </div>
+                    <ul class="cmtWrapper">
+                        <li style="border: none;"></li>
+                        <li>
+                            <p class="cmtContent">
+                                爱神的箭拉克丝的爱上了打开昂是阿斯达克请问 请问哦请问e 爱神的箭拉克丝的爱上了打开昂是阿斯达克请问 请问哦请问e爱神的箭拉克丝的爱上了打开昂是阿斯达克请问
+                                请问哦请问e爱神的箭拉克丝的爱上了打开昂是阿斯达克请问 请问哦请问e
+                            </p>
+                            <p class="cmtInfo clearfix">
+                                <span>2019-08-12</span>
+                                <span>
+                                    <a href="javascript:;">0</a>
+                                    <a href="javascript:;">0</a>
+                                    <a href="javascript:;" class="delBtn" >删除</a>
+                                </span>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right">
+                <img src="./images/right.png" alt="">
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            function del(){
+                console.log('dellll')
+            }
+            function getTime() {
+                var time = new Date()
+                var y = time.getFullYear()
+                var m = time.getMonth() + 1
+                var d = time.getDate()
+                var hh = time.getHours()
+                var mm = time.getMinutes()
+                var ss = time .getSeconds()
+                return `${y}-${m}-${d} ${hh}:${mm}:${ss}`
+            }
+            $('#send').on('click', function () {
+                console.log('send')
+                if($('#editCmt').val() === '') return
+                 console.log($('#editCmt').val())
+                var cmtStr = $('#editCmt').val()
+                var newCmtDiv = document.createElement('li')
+                newCmtDiv.innerHTML = `
+                    <p class="cmtContent">
+                        `+ cmtStr + `
+                    </p>
+                    <p class="cmtInfo clearfix">
+                        <span>`+ getTime() + `</span>
+                        <span>
+                            <a href="javascript:;" >0</a>
+                            <a href="javascript:;">0</a>
+                            <a href="javascript:;" class="delBtn">删除</a>
+                        </span>
+                    </p>
+                `
+                $('.cmtWrapper').prepend(newCmtDiv)
+
+            })
+            
+            $('body').on('click', ".delBtn", function(){
+                // $(this).parent().parent().parent().remove()
+                $(this).parents('li').remove()
+            })
+        })
+
+    </script>
+</body>
+
+</html>

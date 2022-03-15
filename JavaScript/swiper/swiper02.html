@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图示例</title>
+    <script src="./v1.10.0.js"></script>
+  </head>
+  <style>
+    .clear:after {
+      display: block;
+      content: '';
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .demo02 {
+      margin-left: 100px;
+    }
+    img {
+      width: 100%;
+    }
+    .item {
+      width: 436px;
+      float: left;
+    }
+    .swiper02 {
+      transition: all 0.5s;
+      width: 500%;
+    }
+    .swiper01-container {
+      width: 436px;
+      overflow: hidden;
+    }
+  </style>
+  <body>
+    <!-- 左右移动轮播 -->
+    <div class="demo demo02">
+      <h2>fadeIn-fadeOut</h2>
+      <div class="swiper01-container">
+        <div class="swiper02 clear">
+          <div class="item">
+            <img src="./images/1.jpg" alt="" />
+          </div>
+          <div class="item">
+            <img src="./images/2.webp" alt="" />
+          </div>
+          <div class="item">
+            <img src="./images/3.webp" alt="" />
+          </div>
+        </div>
+        <div class="btn prev">上一张</div>
+        <div class="btn next">下一张</div>
+        <!-- </div> -->
+      </div>
+    </div>
+    <script>
+      $(function () {
+        var index = 0
+        var swiper02 = $('.swiper02')
+        var prev = $('.prev')
+        var next = $('.next')
+        var items = $('.item')
+        var itemW = $(items[0]).width()
+        // console.log()
+        var len = items.length
+        var n = 0
+        prev.click(function () {
+          n++
+          swiper02.css('marginLeft', '-' + itemW * n + 'px')
+        })
+
+        function play() {
+          n++
+          if (n == 3) n = 0
+          swiper02.css('marginLeft', '-' + itemW * n + 'px')
+        }
+        setInterval(function () {
+          play()
+        }, 2000)
+      })
+    </script>
+  </body>
+</html>

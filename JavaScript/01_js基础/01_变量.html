@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js变量</title>
+</head>
+
+<body><p>
+    qweqweqwe
+</p>
+    <div id="cat"></div>
+    <div id="cat1"></div>
+    <script>
+        document.querySelector('#cat').innerHTML = "<p>nasdkjdaskj<p/>"
+        document.querySelector('#cat1').innerHTML = "12312jhjadsk213"
+        document.write('<span>4154545</span>')
+        // window.onload = function(){
+        //     document.write('哈哈哈')
+        // }
+        /*
+        严格模式 不能使用未声明的变量
+        use strict;
+        x = 13.4;
+        console.log(x)
+        */
+        var a = "javascript";
+        console.log("外面访问外面的a：", a); // var 声明的全局变量在外面可以访问
+        function con() {
+            var b = "varibale";
+            c = "python";
+            console.log("里面访问外面的a：", a) //在函数内部可以访问 在函数外 用 var 声明的 全局变量
+            console.log("里面访问里面的b：", b) //在函数内部 var 声明的局部变量 可以在函数内部访问
+        };
+
+        con();
+        console.log("外面范围函数内部声明 的 全局c：", c); //在函数内部 没有使用var 声明的变量是 全局变量 可以在任意位置访问
+        //console.log("外面：", b); //在函数外访问函数内部用var声明的局部变量，不能访问
+       
+    </script>
+</body>
+
+</html>

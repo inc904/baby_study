@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <select name="temp">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="opel">Opel</option>
+      <option value="audi">Audi</option>
+    </select>
+    <script>
+      $('select[name="temp"]').change(function () {
+        alert('123')
+        console.log($('select[name="temp"]').val())
+      })
+    </script>
+  </body>
+
+</html>

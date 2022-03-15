@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #app {
+      width: 100%;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+    }
+
+    .box {
+      color: turquoise;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .orange {
+      background-color: orange;
+    }
+
+    .thin {
+      height: 200px;
+    }
+
+    .error {
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>-----HTML Class-----</p>
+    <div class="box" v-bind:class="{ red: isRed , thin: isThin}">对象方式</div>
+    <div :class="[isDanger, iSError]">数组方式</div>
+    <p>-----内联样式-----</p>
+    <div class="box3" :style="{backgroundColor: isDanger}">内联方式的对象语法</div>
+    <div class="box4" :style="[big, orange]">内联数组语法</div>
+  </div>
+  <script src="lib/vue-2.4.0.js"></script>
+  <script>
+    /*
+      绑定 html class：
+      1.对象方式
+    */
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        isRed: true,
+        isThin: true,
+        isDanger: 'red',
+        iSError: 'error',
+        big: {
+          fontSize: '30px'
+        },
+        orange: {
+          backgroundColor: 'orange'
+        }
+      },
+      methods: {}
+    })
+  </script>
+</body>
+
+</html>

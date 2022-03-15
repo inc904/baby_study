@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        量词
+            - 可以通过设置一个内容出现的次数
+            - {n} 正好出现n次
+            - {m,n} 出现m到n次
+            - {m,}  m次数以上
+            - 量词只对它前面的一个内容起作用
+            - (abc) 小括号包裹起来，可以作为一个整体
+
+            - + 号表示至少一个，相当于{1,}
+            - * 号表示0个或多个 相当于{0,}
+            - ? 号表示0个或一个，相当于{0,1}
+            - /^a/ 表示以a开头
+            - /b$/ 表示以b结尾
+            - . 表示任意字符 如果要查找字符串中是否含有 "." 需要转义 “\.” 
+            \w  "字母 数字 _"
+            \W  除了"字母 数字 _"
+            \d  任意数字
+            \D  除了任意数字
+            \s  空格
+            \S  除了空格
+            \b  单词边界
+            \B  除了单词边界
+    */
+    function a(x){
+        return x * 2;
+    }
+    var a;
+    alert(a);
+    </script>
+</body>
+</html>

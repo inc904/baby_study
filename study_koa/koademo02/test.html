@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const start = Date.now()
+      let time = new Date().getTime()
+      console.log(new Date())
+      console.log(time)
+      console.log(start)
+      let date = new Date(time)
+      console.log(date.getFullYear())
+      let str = 'ab'
+
+      let str2 = str.padStart(2, 'a')
+      let str3 = str.padStart(3, 'x')
+      let str5 = str.padStart(5, 'x')
+      console.log(str2, str3, str5)
+      // console.log(Date(Thu Mar 11 2021 16:46:43 GMT+0800))
+      console.log(new Date('2021-10-10 15:20:35'))
+    </script>
+  </body>
+</html>

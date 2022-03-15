@@ -1,0 +1,44 @@
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+@import '~taro-ui/dist/style/components/button.scss';
+
+page {
+  background-color: #f5f5f5;
+}
+
+.at-button {
+  margin-left: 20px;
+  margin-right: 0;
+
+  &--small {
+    min-width: 140px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 26px;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+}
+
+.orderPage {
+  padding: 20px;
+
+  .emptyImg {
+    width: 445px;
+    height: 287px;
+    background-size: 100%;
+    background-image: url('https://img.youvogo.com/miniprogram/buyer/images/cdn/order-empty.png');
+    margin: 162px auto 40px;
+  }
+
+  .emptyText {
+    text-align: center;
+    font-weight: 400;
+    color: rgba(129, 129, 129, 1);
+    line-height: 40px;
+    font-size: 30px;
+  }
+}

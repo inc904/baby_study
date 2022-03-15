@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <input type="button" value="来一首" id="btn" />
+    <input type="button" value="来一首2" id="btn2" />
+    <div class="box"></div>
+    <script>
+      var btn = document.getElementById('btn')
+      var url = 'https://v1.jinrishici.com/all.json'
+      var xhr = new XMLHttpRequest()
+      btn.onclick = function () {
+        // 1. 创建对象
+        // 2. 声明用什么方法提交，提交到哪里去
+        xhr.open('get', url, true)
+        // 3.注册事件
+        xhr.onreadystatechange = function () {
+          // 拿到响应的数据
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText)
+          }
+        }
+        // 4.发送请求
+        xhr.send()
+      }
+    </script>
+    <script>
+      var url = 'https://v1.jinrishici.com/all.json'
+      var xhr = new XMLHttpRequest()
+      var box = document.getElementsByClassName('box')[0]
+      var btn2 = document.getElementById('btn2')
+
+      function getShi(url, callback) {
+        xhr.onload = function () {
+          console.log(this.responseText)
+          callback(this.responseText)
+        }
+        xhr.open('GET', url, true)
+        xhr.send()
+      }
+      btn2.onclick = function () {
+        var res = getShi(url, function (data) {
+          document.write(data)
+        })
+      }
+    </script>
+  </body>
+</html>

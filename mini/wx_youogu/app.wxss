@@ -1,0 +1,33 @@
+/**app.wxss**/
+@import './styles/iconfont.wxss';
+@import './styles/common.wxss';
+
+page,
+view,
+text,
+swiper,
+swiper-item,
+navigator,
+image {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+  /* 定义主题颜色 */
+  --themeColor: #eb4450;
+  /* 
+  定义统一字体大小 设计稿 大小 375px
+  1px = 2rpx
+  14px = 28rpx
+  */
+  font-size: 28rpx;
+}
+.clear::after {
+  content: '';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+  display: block;
+}

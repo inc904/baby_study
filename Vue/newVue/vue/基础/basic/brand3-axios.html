@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <style>
+        th,
+        td {
+            width: 100px;
+            text-align: center;
+        }
+        .fade-enter-active, .fade-leave-active{
+            transition: opacity .5s;
+        }
+        .fade-enter, .fade-leave-to{
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="">
+                品牌<input ctime="text" v-model="brand" @keyup.enter="add">
+            </label>
+
+            <button @click="add">添加</button>
+
+            <label for="">
+                输入搜索关键字：
+                <input type="text" v-model="keywords" id="search" v-focus>
+            </label>
+        </div>
+        <table border="1" cellspacing="0">
+            <tr>
+                <th>序号</th>
+                <th>品牌</th>
+                <th>录入时间</th>
+                <th>操作</th>
+            </tr>
+            <transition name="fade">
+                <tr v-for="item in brandLists" :key="item.id">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.ctime | dateFormate()}}</td>
+                    <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
+                </tr>
+            </transition>
+
+        </table>
+    </div>
+    <script>
+        function myPadStart(num) {
+            return num.toString().padStart(2, '0')
+        }
+        axios.defaults.baseURL = 'http://www.liulongbin.top:3005'
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                brandLists: [
+                    { id: 1, name: '宝马', ctime: new Date() },
+                    { id: 2, name: '五菱', ctime: new Date() }
+                ],
+                brand: '',
+                keywords: '',
+                test: '测试自定义属性的文字',
+                host: 'http://www.liulongbin.top:3005'
+            },
+            methods: {
+                add() {
+                    axios.post('/api/addproduct', { name: this.brand }).then(red => {
+                        console.log('added!')
+                        this.getList()
+                        this.brand = ''
+                    })
+                },
+                del(id) {
+                    // var index = this.brandLists.findIndex(item => {
+                    //     if (item.id === id) return true
+                    // })
+                    // this.brandLists.splice(index, 1)
+                    axios.get(this.host + '/api/delproduct/' + id).then(res => {
+                        console.log('deleted!')
+                        this.getList()
+                    })
+
+                },
+                getList() {
+                    axios.get(this.host + '/api/getprodlist').then(res => {
+                        console.log(res)
+                        console.log(res.data.message)
+                        if (res.status === 200) {
+                            this.brandLists = res.data.message
+                        }
+                        console.log('got it')
+                    }).catch(error => {
+                        console.log(error)
+                    })
+                },
+                search(keywords) {
+                    return this.brandLists.filter(item => {
+                        if (item.brand.includes(keywords)) return item
+                        // if(item.brand.indexOf(keywords) != -1) return item
+
+                    })
+                },
+
+
+            },
+            created() {
+                this.getList()
+                console.log(this.brandLists)
+            },
+            directives: {
+                focus: {
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                }
+            },
+            filters: {
+                dateFormate(date) {
+                    var t = new Date(date)
+                    var Y = t.getFullYear()
+                    var M = t.getMonth() + 1
+                    var D = t.getDate()
+                    var hh = t.getHours()
+                    var mm = (t.getMinutes()).toString().padStart(2, '0')
+                    var ss = myPadStart(t.getSeconds())
+                    return `${Y}-${M}-${D} ${hh}:${mm}:${ss}`
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

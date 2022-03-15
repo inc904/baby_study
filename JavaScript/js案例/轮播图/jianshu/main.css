@@ -1,0 +1,43 @@
+.lunbo_box{
+  width: 590px;
+  height: 470px;
+  border: 2px solid purple;
+  box-sizing: border-box;
+  position: relative;
+}
+.btn{
+  width: 100px;
+  height: 470px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+}
+.left_btn{
+  left: 0;
+}
+.right_btn{
+  right: 0;
+}
+.circle_box{
+  position: absolute;
+  bottom: 1em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.circle_box .circle{
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius:50%;
+  /*display: inline-block;*/
+  margin-right: 10px;
+  float: left;
+}
+.circle_box .circle:last-child{
+  margin-right: 0;
+}
+.circle_box .circle.active{
+  background: #f20109;
+  box-shadow: 0 0 1.5px 1.5px #ddd;
+}

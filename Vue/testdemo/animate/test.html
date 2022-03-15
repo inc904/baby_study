@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+
+      .main-box{
+      width: 1200px;
+      margin: 0 auto;
+    }
+  
+    .box-b{
+      width: 720px;
+      height: 200px;
+      animation-name: fadeBottomIn;
+      -webkit-animation-name: fadeBottomIn;
+      background-color: #888888;
+      margin-top: 20px;
+    }
+    .animated {
+      -webkit-animation-duration: 3s;
+      animation-duration: 3s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+    }
+    
+   
+    @keyframes fadeBottomIn {
+      0%{
+        opacity: 0;
+        transform: translate3d(0,100%,0);
+        -webkit-transform: translate3d(0,100%,0);
+      }
+      100%{
+        opacity: 1;
+        transform: none;
+        -webkit-transform: none;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="main-box">
+        <div class="box-b animated"></div>
+      </div>
+      <button type="button" @click="share">fenxiang</button>
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+          share: function(title, rLink, site, pic) {
+            title = "标题。";
+            summary = "内容。";
+            top = "100px";
+            left = "100px";
+            rLink = "http://www.abc.com/heeh.html";
+            site = "http://www.abc.com/heeh.html";
+            // pic = $(".p-img img").attr("src");
+            rLink = "http://www.ahzww.net/0/190/";
+
+            // window.open("http://service.weibo.com/share/share.php?pic=" +encodeURIComponent(pic) +"&title=" + 
+            // encodeURIComponent(title.replace(/&nbsp;/g, " ").replace(/<br \/>/g, " "))+ "&url=" + encodeURIComponent(rLink),
+            // "分享至新浪微博",
+            // "height=500,width=600,top=" + top + ",left=" + left + ",toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no");
+            // window.open('http://shuo.douban.com/!service/share??title=' +
+            //   encodeURIComponent(title) + '&url=' + encodeURIComponent(rLink) + '&summary=' +
+            //   encodeURIComponent(summary) + '&site=' + encodeURIComponent(site), '_blank',
+            //   'scrollbars=no,width=600,height=450,left=' + left + ',top=' + top + ',status=no,resizable=yes');
+              
+              var _shareUrl = 'http://shuo.douban.com/!service/share?';
+                      _shareUrl += 'href=' + encodeURIComponent(rLink||location.href);    //分享的链接
+                      _shareUrl += '&name=' + encodeURIComponent(title||document.title);    //分享的标题
+                      _shareUrl += '&image=' + encodeURIComponent(pic||'');    //分享的图片
+                      window.open(_shareUrl,'_blank');
+
+          }
+        }
+      })
+      
+      var name = 'outer'
+      function Bar(){
+        this.name = 'inner'
+        return {
+          name : 'obj'
+        }
+      }
+      var bar = new Bar()
+      var bar2 = new Bar()
+      console.log(bar.name)
+      console.log(bar2.name)
+      console.log(name)
+    </script>
+  </body>
+</html>

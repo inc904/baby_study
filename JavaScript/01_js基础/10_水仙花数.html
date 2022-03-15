@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      // 水仙花数
+      // for (var i = 100; i < 1000; i++) {
+      // 	var a = parseInt(i / 100);
+      // 	var b = parseInt((i - a * 100) / 10);
+      // 	var c = parseInt(i % 10)
+      // 	if (a * a * a + b * b * b + c * c * c == i) {
+      // 		console.log(i)
+      // 	}
+      // }
+
+      // 质数
+
+      // for (i = 1; i <= 10; i++) {
+      // 	var flag = true;
+      // 	for (j = 2; j < i; j++) {
+      // 		if (i % j == 0) {
+      // 			flag = false;
+      // 		}
+      // 	}
+      // 	if (flag) {
+      // 		console.log(i)
+      // 	}
+      // }
+
+      // continue
+      console.time('test')
+      for (i = 1; i <= 10; i++) {
+        var flag = true
+        for (j = 2; j <= Math.sqrt(i); j++) {
+          if (i % j == 0) {
+            flag = false
+            break
+          }
+        }
+        if (flag) {
+          console.log(i)
+        }
+      }
+      console.timeEnd('test')
+    </script>
+  </body>
+</html>

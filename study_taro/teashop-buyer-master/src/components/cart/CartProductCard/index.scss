@@ -1,0 +1,137 @@
+.productCard {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 10px 20px 0 rgba(255, 97, 64, 0.2);
+  border-radius: 15px;
+  padding: 25px 10px;
+  margin-bottom: 25px;
+}
+
+.cardImageWrap {
+  position: relative;
+  width: 145px;
+  height: 145px;
+
+  .imgSoldMark {
+    display: flex;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 500;
+
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 100%;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .text {
+      z-index: 2;
+    }
+  }
+}
+
+.productImg {
+  width: 100%;
+  height: 100%;
+}
+
+.cardInfoWrap {
+  margin-left: 36px;
+  flex: 1;
+
+  .productTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 30px;
+    font-weight: 500;
+    color: #3d3237;
+    margin-bottom: 4px;
+  }
+
+  .productSku {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ccc;
+    font-size: 26px;
+    min-height: 36px;
+    margin-bottom: 24px;
+  }
+
+  .productPrice {
+    display: flex;
+    color: #ff2c00;
+    font-size: 28px;
+    align-items: flex-end;
+
+    .vipPrice {
+      display: flex;
+      font-size: 24px;
+      color: #ffae00;
+      font-weight: 300;
+      margin-left: 4px;
+      align-items: center;
+
+      .iconVip {
+        display: inline-block;
+        margin-left: 8px;
+        width: 50px;
+        height: 20px;
+        background-size: 100%;
+        background-image: url('../../../assets/images/icon/icon-vip.png');
+      }
+    }
+  }
+}
+
+.cardActionWrap {
+  display: flex;
+  width: 146px;
+  height: 48px;
+  line-height: 48px;
+  background-color: rgba(255, 244, 242, 1);
+  border-radius: 24px;
+  text-align: center;
+  justify-content: space-between;
+  font-size: 32px;
+  color: #ff6140;
+  font-weight: 500;
+  margin-right: 20px;
+
+  .btn {
+    &-circle {
+      color: #fff;
+      width: 48px;
+      height: 100%;
+      background-color: rgba(255, 97, 64, 1);
+      border-radius: 50%;
+
+      &.disable {
+        background-color: rgba(255, 191, 178, 1);
+      }
+    }
+
+    &-plus {
+      background-size: 100%;
+      background-position: center;
+      background-image: url('../../../assets/images/icon/icon-plus.png');
+    }
+
+    &-minus {
+      background-size: 100%;
+      background-position: center;
+      background-image: url('../../../assets/images/icon/icon-minus-o.png');
+    }
+  }
+}

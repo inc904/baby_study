@@ -1,0 +1,16 @@
+.movieItem {
+  width: 180px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  box-shadow: 0 0 6px #edf4ed;
+  transition: all 0.3s ease;
+  &:hover {
+    transform: rotate(1deg) scale(1.1);
+    box-shadow: 1px 1px 10px #edf4ed;
+  }
+  img {
+    width: 140px;
+  }
+}

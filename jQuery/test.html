@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>
+		Test Page
+	</title>
+</meta>
+</meta>
+</meta>
+</head>
+<body>
+	<p>  Test Page</p>
+	<div style="width: 100px; height: 100px; background: red;" onclick="console.log('div')">
+		1
+		<p style="width: 50px; height: 20px; background: blue;" onclick="console.log('p')">click here!</p>
+	</div>
+	<script>
+            // for(var i = 0; i< 5; i++){
+    //   setTimeout((function(){
+    //     console.log(i)
+    //   })(i), i*5000)
+    // }
+    // for (var i = 0; i < 5; i++) {
+    //   (function (i) {
+    //     setTimeout(function () {
+    //       console.log(i)
+    //     }, i * 1000)
+    //   })(i)
+    // }
+
+
+
+// 变量提升
+console.log(a)
+
+console.log(b)
+
+var b =11
+    // var a = b = 10 
+    var a = 1
+    
+    // function a(){
+    // 	var b = 10
+    // 	console.log('in b ',b)
+
+    // }
+    var a = function(){
+    	console.log(123)
+    }
+    console.log('a', a)
+    // console.log('b', b)
+    a()
+
+    var obj1 = { name: "zhang", age: 18, info: { company:'tx' } }
+    var obj2 = obj1
+    var obj3 = Object.assign({}, obj1)
+    // console.log(obj1, obj2, obj3)
+    // obj2.age = 20
+    obj3.age = 20
+
+    console.log(obj1,obj3)
+    // console.log(obj1,obj2)
+
+  </script>
+</body>
+</html>

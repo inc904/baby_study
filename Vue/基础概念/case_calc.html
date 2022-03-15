@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="inp1">
+        <select name="" id="" v-model="option">
+            <option value="+"> + </option>
+            <option value="-"> - </option>
+            <option value="*"> * </option>
+            <option value="/"> / </option>
+        </select>
+        <input type="text" v-model="inp2">
+        <input type="button" value="=" @click="getRes">
+        <input type="text" v-model="inp3">
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                inp1: 0,
+                inp2: 0,
+                inp3: 0,
+                option: '+'
+            },
+            methods: {
+                getRes() {
+                    // this.inp3 = eval(parseInt(this.inp1) + this.option+ parseInt(this.inp2));
+                    switch(this.option){
+                        case '+': 
+                            this.inp3 = parseInt(this.inp1) + parseInt(this.inp2);
+                            break;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

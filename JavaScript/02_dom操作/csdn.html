@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>实现简单的轮播图片</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+    }
+
+    #container {
+      margin: 20px auto;
+      width: 600px;
+      height: 483px;
+      border: 3px solid #333;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #list {
+      width: 4200px;
+      height: 483px;
+      position: absolute;
+      z-index: 1;
+    }
+
+    #list img {
+      float: left;
+      width: 600px;
+      height: 483px;
+    }
+
+    #buttons {
+      position: absolute;
+      height: 10px;
+      width: 100px;
+      z-index: 2;
+      bottom: 20px;
+      right: 250px;
+    }
+
+    #buttons span {
+      cursor: pointer;
+      float: left;
+      border: 1px solid #fff;
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+      margin-right: 5px;
+      background: #E98352;
+    }
+
+    #buttons .on {
+      background: #474550;
+    }
+
+    .arrow {
+      display: none;
+      cursor: pointer;
+      line-height: 40px;
+      text-align: center;
+      font-size: 30px;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      z-index: 2;
+      top: 180px;
+      color: #fff;
+      background: #474550;
+    }
+
+    .arrow:hover {
+      background-color: #E98352;
+    }
+
+    #container:hover .arrow {
+      display: block;
+    }
+
+    #pre {
+      left: 20px;
+    }
+
+    #next {
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div id="list" style="left:0px">
+      <img src="./img/1.jpg" alt="1" />
+      <img src="./img/2.jpg" alt="2" />
+      <img src="./img/3.jpg" alt="3" />
+      <img src="./img/4.jpg" alt="4" />
+      <img src="./img/5.jpg" alt="5" />
+    </div>
+    <div id="buttons">
+      <span index="1" class="on"></span>
+      <span index="2"></span>
+      <span index="3"></span>
+      <span index="4"></span>
+      <span index="5"></span>
+    </div>
+    <a href="javascript:;" class="arrow" id="prev">
+      <</a> <a href="javascript:;" class="arrow" id="next">>
+    </a>
+  </div>
+  <script>
+    window.onload = function () {
+      var list = document.getElementById('list');
+      var prev = document.getElementById('prev');
+      var next = document.getElementById('next');
+      var container = document.getElementById('container');
+      var buttons = document.getElementById('buttons').getElementsByTagName('span');
+      var index = 1;
+
+      function animate(offset) {
+        //获取的是style.left，是相对左边获取距离，所以第一张图后style.left都为负值，
+        //且style.left获取的是字符串，需要用parseInt()取整转化为数字。
+        var newLeft = parseInt(list.style.left) + offset;
+        list.style.left = newLeft + 'px';
+        list.style.transition = '300ms ease';
+        if (newLeft < -2400) {
+          list.style.left = 0 + 'px';
+        }
+        if (newLeft > 0) {
+          list.style.left = -2400 + 'px';
+        }
+      }
+      var timer;
+      function autoplay() {
+        timer = setInterval(function () {
+          next.onclick()
+        }, 3000);
+      }
+      autoplay();
+      function stopplay() {
+        clearInterval(timer);
+      }
+      function showButton() {
+        //清除之前的样式
+        for (let i = 0; i < buttons.length; i++) {
+          if (buttons[i].className == 'on') {
+            buttons[i].className = '';
+          }
+        }
+        buttons[index - 1].className = 'on';
+      }
+      prev.onclick = function () {
+        index -= 1;
+        if (index < 1) {
+          index = 5;
+        }
+        showButton();
+        animate(600);
+      }
+      next.onclick = function () {
+        index += 1;
+        if (index > 5) {
+          index = 1;
+        }
+        showButton();
+        animate(-600);
+      }
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+          var clickIndex = parseInt(this.getAttribute('index'));
+          var offset = 600 * (index - clickIndex);
+          animate(offset);
+          index = clickIndex;
+          showButton();
+        }
+      }
+      container.onmouseover = stopplay;
+      container.onmouseout = autoplay;
+    }
+  </script>
+</body>
+
+</html>

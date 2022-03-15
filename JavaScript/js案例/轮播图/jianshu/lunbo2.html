@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #banner {
+    width: 500px;
+    height: 333px;
+    margin: 0 auto;
+    border: 10px solid #ccc;
+    position: relative;
+    background-color: #bfc;
+    /* overflow: hidden; */
+  }
+
+  #box {
+    width: 2500px;
+    position: absolute;
+    left: 0;
+    transition: all 1s;
+  }
+
+  img {
+    vertical-align: middle;
+    float: left;
+  }
+
+  ul {
+    background-color: #ddd;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+  }
+
+  ul li {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    list-style: none;
+    float: left;
+    margin: 10px;
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+
+  ul li:hover {
+    background-color: #000;
+  }
+
+  .active {
+    background-color: #000;
+  }
+
+  .ids {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .prev,
+  .next {
+    width: 80px;
+    height: 100px;
+    position: absolute;
+    line-height: 100px;
+    font-size: 40px;
+    text-align: center;
+    color: bisque;
+    cursor: pointer;
+    opacity: .5;
+  }
+
+  .prev {
+    background-color: red;
+    left: 0;
+  }
+
+  .next {
+    background-color: green;
+    right: 0;
+  }
+</style>
+
+<body>
+  <div id="banner">
+    <div id="box">
+      <img src="img/1.jpg" alt="">
+      <img src="img/2.jpg" alt="">
+      <img src="img/3.jpg" alt="">
+      <img src="img/4.jpg" alt="">
+      <img src="img/5.jpg" alt="">
+    </div>
+    <ul id="ul"></ul>
+    <div class="ids">
+      <div class="prev">&lt;</div>
+      <div class="next">&gt;</div>
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      
+      var imgList = document.getElementsByTagName("img")
+      var ul = document.getElementById("ul");
+      var box = document.getElementById("box");
+      var prev = document.getElementsByClassName('prev')[0]
+      var next = document.getElementsByClassName('next')[0]
+      var index = 0
+      var dots = document.getElementsByTagName('li')
+      var timer = null
+      console.log(dots)
+      function init() {
+
+      }
+      // 添加底部圆点
+      for (var i = 0; i < imgList.length; i++) {
+        var li = document.createElement("li")
+        li.setAttribute('num', i)
+        ul.appendChild(li);
+      }
+      // 移动函数
+      function go(index) {
+        box.style.left = -500 * index + 'px'
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].classList = ''
+          dots[index].classList = 'active'
+        }
+      }
+      // go(0)
+      // 下一张切换
+      next.onclick = function () {
+        index++
+        index >= imgList.length ? index = 0 : index = index
+        go(index)
+        console.log(index)
+      }
+      // 上一张切换
+      prev.onclick = function () {
+        index--
+        index < 0 ? index = imgList.length - 1 : index = index
+        go(index)
+        console.log(index)
+      }
+      // 按钮点击切换
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].onclick = function () {
+          index = i
+          go(index)
+        }
+      }
+      function all() {
+        // 自动切换
+        timer = setInterval(function () {
+          index++
+          index >= imgList.length ? index = 0 : index = index
+          go(index)
+          console.log(index)
+        }, 1000)
+        function swiper(index) {
+          timer = timer
+          console.log(90)
+        }
+        swiper(0)
+        box.onmouseenter = function () {
+          // console.log(11)
+          clearInterval(timer)
+          timer = null
+        }
+        box.onmouseleave = function () {
+          console.log(index)
+          timer = timer
+          swiper(index)
+          // index++
+          // timer()
+        }
+      }
+
+      all()
+    }
+  </script>
+</body>
+
+</html>

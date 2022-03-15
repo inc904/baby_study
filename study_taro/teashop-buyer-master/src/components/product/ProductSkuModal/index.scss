@@ -1,0 +1,94 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+
+.skuModalHeader {
+  font-weight: 500;
+
+  .title {
+    color: #000;
+    font-size: 32px;
+  }
+}
+
+.skuModalContent {
+  font-weight: 500;
+
+  .skuAttrName {
+    color: #666;
+  }
+
+  .skuAttrWrap {
+    padding: 20px 0 12px;
+  }
+}
+
+.skuModalFooter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 66px;
+  font-weight: 500;
+
+  .skuInfo {
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  .skuPrice {
+    font-size: 52px;
+    color: #f00;
+
+    .icon {
+      font-size: 30px;
+    }
+  }
+
+  .skuVipPrice {
+    display: flex;
+    font-size: 24px;
+    color: #ffae00;
+    font-weight: 300;
+    margin-left: 4px;
+    align-items: center;
+
+    .iconVip {
+      display: inline-block;
+      margin-left: 4px;
+      width: 50px;
+      height: 20px;
+      background-size: 100%;
+      background-image: url('../../../assets/images/icon/icon-vip.png');
+    }
+  }
+
+  .skuVal {
+    font-size: 24px;
+    color: #666;
+    margin: 0 16px;
+  }
+
+  .btnContent {
+    display: flex;
+    align-items: center;
+  }
+
+  .iconPlus {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120%;
+    background-image: url('../../../assets/images/icon/icon-plus.png');
+    margin-top: 2px;
+    margin-right: 8px;
+  }
+
+  .skuBtn {
+    width: 236px;
+  }
+}

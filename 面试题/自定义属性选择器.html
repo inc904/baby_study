@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>属性选择器</title>
+  </head>
+
+  <body>
+    <div id="AA" class="bar"></div>
+    <div class="box"></div>
+    <div class="box1 clear"></div>
+    <div class="box clear"></div>
+    <div class="foo box" name="foo"></div>
+    <div name="foo"></div>
+    <div name="foo2"></div>
+    <div mindex="bar"></div>
+    <div mindex="bar"></div>
+    <div mindex="foo bar"></div>
+    <script>
+      /*
+
+     样式中的属性选择器：
+       div[name='AAA'] {}
+
+    */
+      function $attr(property, value) {
+        let elements = document.getElementsByTagName('*'),
+          arr = []
+
+        // ;[].foreach.call(elements, item => {})
+        elements = Array.from(elements) // 把非数组转换为数组
+        elements.forEach(item => {
+          // itemValue=> 当前元素property的属性值
+          let itemValue = item.getAttribute(property)
+          if (property === 'class') {
+            new RegExp('\\b' + value + '\\b').test(itemValue)
+              ? arr.push(item)
+              : null
+            return
+          }
+          if (itemValue === value) {
+            // 获取的值和传递的值检验成功
+            arr.push(item)
+          }
+        })
+        return arr
+      }
+      let ary = $attr('class', 'box')
+      console.log(ary)
+    </script>
+  </body>
+</html>

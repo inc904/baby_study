@@ -1,0 +1,12 @@
+<!--pages/login/index.wxml-->
+
+<button
+ class="btn"
+ plain="{{true}}"
+ type="primary"
+ open-type="getUserInfo"
+ bindgetuserinfo="handleGetuserinfo"
+>
+	登录
+</button>
+

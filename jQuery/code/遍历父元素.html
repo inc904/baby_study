@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>遍历父元素</title>
+</head>
+<body>
+	<div class="container">
+		<p>我是第一层的P</p>
+		<div class="firstDiv"> 
+			我是第一次的div
+		</div>
+		<div class="secDiv">
+			<p class="secP1"><span class="secPSpan">最里面的span</span></p>
+			<p class="secP2">普通的p</p>
+		</div>
+	</div>
+	<script src="./js/jquery-1.12.2.js"></script>
+	<script>
+		$(function(){
+			/*
+
+				parent() 返回直接 父元素
+				parents(selector) 返回匹配元素的 逐级 父元素 ， 可以传入 选择器 筛选
+			*/
+			console.log($('.secP1').parent())
+			//js 获取父节点
+			var secP1 = document.getElementsByClassName('secP1')[0]
+
+			console.log(secP1.parentNode)
+			// console.log(secP1.parentElement) // ie支持
+
+			console.log($('.secP1').parents('.secDiv'))
+
+		})
+
+	</script>
+</body>
+</html>

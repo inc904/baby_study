@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CARD HOVER EFFECTS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'lato', sans-serif;
+      background: linear-gradient(90deg, #00aaee 10%, #dd2476 90%);
+    }
+
+    .animate {
+      transition: 0.3s cubic-bezier(0.3, 0, 0, 1.3);
+    }
+
+    .card {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+
+    }
+
+    .card:hover {
+      width: 300px;
+      height: 450px;
+      background-color: #fff;
+      margin-top: 100px;
+    }
+
+    .card:hover .cta_container {
+      display: block;
+      margin-top: 380px;
+    }
+
+    .card:hover .cta {
+      display: block;
+    }
+
+    .card:hover .card_circle {
+      margin-top: -130px;
+      background-size: cover;
+      border-radius: 0;
+    }
+
+    .card:hover h2 {
+      color: #fff;
+      background-color: #00aaee;
+    }
+
+    .card:hover p {
+      margin-top: 280px;
+      background-color: #fff;
+    }
+
+    .card_circle {
+      background: url(../51.jpg) no-repeat center bottom;
+      background-size: cover;
+      border-radius: 50%;
+      margin-left: -75px;
+      margin-top: -270px;
+      position: absolute;
+      width: 450px;
+      height: 400px;
+    }
+
+    h2 {
+      color: #3487f7;
+      font-size: 24px;
+      font-weight: 300;
+      margin-top: 120px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      z-index: 9999;
+    }
+
+
+    p {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 100%;
+      font-weight: normal;
+      margin-top: 200px;
+      position: absolute;
+      text-align: center;
+      z-index: 9999;
+    }
+
+    .cta_container {
+      display: none;
+      margin-top: 320px;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      z-index: 9999;
+    }
+
+    .cta {
+      width: 60%;
+      margin: 0 auto;
+      background-clip: padding-box;
+      border: 2px solid #3487f7;
+      border-radius: 20px;
+      color: #3487f7;
+      display: inline-block;
+      font-size: 17px;
+      font-weight: 400;
+      height: 36px;
+      letter-spacing: 0.5px;
+      line-height: 36px;
+      margin-bottom: 15px;
+      padding: 0 2rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.2s ease-in-out;
+      display: none;
+    }
+
+    .cta:hover {
+      background-color: #3487f7;
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card animate">
+
+    <h2 class="animate">Awesome Headline</h2>
+    <p>
+      It is a long established fact that a reader will be distracted by the readable content of a page when looking
+      atits layout.
+    </p>
+    <div class="cta_container animate">
+      <a href="#" class="cta">Call to action</a>
+    </div>
+    <div class="card_circle animate"></div>
+  </div>
+
+</body>
+
+</html>

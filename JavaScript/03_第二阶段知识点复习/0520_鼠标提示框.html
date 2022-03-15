@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            vertical-align: middle;
+        }
+
+        #toast {
+            background-color: #bfc;
+            position: absolute;
+            padding: 5px 10px;
+            display: none;
+        }
+
+        #box:hover #toast {
+            display: block;
+        }
+
+        #box:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="checkbox" name="box" id="box">两周内不再重复登录
+    <!-- <div id="box">dajiah</div> -->
+    <div id="toast">勾选后两周内免密码登录</div>
+    姓名：<input type="text" value="请输入您的姓名" id="inp">
+    <script>
+        let box = document.getElementById("box");
+        let toast = document.getElementById("toast");
+        let inp = document.getElementById("inp");
+        box.onmouseenter = function () {
+            toast.style.display = "block";
+        }
+        box.onmouseleave = function () {
+            toast.style.display = "none";
+        }  
+        inp.onfocus = function (){
+            alert("hello");
+        }
+    </script>
+</body>
+
+</html>

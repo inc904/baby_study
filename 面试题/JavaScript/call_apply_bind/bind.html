@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="bind.js"></script>
+  <script>
+  function foo(name) {
+    this.name = name;
+  }
+  var obj = {};
+  var bar = foo.myBind(obj);
+  bar('Jack');
+  console.log(obj.name); // Jack
+  var alice = new bar('Alice');
+  console.log(obj.name); // Jack
+  console.log(alice.name); // Alice
+  console.log('-------------------')
+  </script>
+  <script>
+  var value = 2;
+
+  var foo = {
+    value: 1
+  };
+
+  function bar(name, age) {
+  	console.log(this)
+    this.habit = 'shopping';
+    console.log(this.value);
+    console.log(name);
+    console.log(age);
+  }
+
+  bar.prototype.friend = 'kevin';
+
+  var bindFoo = bar.bind(foo, 'daisy');
+
+  var obj = new bindFoo('18');
+  // undefined
+  // daisy
+  // 18
+  console.log(obj.habit);
+  console.log(obj.friend);
+  // shopping
+  // kevin
+  </script>
+</body>
+
+</html>

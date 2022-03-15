@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <div id="myDiv">
+        <p>html</p>
+        12323
+        <p>css</p>
+        <p class="check">javascript</p>
+    </div>
+    <p>jquery</p>
+
+    <script>
+        var div = document.getElementById("myDiv");
+        console.log(div)
+        console.log(div.childNodes)
+        // console.log(div.childNodes[0].nodeValue)
+        // div.childNodes[0].nodeValue = ''
+        alert(div.childNodes.length)
+    </script>
+    <script src="./class继承.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+.signinForm {
+  .formItem {
+    position: relative;
+
+    .icon {
+      display: inline-block;
+      position: absolute;
+      top: 22px;
+      left: 44px;
+      width: 30px;
+      height: 40px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+
+    .iconPhone {
+      background-image: url(../../../assets/images/icon/icon-phone.png);
+      background-size: 24px 38px;
+    }
+
+    .iconSafe {
+      background-image: url(../../../assets/images/icon/icon-safe.png);
+      background-size: 29px 33px;
+    }
+
+    .submitBtn {
+      margin-top: 26px;
+    }
+  }
+
+  .formItemCode {
+    display: flex;
+
+    .at-button {
+      margin-left: 32px;
+      padding: 0 28px;
+      font-size: 28px;
+    }
+
+    .verifyCodeInput {
+      flex: 1;
+    }
+  }
+}

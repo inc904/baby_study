@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>map</title>
+</head>
+<body>
+	<script>
+
+	
+	let arr = [67,122,36,59,99];
+	
+	// 传统方法
+	/*
+	let arr2 = arr.map(function(item){
+		if(item > 60){
+			return "及格";
+		}else{
+			return "不及格";
+		}
+	})
+	*/
+
+	// 箭头函数
+	// let arr2 = arr.map(item =>{
+	// 	return item >= 60 ? "及格" : "不及格";
+	// })
+
+	// 箭头函数简写
+	let arr2 = arr.map(item => item >= 60 ? "及格" : "不及格");
+
+	console.log(arr);
+	console.log(arr2);
+	</script>
+</body>
+</html>

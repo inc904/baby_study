@@ -1,0 +1,82 @@
+/* pages/postDetail/postDetail.wxss */
+
+.art-header {
+  height: 400rpx;
+  position: relative;
+}
+
+.art-header image {
+  width: 100%;
+  height: 100%;
+}
+
+.music {
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -75rpx;
+  margin-top: -75rpx;
+}
+.art-info{
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+.art-info image{
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}
+.art-info .author{
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.art-info text{
+  margin-left: 40rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.art-title{
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 40rpx;
+  font-size: 40rpx;
+}
+.options{
+  height: 1rpx;
+  border: 1rpx solid #ccc;
+  /* background-color: #ccc; */
+  position: relative;
+  margin-top: 50rpx;
+  margin-bottom: 70rpx;
+}
+
+.options .collect,
+.options .share{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+
+}
+.options .collect{
+  bottom: -50rpx;
+  right: 180rpx;
+}
+.options .share{
+  bottom: -50rpx;
+  right: 40rpx;
+}
+.options .collect image,
+.options .share image{
+  width: 100%;
+  height: 100%;
+}
+.art-content{
+  padding: 20rpx;
+  font-size: 28rpx;
+  line-height: 2;
+  letter-spacing: 2px;
+}

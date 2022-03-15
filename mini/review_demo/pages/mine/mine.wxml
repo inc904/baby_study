@@ -1,0 +1,43 @@
+<!--pages/mine/mine.wxml-->
+<text>pages/mine/mine.wxml</text>
+<text>模板语法：</text>
+<!-- 字符串 -->
+<view>{{msg}}</view>
+
+<view>{{num}}</view>
+
+<view>是否是girl:{{isGirl}}</view>
+<view wx-if="{{isGirl}}">女</view>
+<view wx-else>男</view>
+
+<view>
+  我叫{{person.name}},{{person.age}}岁了。
+</view>
+<view>
+  <checkbox checked="" />
+  <checkbox checked />
+  <checkbox checked="{{isGirl}}" />女
+  <checkbox checked="  {{isGirl}}" />女
+</view>
+
+<view>{{1+1}}</view>
+<view>{{'1'+'1'}}</view>
+<view wx:for="{{ list }}" wx:key="id">
+  <text>{{index}}:{{item.name}}</text>
+</view>
+<view bindtap="changeMsg">{{msg}}</view>
+<view>
+  <text>
+    1:
+  </text>
+  <input type="text" value="{{msg}}" />
+  <text>
+    2:
+  </text>
+  <input value="{{msg}}" bindinput="inputEdit" />
+</view>
+<view>
+  <button bindtap="clickHandler" id="101" data-gender="male">点击获取 data-X</button>
+</view>
+
+<text hidden="{{obj == null}}">{{obj == null}}123123</text>

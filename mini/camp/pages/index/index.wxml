@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="film">
+  <view class="file-type" wx:for="{{ typeList }}" wx:key="{{ index }}">
+    <view class="type-title">
+      <text class="title">{{ item }}</text>
+      <navigator class="more" url="/pages/list/list">更多</navigator>
+    </view>
+    <scroll-view class="film-list" scroll-x>
+      <view class="list-wrap">
+        <!-- <view class="film-item" wx:for="{{ 6 }}" wx:key="{{ index }}">
+          <image class="item-img" src="/images/sls.JPG"></image>
+          <view class="item-name">西游两开花</view>
+          <view class="item-star">
+            <image class="image" src="/images/icon/star.png"></image>
+            <image class="image" src="/images/icon/star.png"></image>
+            <image class="image" src="/images/icon/star.png"></image>
+            <image class="image" src="/images/icon/none-star.png"></image>
+            <image class="image" src="/images/icon/none-star.png"></image>
+            <view class="item-source">9.2</view>
+          </view>
+        </view> -->
+        <filmItem wx:for="{{ 6 }}" wx:key="{{ index }}"></filmItem>
+      </view>
+    </scroll-view>
+  </view>
+</view>

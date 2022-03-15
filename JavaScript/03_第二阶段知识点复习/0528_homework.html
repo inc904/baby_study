@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var num = (function (n){
+            if(n == 1) return 1;
+            return n * arguments.callee(n-1);
+        }(5))
+        // this 指向
+        var name = '222';
+        var a = {
+            name: '111',
+            say: function (){
+                console.info(this.name)
+            }
+        }
+        var fun = a.say;
+        fun();
+        a.say();
+        var b = {
+            name: "333",
+            say: function(fun){
+                fun();
+            }
+        }
+        b.say(a.say);
+        b.say = a.say;
+        b.say();
+  
+    </script>
+    <script>
+        // 1.运行test()和new test()有什么区别，结果分别是什么 
+        // var a = 5;
+        // function test() {
+        //     a = 0;
+        //     console.log(a);
+        //     console.log(this.a);
+        //     var a;
+        //     console.log(a);
+        // }
+        // test();
+        // new test();
+
+        // 2.分析下面的JavaScript代码段,求输出结果
+        // function employee(name, code) {
+        //     this.name = "wanglei";
+        //     this.code = "A001"
+        // }            
+        // newemp = new employee('zhangsan', 'A002');
+        // document.write('雇员姓名'+ newemp.name + '<br>')
+        // document.write('雇员代号'+ newemp.code + '<br>')
+
+        // 3.
+        // a = 100;
+        // function demo(e){
+        //     function e() { }
+        //     arguments[0] = 2;
+        //     document.write(e);
+        //     if(a){
+        //         var b = 123;
+        //         function c(){
+        //             // 猪都能做出来
+        //         }
+        //     }
+        //     var c;
+        //     a = 10;
+        //     document.write(b);
+        //     f = 123;
+        //     document.write(c)
+        //     document.write(a)
+        // }
+        // var a;
+        // demo(1);
+        // document.write(a);
+        // document.write(f);
+
+        // 4.
+        // var str = "abc";
+        // str += 1;
+        // var test = typeof(str);
+        // if(test.lengthhh == 6) {
+        //     test.sign =  'typeof 的返回结果可能是String'
+        // }
+        // document.write(test.sign);
+
+        // 5.
+        // function Person(name, age, sex) {
+        //     var a = 0;
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        //     function sss() {
+        //         a++;
+        //         document.write(a)
+        //     }
+        //     this.say = sss;
+        // }
+        // var oPerson = new Person();
+        // oPerson.say();
+        // oPerson.say();
+        // var oPerson1 = new Person();
+        // oPerson1.say();
+
+        // 6.改为可以输出0-9的形式
+        // --- 全部输出的 10 
+        // function bb() {
+        //     var arr = [];
+        //     for (var i = 0; i < 10; i++) {
+        //         arr[i] = function () {
+        //             document.write(i + '<br>')
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var arr1 = bb();
+        // for (var i = 0; i < 10; i++) {
+        //     arr1[i]();
+        // }
+
+        // 闭包处理，输出0-9
+
+        // -- ES6 处理
+        // function bb() {
+        //     var arr = [];
+        //     for (let i = 0; i < 10; i++) {
+        //         arr[i] = function () {
+        //             document.write(i + '<br>')
+        //         }
+        //     }
+        //     return arr;
+        // }
+        // var arr1 = bb();
+        // for (var i = 0; i < 10; i++) {
+        //     arr1[i]();
+        // }
+        // 7.
+        // var str = false + 1;
+        // document.write(str);
+        // var demo = false == 1;
+        // document.write(demo);
+        // if(typeof(a)&&-true + (+undefined) + ''){
+        //     document.write('基础扎实')
+        // }
+        // if(11 + '11' * 2 == 33){
+        //     document.write('基础扎实');
+        // }
+        // !!" " + !!"" - !!false||document.write('你觉得能打印，你就是猪');
+    </script>
+</body>
+
+</html>

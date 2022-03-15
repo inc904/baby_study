@@ -1,0 +1,24 @@
+/* pages/components/fileItem.wxss */
+
+.film-item {
+  padding: 10rpx 18rpx;
+  width: 210rpx;
+}
+
+.item-img {
+  width: 200rpx;
+  height: 300rpx;
+  vertical-align: bottom;
+}
+
+.item-name {
+  font-size: 22rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+
+.item-source {
+  font-size: 16rpx;
+  color: red;
+}

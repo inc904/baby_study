@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外边距问题</title>
+</head>
+<style>
+    .wrap {
+        background-color: gray;
+        /* border: 1px solid red; */
+        overflow: hidden;
+    }
+
+    .div {
+        width: 200px;
+        height: 200px;
+        margin: 20px;
+    }
+
+    .first {
+        background-color: pink;
+        /* border: 1px solid #eee; */
+        /* padding: 2px; */
+        overflow: hidden;
+    }
+
+    .second {
+        background-color: purple;
+    }
+
+    .third {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        margin: 10px;
+    }
+</style>
+
+<body>
+    <!-- 
+        1.上下相邻的盒子外边距融合；尽力避免这种情况的发生，都采用上边距或者下边距
+        2.内外盒子外边距融合：
+            a> 给父元素加边框
+            b> 给父元素加内边距
+            c> 给父元素加 overflow: hidden;
+     -->
+    <div class="wrap">
+        <p>1.上下相邻的盒子外边距融合；尽力避免这种情况的发生，都采用上边距或者下边距</p>
+        <p>嵌套盒子外边距融合：</p>
+        <p> a> 给父元素加边框（1px就行）</p>
+        <p> b> 给父元素加内边距（1px就行）</p>
+        <p> c> 给父元素加 overflow: hidden;</p>
+        <div class="div first">
+            <div class="third"></div>
+        </div>
+        <div class="div second">
+        </div>
+    </div>
+</body>
+
+</html>

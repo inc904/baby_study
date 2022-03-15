@@ -1,0 +1,47 @@
+<!--index.wxml-->
+<view class="yg_index">
+	<!-- S 搜索框 -->
+	<SearchInput/>
+	<!-- E 搜索框 -->
+
+	<!-- S 轮播图 -->
+	<view class="index_swiper">
+		<swiper>
+			<swiper-item wx:for="{{swiperList}}" wx:key="good_id">
+				<navigator>
+					<image mode="widthFix" src="{{item.image_src}}" />
+				</navigator>
+			</swiper-item>
+		</swiper>
+	</view>
+	<!-- E 轮播图 -->
+	<!-- S 分类 -->
+	<view class="index_cate">
+		<navigator wx:for="{{categoriesList}}" wx:key="name">
+			<image mode="widthFix" src="{{item.image_src}}" />
+		</navigator>
+	</view>
+	<!-- E 分类 -->
+
+	<!-- S 楼层 -->
+	<view class="index_floor">
+		<view class="floor_item" wx:for="{{floorList}}" wx:key="index">
+			<view class="title">
+				<image mode="widthFix" src="{{item.floor_title.image_src}}" alt="{{item.floor_title.name}}" />
+			</view>
+			<view class="item_container clear">
+				<navigator
+					wx:for="{{item.product_list}}"
+					wx:for-item="listItem"
+					wx:for-index="itemIndex"
+					wx:key="name"
+					>
+					<image mode="{{itemIndex === 0?'widthFix':'scaleFill'}}" src="{{listItem.image_src}}" alt="{{listItem.name}}" />
+				</navigator>
+			</view>
+		</view>
+	</view>
+	<!-- E 楼层 -->
+
+</view>
+

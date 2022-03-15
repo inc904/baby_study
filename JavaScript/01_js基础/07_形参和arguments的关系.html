@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>形参和arguments的关系</title>
+</head>
+<body>
+    <script>
+        function person(name, age){
+            console.log(age);
+            console.log(arguments[1]);
+            arguments[1] = 24;
+            console.log(age);
+            console.log(arguments[1]);
+        }
+        person('布鲁斯李');
+    </script>
+</body>
+</html>

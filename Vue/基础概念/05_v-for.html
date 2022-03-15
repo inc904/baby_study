@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p>迭代复杂数组</p>
+    <ul v-for="item in userArr">
+      <li>姓名： {{ item.name}} ----> 年龄： {{ item.age }}</li>
+    </ul>
+    <hr>
+    <p>迭代对象</p>
+    <ul v-for="item in person">
+      <li>{{item}}</li>
+    </ul>
+    <hr>
+    <p>迭代数字</p>
+    <p v-for="i in 5">{{ i }}</p>
+    {{name}}
+    <button type="button" @click="change()">点击 </button>
+  </div>
+  <script src="../lib/vue-2.6.10.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: '123',
+        userArr: [
+          { name: 'zs', age: 19},
+          { name: 'zs2', age: 59},
+          { name: 'z3', age: 9},
+          { name: 'z45', age: 129}
+        ],
+        person: {
+          name: '找钱孙',
+          age: 28,
+          work: 'boss',
+          hobbies: '吃饭，睡觉，打豆豆'
+        }
+      },
+      methods:{
+        change(){
+          this.name = 'asdasd'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

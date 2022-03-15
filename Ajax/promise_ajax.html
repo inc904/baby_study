@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+  </head>
+  <body>
+    <button type="button" onclick="get()">请求1</button>
+    <button type="button" onclick="Ajax()">请求2</button>
+    <button type="button" onclick="asyncAjax()">请求3</button>
+    <button type="button" onclick="generatorHello()">请求3</button>
+    <script type="text/javascript">
+      function* generator() {
+        yield 'hello'
+        yield 'world'
+        return 'ending'
+      }
+      function generatorHello() {
+        console.log(generator())
+        let g = generator()
+        // console.log(generator().next().value)
+        console.log(g.next())
+        console.log(g.next())
+        console.log(g.next())
+        console.log(g.next())
+      }
+
+      // 封装原生的Ajax
+      function requestAjax(url, fn) {
+        let xhr = new XMLHttpRequest()
+        xhr.open('GET', url)
+        xhr.send()
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            fn(xhr.responseText)
+          }
+        }
+      }
+
+      function solo(data) {
+        console.log(JSON.parse(data))
+      }
+
+      function get() {
+        requestAjax('https://v2.jinrishici.com/info', solo)
+      }
+
+      // 封装 promise 形式的 Ajax
+      function promiseAjax(url) {
+        return new Promise(function (resolve, reject) {
+          let xhr = new XMLHttpRequest()
+          xhr.open('GET', url)
+          xhr.send()
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              resolve(JSON.parse(xhr.responseText))
+              // resolve(1)
+            }
+          }
+        })
+      }
+
+      function Ajax() {
+        promiseAjax('https://v2.jinrishici.com/info')
+          .then(function (res) {
+            console.log(1, JSON.parse(res))
+            return promiseAjax('https://v1.jinrishici.com/all.json')
+          })
+          .then(function (res) {
+            console.log(2, JSON.parse(res).content)
+          })
+      }
+
+      // 封装 async/await 形式的 Ajax
+      async function asyncAjax() {
+        let ret = await promiseAjax('https://v1.jinrishici.com/all.json')
+        // .then(function(res) {
+        //   return res
+        // })
+        if (ret) {
+          console.log('111', ret)
+          promiseAjax('https://v1.jinrishici.com/all.json').then(function (
+            res
+          ) {
+            console.log(res)
+          })
+        }
+      }
+    </script>
+  </body>
+</html>

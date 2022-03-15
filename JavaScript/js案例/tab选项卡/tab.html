@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      width: 300px;
+      margin: 50px auto;
+    }
+
+    #menu {
+      width: 100%;
+      background-color: red;
+      overflow: hidden;
+    }
+
+    #menu li {
+      list-style: none;
+      float: left;
+      width: 100px;
+      border-right: 2px solid #ccc;
+      box-sizing: border-box;
+      text-align: center;
+      cursor: pointer;
+      transition: all .5s;
+    }
+
+    .contentBox {
+      height: 150px;
+      background-color: #eee;
+    }
+
+    .active {
+      background-color: green;
+    }
+
+    .box {
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+    .box1 {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      var index = 0
+      var menus = document.getElementsByTagName('li')
+      var boxs = document.getElementsByClassName('box')
+      for (let i = 0; i < menus.length; i++) {
+        menus[i].onclick = function () {
+          for (let j = 0; j < menus.length; j++) {
+            menus[j].classList = ' '
+            boxs[j].style.display = 'none'
+          }
+          console.log(i)
+          index = i
+          menus[index].classList = 'active'
+          console.log(index)
+          boxs[index].style.display = 'block'
+        }
+      }
+    }
+  </script>
+  <div class="wrap">
+    <ul id="menu">
+      <li class="active">新闻</li>
+      <li>文学</li>
+      <li>娱乐</li>
+    </ul>
+    <div class="contentBox">
+      <div class="box1 box">
+        内容区域一
+        gggg
+      </div>
+      <div class="box2 box">
+        内容区域二
+        ffff
+      </div>
+      <div class="box3 box">
+        内容区域三
+        dddd
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

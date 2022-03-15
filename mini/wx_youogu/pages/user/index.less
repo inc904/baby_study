@@ -1,0 +1,123 @@
+/* pages/user/index.wxss */
+page {
+  background-color: #edece8;
+}
+.user_info_wrap {
+  height: 45vh;
+  position: relative;
+  background-color: var(--themeColor);
+  .login_btn {
+    width: 30%;
+    text-align: center;
+    padding: 20rpx 40rpx;
+    border: 1rpx solid currentColor;
+    border-radius: 10rpx;
+    color: #fff;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .user_img_wrap {
+    height: 45vh;
+    overflow: hidden;
+    position: relative;
+    .user_bg {
+      width: 101%;
+      height: 46vh;
+      filter: blur(10rpx);
+    }
+    .userinfo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 20%;
+
+      transform: translateX(-50%);
+      .user_icon {
+        width: 220rpx;
+        height: 220rpx;
+        border-radius: 50%;
+      }
+      .nickname {
+        margin-top: 20rpx;
+        color: var(--themeColor);
+      }
+    }
+  }
+}
+
+.user_content {
+  position: relative;
+
+  .user_main {
+    position: absolute;
+    top: -80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    background-color: #fff;
+    padding: 20rpx;
+    color: #666;
+    font-size: 30rpx;
+    .menu {
+      // height: 90rpx;
+      margin-bottom: 40rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .b_m {
+      height: 80rpx;
+      align-items: center;
+      border-bottom: 1rpx solid #eee;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1rpx solid #ccc;
+      .icon {
+        color: #666;
+      }
+    }
+    .menu_title {
+      // margin-bottom: 30rpx;
+      height: 90rpx;
+      line-height: 90rpx;
+    }
+    .self_menu {
+      display: flex;
+      justify-content: space-between;
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .num {
+          color: var(--themeColor);
+        }
+      }
+    }
+    .order_menu {
+      display: flex;
+      justify-content: space-between;
+      .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 30rpx;
+        .iconfont {
+          font-size: 60rpx;
+          color: var(--themeColor);
+        }
+        .text {
+          margin-top: 20rpx;
+        }
+      }
+    }
+    .recommend {
+      margin-top: 40rpx;
+    }
+  }
+}

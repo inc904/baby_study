@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由规则中定义参数</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script src="../lib/vue-router-3.0.1.js"></script>
+    <style>
+        .router-link-active {
+            color: red;
+        }
+
+        .my-active {
+            color: gold;
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .5s;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(80px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <p>
+            <!-- 使用 query 方式传参 -->
+            <!-- 使用查询字符串，给路由传递参数，则不需要修改 路由规则 中的 path 属性 -->
+            <router-link to="/login?id=10&name=zzc" tag="a" name="lllogin">登录</router-link>
+
+            <!-- 使用params方式传参 -->
+            <router-link to="/register/12/whh">注册</router-link>
+        </p>
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <template id="login">
+        <h3>登录组件---id: {{$route.query.id}}---name: {{$route.query.name}}</h3>
+    </template>
+    <template id="reg">
+        <h3>注册组件---id: {{$route.params.id}}---name: {{$route.params.name}}</h3>
+    </template>
+    <script>
+        var login = {
+            template: '#login',
+            created(){
+                console.log(this.$route)
+                console.log(this.$route.query)
+            }
+        }
+        var register = {
+            template: '#reg',
+            created(){
+                console.log(this.$route)
+                console.log(this.$route.params.id)
+            }
+        }
+
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+
+            router: new VueRouter({ // 路由对象实例
+                routes: [ // 路由匹配规则
+                    { path: '/', redirect: '/login' },
+                    { path: '/login', component: login, name: 'ytf' },
+                    { path: '/register/:id/:name', component: register },
+                ],
+                linkActiveClass: 'my-active'
+            }),
+        })
+    </script>
+</body>
+
+</html>

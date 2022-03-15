@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+    通用规则:
+      1.对象 有 __proto__ 属性, 函数有 prototype 属性.
+      2.对象 由 函数 生成.
+      3.生成 对象 时,对象的 __proto__属性指向函数的 prototype 属性.
+
+    在没有手动修改 __proto__ 属性的时候,以上三条就是JavaScript原型链指向逻辑.
+   -->
+    <script>
+      // 一般情况
+      let obj = {
+        name: 'zds',
+        age: 12
+      }
+      function test(params) {
+        console.log(params)
+      }
+      test(2)
+      console.log(obj)
+      console.dir(test)
+
+      let obj1 = {}
+      let obj2 = new Object()
+      // 创建对象时,实际上是使用 Object 函数来生成对象的
+      console.log(obj.__proto__ === Object.prototype) // true
+
+      // 使用函数创建自定义对象的时候,也是这样
+      function MyObj() {}
+
+      typeof MyObj // "function"
+      var mo = new MyObj()
+      mo.__proto__ === MyObj.prototype //true
+
+      // 2.函数对象
+      // 对象是由函数生成
+
+      // 生成对象时,对象的__proto__ 都指向 函数的 prototype
+      // 函数是对象的一种,函数对象都是由 Function 函数生成的
+      console.log(test.__proto__ === Function.prototype) // true
+
+      console.log(Function)
+
+      // Function函数 本身作为对象的时候,生成他的函数 就是 Function 函数
+      Function.__proto__ === Function.prototype // true
+
+      // Object 函数既然是函数, 那他就是 由 Function 函数生成的
+      Object.__proto__ === Function.prototype // true
+
+      // 3.prototype 是谁?
+      // 已知 对象的 __proto__ 是从 生成 他的 函数的 prototype 那里得来的
+      // 一般函数默认的prototype是系统自动生成的一个对象：
+
+      function fn() {}
+      typeof fn.prototype // "object"
+      fn.prototype
+      //{constructor: ƒ}
+      // constructor: ƒ fn()
+      // __proto__: Object
+
+      fn.prototype.constructor === fn // true
+      fn.prototype.__proto__ === Object.prototype //true
+
+      // 一般函数默认的prototype是一个类型为"object"的对象，它有两个属性：constructor和 __proto__。
+      // 其中constructor属性指向这个函数自身，__proto__属性指向Object.prototype，这说明一般函数的prototype属性是由Object函数生成的。
+    </script>
+  </body>
+</html>

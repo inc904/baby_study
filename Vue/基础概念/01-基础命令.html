@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ msg }}</p>
+    <input v-bind:title="myTitle" type="button" value="按钮" />
+    <input :title="myTitle + '123'" type="button" value="按钮" />
+    <input type="button" value="按钮123" v-on:click="alert(123)" />
+    <input type="button" value="按钮" v-on:click="myClick" />
+    <input type="button" value="按钮" v-on:click="show" />
+    <input type="button" value="按钮" v-on:mouseover="show" />
+    <input type="button" value="按钮" @mouseover="show" />
+  </div>
+  <div id="demo">
+    <input type="button" value="开始" @click="myBegin" />
+    <input type="button" value="停止" @click="myStop" />
+    <h4>{{ msg }}</h4>
+    <input type="text" v-focus>
+    <button type="test" name="button" @click="test">测试</button>
+  </div>
+  <script>
+    //  创建一个自定义指令
+
+    Vue.directive('focus1', {
+      inserted: function(el) {
+        el.focus()
+      }
+    })
+
+
+    // 创建一个Vue的实例
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'hello',
+        myTitle: 'PHP is the best language!'
+      },
+      methods: {
+        myClick: function() {
+          console.log(123)
+        },
+        show: () => {
+          console.log(456)
+        }
+      }
+    })
+    // Vue实例
+    var app = new Vue({
+      el: '#demo',
+      data: {
+        msg: '猥琐发育，别浪！！！',
+        timer: null
+      },
+      methods: {
+        test($event) {
+          // el.style.color = 'red'
+          // console.log(el)
+          console.log($event)
+
+          // el.innerHTML = 'test'
+        },
+        myBegin: function() {
+          console.log(this.msg)
+          var _this = this
+          // setInterval(function(){
+          //     var star = _this.msg.substring(0,1)
+          //     var end = _this.msg.substring(1)
+          //     var msg = end + star
+          //     _this.msg = msg
+          // },1000)
+          clearInterval(this.timer)
+
+          this.timer = setInterval(() => {
+            var star = this.msg.substring(0, 1)
+            var end = this.msg.substring(1)
+            var msg = end + star
+            this.msg = msg
+          }, 1000)
+        },
+        myStop() {
+          clearInterval(this.timer)
+          console.log(this.timer)
+        }
+      },
+      directives: {
+        focus: {
+          inserted: el => {
+            el.focus()
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

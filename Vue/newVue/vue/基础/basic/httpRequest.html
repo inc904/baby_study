@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原生js 发请求</title>
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <div id="app">
+        <button onclick="send()"></button>
+    </div>
+    <script>
+        function send() { }
+        var url = 'https://v2.jinrishici.com/one.json'
+       
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var a = xhr.responseText
+                console.dir(a)
+                console.log(typeof a)
+                var b = JSON.parse(a)
+                console.log(b)
+            }
+        }
+
+        xhr.open('get', url)
+        xhr.send()
+
+        // $.get(url, function (data) {
+        //     console.log(data)
+        // })
+        $.ajax({
+            url: url,
+            success(data){
+                console.log(data)
+            }
+        })
+    </script>
+</body>
+
+</html>

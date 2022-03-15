@@ -1,0 +1,38 @@
+<!--pages/filmDetail/filmDetail.wxml-->
+<view>
+  <view class="film-header">
+      <image src="/images/sls.jpg" mode="scaleToFill"></image>
+    <view class="inner">
+      <image src="/images/sls.jpg"></image>
+      <view class="film-info">
+        <text class="title">扫毒2</text>
+        <text>8.9分 9000人评价</text>
+      </view>
+    </view>
+  </view>
+  <view class="film-detail">
+    <text>
+    爱上的空间阿克苏的煎熬了可是大家绿卡卡上就到了卡机绿卡SD卡金坷垃
+  </text>
+  </view>
+  <button class="btn">收藏</button>
+  <view class="actors">
+    <view class="section-title">
+      <text>演员</text>
+    </view>
+
+    <scroll-view class="actors-wrap" scroll-x>
+      <view class="actors-img">
+       <view class="img-wrap" wx:for="{{ 6 }}" wx:key="index">
+         <image src="/images/sls.jpg"></image>
+       </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="comments">
+    <view class="section-title">
+      <text>评论</text>
+    </view>
+    <view>大家好我是渣渣辉</view>
+  </view>
+</view>

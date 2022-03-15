@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="vue.js"></script>
+  <title>文字跑马灯</title>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{msg}}</p>
+    <input type="button" value="Move" @click="Move">
+    <input type="button" value="Stop" @click="Stop">
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '没有雪的冬天也很冷！',
+        timer: null
+      },
+      methods: {
+        Move() {
+          console.log(1)
+          var _this = this
+          if(this.timer === null){
+            this.timer = setInterval(() => {
+            var a = _this.msg.slice(1)
+            var b = _this.msg.slice(0, 1)
+            this.msg = a + b
+          }, 1000);
+          }
+        },
+        Stop() {
+          console.log(2)
+          clearInterval(this.timer)
+          this.timer = null
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

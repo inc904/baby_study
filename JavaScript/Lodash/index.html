@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>loadsh-lesson</title>
+  <script type="text/javascript" src="lodash-4.17.js"></script>
+</head>
+
+<body>
+  <!-- <script type="text/javascript" src="chunk.js"></script> -->
+  <script type="text/javascript">
+  var users = [
+    { 'user': 'barney', 'age': 36, 'active': true },
+    { 'user': 'fred', 'age': 40, 'active': false }
+  ];
+  const arr = [1, 2, 2, 2, 4, 9, 6]
+
+  /*
+        _.chunk(array, [size=1])
+        将数组拆分成多个 size 长度的区块
+        如果无法等长，那剩余的元素组成最后一个区块。
+    */
+  console.log(_.chunk(arr, 2))
+  /*
+        _.compact(array) 创建一个包含原数组中所有 非假值元素 的新数组
+  */
+  console.log(_.compact([0, 1, false, 2, '', null, 'hello']))
+
+  /*
+    ._uniq(array)
+    数组去重
+  */
+  console.log(_.uniq([1, 2, 1, 'a', 'a', 0, 0, null, undefined]))
+  console.log(_.compact(_.uniq([1, 2, 1, 0, 'a', null, undefined, 'a', ''])))
+  /*
+    filter 过滤数组返回 truly  的 值
+    reject 过滤数组 返回  不  为 truly 的值
+  */
+  let filter_res = _.filter(arr, (item, i) => {
+    return item > 3
+  })
+
+  let filter_res2 = _(arr).filter((item, i) => {
+    return item > 3
+  }) // xxxxxx 不可以吧参数放在 前面， 
+
+  console.log('filter_res:', filter_res)
+  console.log('filter_res2:', filter_res2)
+
+
+  let reject_res = _.reject(arr, (item, i) => {
+    return item > 3
+  })
+  console.log('reject_res:', reject_res)
+
+  /*
+  map 遍历 数组 进行操作 产生心的数组
+  */
+  let map_res = _.map(arr, (item, i) => {
+    console.log(item, '--', i)
+    return item += 1
+  })
+  console.log('map_res:', map_res)
+
+  // 找出 target 在数组中的 位置
+  let xinArr = []
+  let target = '2'
+  let map_res2 = _.map(arr, (item, i) => {
+    console.log(item, '--', i)
+
+    if (item == target) {
+      xinArr.push(i)
+    }
+
+    return item += 1
+  })
+  console.log('map_res2:', map_res2)
+  console.log('arr:', arr)
+  console.log('xinArr:', xinArr)
+
+  /*
+    forEach 遍历数组 进行操作
+  */
+  let newArr = []
+  let foreach_res = _.forEach(arr, (v, i) => {
+
+    console.log(i, ':', v)
+    if (newArr.indexOf(v) < 0) {
+      newArr.push(v)
+    }
+
+    // return v * 2 没用
+  })
+  console.log('foreach_res:', foreach_res)
+  console.log('arr:', arr)
+  console.log('newArr:', newArr)
+
+  // forEach、map、for 都可以在遍历的时候，操作数组以产生新的数组
+  // forEach 没有返回值
+  let sum = 0
+  let res = arr.forEach((item, i) => {
+    sum += item
+  })
+  console.log(arr, res, sum)
+
+
+  // 找出全部索引
+  function findAllOccurrences(arr, target) {
+    var Arr = [];
+    index = arr.indexOf(target);
+    while (index > -1) {
+      Arr.push(index);
+      index = arr.indexOf(target, index + 1);
+    }
+    return Arr;
+  }
+  console.log(findAllOccurrences(arr, 2))
+  var mi = -1
+
+  //  递归 不行 再次进来 重置了 xarr 的 值为空
+  function mfindIndex(arr, tar, start) {
+    start = start || 0
+    var xarr = []
+    var index = arr.indexOf(tar, start)
+    xarr.push(index)
+    if (index > -1) {
+      mfindIndex(arr, tar, index + 1)
+      // index = arr.indexOf(tar, index + 1)
+    }
+    return xarr
+  }
+  console.log(mfindIndex(arr, 2))
+
+
+  /**
+    merge 参数合并
+  */
+
+  /*
+    extend 类似参数对象合并
+  */
+
+  /*
+    concat 数组连接
+  */
+
+  /*
+    keys 取出对象中所有的key值组成新的数组
+  */
+  let person = { 'user': 'barney', 'age': 36, 'active': true }
+  var keysArr = _.keys(person)
+  keysArr.forEach(item => {
+    console.log(item, ':', person[item])
+  })
+
+  function Foo() {
+    this.a = 1;
+    this.b = 2;
+  }
+
+  Foo.prototype.c = 3;
+  var foo = new Foo()
+  // _.keys(new Foo);
+  console.log(_.keys(foo))
+  console.log(foo)
+  console.log(Object.keys(foo))
+  console.log(Object.getOwnPropertyNames(foo))
+  console.log('---')
+  console.log(Object.keys(foo))
+  console.log(_.keys(foo))
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动画和过渡</title>
+    <link rel="stylesheet" href="./lib/animate.css">
+    <script src="./lib/vue-2.4.0.js"></script>
+    <style>
+        li, td {
+            background-color: pink;
+            width: 100px;
+            margin-bottom: 2px;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 1s;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+<button @click="flag = !flag" >click</button>
+<transition name=fade>
+    <p v-if="flag">hello</p>
+</transition>
+
+        <p class="test animated bounce">world</p>
+        <button @click="show = !show">Toggle</button>
+        <transition name="fade"
+            enter-active-class = "animated bounce"
+            leave-active-class="animated bounceOutRight"
+        >
+            <p v-if="show">hello</p>
+        </transition>
+        <hr>
+        <transition-group name="fade" tag="ul">
+            <li v-for="(item, index) in list" @click="hide" key="index">{{item}}</li>
+        </transition-group>
+        <button @click="add">添加</button>
+        <hr>
+        <!-- <table border="1" cellspacing="0"> -->
+            <!-- <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>操作</th>
+            </tr> -->
+            <table >
+                <tbody is="transition-group" name="fade" appear>
+                    <tr v-for="item in objArr" key="item.id">
+                        <td>{{item.id}}</td>
+                        <td>{{item.name}}</td>
+                        <td @click="delObj(item.id)">
+                            <a href="javascript:;">删除</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <!-- </table> -->
+        <button @click="add2">添加</button>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                show: true,
+                flag: true,
+                list: ['qwe', 'qwer2', 'qwer3'],
+                objArr: [
+                    { id: 1, name: 'qwe1' },
+                    { id: 2, name: 'qwe2' },
+                    { id: 3, name: 'qwe3' }
+                ]
+            },
+            methods: {
+                hide() { },
+                add() {
+                    this.list.push('qwe' + (this.list.length + 1))
+                },
+                add2() {
+                    var L = this.objArr.length + 1
+                    this.objArr.push({ id: L, name: 'qwe' + L })
+                },
+                delObj(id){
+                    console.log(id)
+                    this.objArr.forEach((item, index) => {
+                        if(item.id == id){
+                            this.objArr.splice(index, 1)
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

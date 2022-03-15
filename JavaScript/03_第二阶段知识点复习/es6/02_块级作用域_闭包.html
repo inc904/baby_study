@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>块级作用域</title>
+</head>
+<body>
+	<!-- 闭包经典 -->
+	<input type="button" value="a">
+	<input type="button" value="b">
+	<input type="button" value="c">
+	<script>
+		window.onload = function(){
+			let btn = document.getElementsByTagName("input");
+			// for(var i = 0; i < btn.length; i++){
+			// 	btn[i].onclick =function(){
+			// 		alert(i);
+			// 	}
+			// }
+
+			// 创建一个闭包		
+			// for(var i = 0; i < btn.length; i++){
+			// 	(function (i) {
+			// 		btn[i].onclick =function(){
+			// 		alert(i);
+			// 	}
+			// 	})(i);
+			// }
+
+			// 使用let块级作用域
+			for(let i = 0; i < btn.length; i++){
+				btn[i].onclick =function(){
+					alert(i);
+				}
+			}
+
+		}
+	</script>
+</body>
+</html>

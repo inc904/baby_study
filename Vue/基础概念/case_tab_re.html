@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script src="./lib/vue-2.4.0.js"></script>
+    <style>
+        table {
+            border: 1px solid #ccc;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>员工信息登记表</h2>
+        <label for="">
+            id:<input type="text" v-model="id">
+        </label>
+        <label for="">
+            name:<input type="text" v-model="name">
+        </label>
+        <label for="">
+            salary:<input type="text" v-model="salary">
+        </label>
+        <label for="">
+            <input type="button" value="添加" @click="add">
+        </label>
+        <label for="">
+            搜索：
+            <input type="text" v-model="keywords" placeholder="请输入搜索关键字">
+        </label>
+        <table>
+            <tr v-for="item in infoList" :key="item.id">
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.salary }}</td>
+                <td><a href="javascript:;" @click="del(item.id)">删除</a></td>
+            </tr>
+        </table>
+        <!-- <p>{{ msg }}</p> -->
+    </div>
+    <script>
+       var em = new Vue({
+         el: '#app',
+         data: {
+           id: null,
+           name: null,
+           salary: null,
+          infoList: [
+                    {
+                        id: 1,
+                        name: '奔驰',
+                        salary: '500'
+                    },
+                    {
+                        id: 2,
+                        name: '宝马',
+                        salary: '500'
+                    },
+                    {
+                        id: 3,
+                        name: '马莎拉蒂',
+                        salary: '500'
+                    }
+                ]
+         },
+         methods: {
+           add(){
+            var car = {
+              id: this.id,
+              name : this.name,
+              salary: this.salary
+            }
+            this.infoList.push(car)
+            this.id = this.name = this.salary =  null
+           },
+           del(){
+
+           }
+         }
+       })
+    </script>
+</body>
+
+</html>

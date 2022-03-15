@@ -1,0 +1,36 @@
+<!--pages/test/test.wxml-->
+<text>pages/test/test.wxml</text>
+<view>
+	<text> {{ msg }}</text>
+	<input value="{{ msg }}" />
+	<input placeholder="9999"></input>
+	<text> {{ 1+1 }} </text>
+	<!-- <text> {{ foo.add(msg) }} </text> -->
+
+	<checkbox checked="true"></checkbox>
+	<checkbox checked="{{ false }}"></checkbox>
+</view>
+<!-- <text wx:if="{{ isLoading }}">loading....</text>
+<view wx:else>
+	<text>page was loading done</text>
+</view> -->
+<text hidden="{{ !isLoading }}">loading...</text>
+<text hidden="{{ isLoading }}">loading done!!!</text>
+<block wx-if="{{ !isLoading }}">
+<text>123</text>
+<text>456</text>
+</block>
+<view>
+  <view wx:for="{{ list }}" wx:for-item="person" wx:key="id">
+    <text>{{ person.id }}:</text>
+    <text>{{ person.name }}</text>
+  </view>
+</view>
+
+<!-- <wxs module="foo">
+module.exports = {
+  add: function (input){
+    return input + wxs
+  }
+}
+</wxs> -->

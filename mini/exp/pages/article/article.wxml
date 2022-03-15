@@ -1,0 +1,16 @@
+<!--pages/article/article.wxml-->
+<text>pages/article/article.wxml</text>
+<view>文章详情页面</view>
+<scroll-view class="wrap" scroll-x style="width: 100%;">
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+  <text>行级标签</text>
+</scroll-view>

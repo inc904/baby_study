@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>实例文件</title>
+</head>
+
+<body>
+  <!--<script src="./011原型链.js"></script>-->
+  <script>
+  function Person() {}
+  var p = new Person()
+  console.log(Person.prototype)
+  console.log(p.__proto__)
+  console.log(p.constructor, Person.constructor)
+  console.log(p, Person)
+  </script>
+</body>
+
+</html>

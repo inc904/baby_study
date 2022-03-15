@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父组件传递数据和方法给子组件</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <account-com v-bind:phua="pmsg" @func="pclick"></account-com>
+    </div>
+    <template id="account">
+        <div>
+            <h2 @click="sclick">用户组件---来自父组件的数据-->{{phua}}</h2>
+        </div>
+    </template>
+    <script>
+        var accountCom = {
+            template: '#account',
+            data(){
+                return {
+
+                }
+            },
+            props: ['phua'],
+            methods: {
+                sclick(){
+                    this.$emit('func')
+                }
+            }
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: 'parent-message123'
+            },
+            methods: {
+                pclick() {
+                    console.log('调用了父组件得方法： parent-click')
+                }
+            },
+            components: {
+                accountCom
+            }
+        })
+    </script>
+</body>
+
+</html>

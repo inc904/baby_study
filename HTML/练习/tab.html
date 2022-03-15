@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>资费标准</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+	border: 1px #e3e3e3 solid;
+	width: 96%;
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom:50px;
+}
+ 
+th, td {
+	border: 1px solid #e3e3e3;
+	text-align: center;
+	font-size: 35px;
+	line-height: 100px;
+	background: #C6C7C6;
+}
+ 
+th {
+	background: #199fff;
+	color: white;
+} /*模拟对角线*/
+.out {
+	border-top: 5em #199fff solid; /*上边框宽度等于表格第一行行高*/
+	border-left: 200px #ff8838 solid; /*左边框宽度等于表格第一行第一格宽度*/
+	position: relative; /*让里面的两个子容器绝对定位*/
+	color:white;
+}
+ 
+b {
+	font-style: normal;
+	display: block;
+	position: absolute;
+	top: -5.3em;
+	left: -160px;
+	width: 200px;
+}
+ 
+em {
+	font-style: normal;
+	display: block;
+	position: absolute;
+	top: -78px;
+	left: -230px;
+	width: 200px;
+}
+ 
+.assessDetail td {
+	background-color: #FFF;
+}
+</style>
+</head>
+<body style="background-color: #f0f0f6;color:#404040;">
+	<table>
+		<tr>
+			<th style="width:200px;">
+				<div class="out" style="font-size:27px">
+					<b>消费类型</b> <em>通话类型</em>
+				</div>
+			</th>
+			<th>通话时长</th>
+			<th>虚拟币</th>
+		</tr>
+ 
+		<tr  class="assessDetail">   
+			  <td>国内直拨</td>   
+			  <td>1 时长/分钟</td>   
+			  <td>0.05/分钟</td>   
+		  </tr>   
+		  <tr  class="assessDetail">   
+			  <td>国内回拨</td>   
+			  <td>2 时长/分钟</td>   
+			  <td>0.1/分钟</td>   
+		  </tr> 
+		  <tr  class="assessDetail">   
+			  <td>洛杉矶</td>   
+			  <td>1 时长/分钟</td>   
+			  <td>0.2/分钟</td>   
+		  </tr> 
+		  <tr  class="assessDetail">   
+			  <td >温哥华</td>   
+			  <td>1 时长/分钟</td>   
+			  <td>0.5/分钟</td>   
+		  </tr> 
+		  <tr  class="assessDetail">   
+			  <td >香港</td>   
+			  <td>1 时长/分钟</td>   
+			  <td>0.3/分钟</td>   
+		  </tr> 
+		<tr>
+		</tr>
+	</table>
+</body>
+</html>

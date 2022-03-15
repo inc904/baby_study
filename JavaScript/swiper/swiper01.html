@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>轮播图示例</title>
+    <script src="./v1.10.0.js"></script>
+  </head>
+  <style>
+    img {
+      display: block;
+    }
+    .clear:after {
+      display: block;
+      content: '';
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+    .demo {
+      margin: 50px auto;
+    }
+    .btn {
+      width: 80px;
+      text-align: center;
+      border: 1px solid #ccc;
+      padding: 10px;
+      cursor: pointer;
+      float: left;
+      margin-top: 10px;
+    }
+    .demo,
+    .swiper01,
+    img {
+      width: 1260px;
+      height: 426px;
+    }
+    /* .swiper01 {
+  overflow: hidden;
+} */
+    .item {
+      position: absolute;
+    }
+    span {
+      position: absolute;
+      color: red;
+    }
+  </style>
+  <body>
+    <!-- 淡入淡出的轮播效果 -->
+    <!-- <div class="line" style="width: 1700px; height: 2px; background: red"></div> -->
+
+    <div class="demo demo01">
+      <h2>fadeIn-fadeOut</h2>
+      <div class="swiper01-container">
+        <div class="swiper01 clear">
+          <div class="item">
+            <span>0</span>
+            <img src="./images/1.jpg" alt="" />
+          </div>
+
+          <div class="item">
+            <span>1</span>
+
+            <img src="./images/2.webp" alt="" />
+          </div>
+          <div class="item">
+            <span>2</span>
+            <img src="./images/3.webp" alt="" />
+          </div>
+        </div>
+        <div class="btn prev">上一张</div>
+        <div class="btn next">下一张</div>
+      </div>
+    </div>
+    <script>
+      $(function () {
+        var index = 0
+        var swiper01 = $('.swiper01')
+        var prev = $('.prev')
+        var next = $('.next')
+        var item = $('.item')
+        var len = item.length
+        item.eq(0).fadeIn().siblings().fadeOut()
+        console.log(len)
+        console.log(index)
+        next.click(function () {
+          index++
+          console.log(index)
+          if (index > len - 1) {
+            index = 0
+            item.eq(index).fadeIn().siblings().fadeOut()
+            console.log('indx', index)
+            return
+          }
+          item.eq(index).fadeIn().siblings().fadeOut()
+          // console.log($('item').eq(index))
+        })
+        prev.click(() => {})
+      })
+    </script>
+  </body>
+</html>

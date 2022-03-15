@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组去重</title>
+</head>
+
+<body>
+    <script>
+        var arr1 = [1, 2, 1, 4, 5, 5, 1, 12, 23, 23];
+
+          function unique(target) {
+            var newArr = [target[0]],
+                len = target.length,
+                nlen = newArr.length;
+
+            for (var i = 0; i < len; i++) {
+                var flag = true;
+                for (var j = 0; j < newArr.length; j++) {
+                    if (target[i] === newArr[j]) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    newArr.push(target[i])
+                }
+            }
+
+            return newArr;
+        }
+
+        // 两层for循环
+        // function unique(target) {
+        //     var newArr = [target[0]],
+        //         len = target.length,
+        //         nlen = newArr.length;
+
+        //     for (var i = 0; i < len; i++) {
+        //         var flag = true;
+        //         for (var j = 0; j < newArr.length; j++) {
+        //             if (target[i] === newArr[j]) {
+        //                 flag = false;
+        //                 break;
+        //             }
+        //         }
+        //         if (flag) {
+        //             newArr.push(target[i])
+        //         }
+        //     }
+
+        //     return newArr;
+        // }
+
+        // 借用对象名称的唯一性
+        // 在原型链上编程 
+        // Array.prototype.unique = function () {
+        //     var temp = {},
+        //         arr = [],
+        //         len = this.length
+
+        //     for (var i = 0; i < len; i++) {
+        //         if(!temp[this[i]]){
+        //             temp[this[i]] = 'unique';
+        //             arr.push(this[i]);
+        //         }
+        //     }
+        //     return arr;
+        // }
+
+        // 封装方法
+        // function unique(target) {
+        //     var temp = {},
+        //         arr = [],
+        //         len = target.length;
+
+        //     for (var i = 0; i < len; i++) {
+        //         if(!temp[target[i]]){
+        //             temp[target[i]] = 'unique';
+        //             arr.push(target[i]);
+        //         }
+        //     }
+        //     return arr;
+        // }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+
+    　
+    <style>
+      body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2c3e50;
+      }
+
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      div {
+        color: #9b59b6;
+        font-size: 5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      div > span {
+        position: relative;
+        display: inline-block;
+      }
+      .changeColor {
+        animation-name: changeColor;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        animation-iteration-count: 2;
+        animation-timing-function: linear;
+      }
+      @keyframes changeColor {
+        50% {
+          color: #f1c40f;
+          transform: scale(1.5);
+        }
+        to {
+          color: #9b59b6;
+          transform: scale(0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>冰合大河流，茫茫一片愁</div>
+    <div id="box">
+      <input type="button" name="妲己" value="妲己" />
+      <span class="num">123</span>
+      zhang
+    </div>
+
+    <script>
+      let div = document.querySelector('div')
+      console.log(div, div.textContent)
+      ;[...div.textContent].reduce((pre, cur, index) => {
+        pre == index && (div.innerHTML = '')
+        let span = document.createElement('span')
+        span.textContent = cur
+        div.appendChild(span)
+        span.addEventListener('mouseover', function () {
+          this.classList.add('changeColor')
+        })
+        span.addEventListener('animationend', function () {
+          this.classList.remove('changeColor')
+        })
+      }, 0)
+    </script>
+    <script>
+      let user1 = {
+        name: '李四',
+        key: Symbol('1`'),
+      }
+      let user2 = {
+        name: '李四',
+        key: Symbol('2'),
+      }
+      let grade = {
+        [user1.key]: { js: 1111, css: 111 },
+        [user2.key]: { js: 222, css: 222 },
+      }
+      console.log(user2)
+      console.log(user2.key.description)
+      console.log(grade[user2.key])
+      // class Cache {
+      //   static data = {}
+      //   static set(name, value) {
+      //     this.data[name] = value
+      //   }
+      //   static get(name) {
+      //     return this.data[name]
+      //   }
+      // }
+
+      // let user = {
+      //   name: 'Jack',
+      //   desc: Symbol('缓存'),
+      // }
+      // let cart = {
+      //   name: '购物车',
+      //   desc: Symbol('缓存'),
+      // }
+
+      // Cache.set(user.desc, user)
+      // Cache.get(user.desc, user)
+      // console.log(Cache.get(user.desc))
+      // jQuery.noConflict()
+      // var box = jQuery('#box')
+      // var box1 = $('#box')
+      // var box1 = $('.box')
+
+      // console.log(box1)
+      // jQuery $
+      // var box1 = document.getElementById('box')
+      // function $(nodeName) {
+      //   var name = nodeName.slice(1)
+      //   if (nodeName.includes('#')) {
+      //     return document.getElementById(name)
+      //   } else if (nodeName.includes('.')) {
+      //     return document.getElementsByClassName(name)
+      //   }
+      // }
+      // var box2 = $('#box')
+      // var box3 = $('.num')[0]
+      // console.log(box2)
+      // console.log(box3)
+      // // var x = box.prop ('lastChild').nodeValue ;
+      // // box.prop ('lastChild').nodeValue= 'ppp'
+      // var inp = $("input[name='妲己']")
+      // console.log(inp.parent())
+      // inp.parent().prop('lastChild').nodeValue = ' xxxoo '
+      // var o = inp.next()
+      // var str = inp.next().text()
+      // console.log(str)
+      // var text = $('#text_test > a')
+      //   .first()
+      //   .contents()
+      //   .filter(function () {
+      //     return this.nodeType === 3
+      //   })
+      //   .text()
+      // var t = $('#box')
+      //   .contents()
+      //   .filter(function () {
+      //     return this.nodeType === 3
+      //   })
+      // t.text('yu');
+      // var a = t.prop('firstChild')
+      // var b = box.last().text('xxx')
+      // var c = inp.parent().lastChild().text('xxx')
+    </script>
+    <script type="text">
+
+      var numbers = [2, 6, 9, 11]
+      var a = []
+      function plus(item, index) {
+        // a.push(item + 1)
+        if (item > 5) {
+          a.push(item)
+        }
+      }
+      numbers.forEach(plus)
+      console.log(a)
+    </script>
+    <script type="module">
+      import { tag } from './test.js'
+      console.log(tag)
+    </script>
+    <script type="module" src="./test2.js"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  // ES2015 风格的计算属性命名功能来使用一个常量作为函数名
+  var tname = 'TName'
+  var obj = {
+    ['a'](b) {
+      console.log('aaa:', b)
+    },
+    [tname]() {
+      console.log(123)
+    }
+  }
+  obj.a(5)
+  obj[tname]()
+  </script>
+</body>
+
+</html>

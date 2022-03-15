@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+                var ul = document.createElement("ul");
+                for (var i = 0; i < 3; i++) {
+                    var li = document.createElement('li');
+                    li.innerHTML = "这是第 " + (i + 1) + " 个LI"
+                    ul.appendChild(li);
+                }
+                document.getElementsByTagName("body")[0].appendChild(ul);
+                var oli = document.getElementsByTagName("li");
+                console.log(oli.length);
+                for (var i = 0; i < oli.length; i++) {
+                    (function (j) {
+                        oli[j].addEventListener("click", function () {
+                            console.log(j);
+                        })
+                    }(i))
+                }
+            </script>
+</body>
+</html>

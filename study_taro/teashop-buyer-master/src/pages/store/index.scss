@@ -1,0 +1,146 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+
+@import '~taro-ui/dist/style/components/tabs.scss';
+
+.at-tabs {
+  &__underline {
+    background-color: transparent;
+  }
+
+  &__header {
+    text-align: left;
+    margin-top: 16px;
+    padding: 0 20px;
+  }
+
+  &__item-underline {
+    left: 50%;
+    // prettier-ignore
+    height: 3Px;
+    // prettier-ignore
+    border-radius: 3Px;
+    width: 60%;
+    margin-left: -30%;
+  }
+
+  &__item {
+    padding-bottom: 6px;
+    padding-top: 6px;
+    color: #999;
+  }
+
+  &__item--active {
+    color: $color-brand;
+  }
+}
+
+.storePageWrap {
+  background-color: #fff;
+}
+
+.sectionTop {
+  display: flex;
+  padding: 30px 30px 0;
+  box-sizing: border-box;
+  color: #00001a;
+
+  .topPosition {
+    display: flex;
+    font-size: 34px;
+    line-height: 56px;
+    font-weight: 500;
+    flex: 1;
+    align-items: center;
+
+    .iconPos {
+      display: inline-block;
+      margin-right: 8px;
+      width: 28px;
+      height: 34px;
+      background-size: 100%;
+      background-image: url('../../assets/images/icon/icon-pos-theme.png');
+    }
+  }
+
+  .navSearch {
+    display: flex;
+    height: 56px;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .iconSearch {
+      display: inline-block;
+      width: 32px;
+      height: 34px;
+      background-size: 100%;
+      background-image: url('../../assets/images/icon/icon-search-b.png');
+    }
+  }
+}
+
+.sectionSwiper {
+  width: 100%;
+  height: 286px;
+
+  .swiperSkeleton {
+    width: 100%;
+    background: rgba(204, 204, 204, 0.9);
+  }
+
+  .bannnerSwiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiperItemView {
+    padding: 30px 30px 16px;
+    width: 100%;
+    height: 286px;
+    box-sizing: border-box;
+
+    .aBox {
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+
+    .image {
+      box-shadow: 0 10px 12px 0 rgba(255, 97, 64, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.sectionProduct {
+  padding: 0 10px;
+
+  .productListWrap {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    padding: 45px 5px 60px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .productListLoading {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .productListItem {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 15px 28px;
+  }
+}

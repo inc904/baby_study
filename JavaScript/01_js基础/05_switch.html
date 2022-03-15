@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="text" name="" id="txt" value="请输入您的年龄" />
+		<input type="button" value="确定" id="btn">
+		<script type="text/javascript">
+			document.querySelector("#btn").onclick = function (){
+				var res = document.querySelector("#txt").value
+				console.log(res)
+				switch(true){
+					case res > 18:
+						alert("你成年了");
+						console.log('123')
+						break;
+					case (res < 18):
+						alert("未成年！");
+						break;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

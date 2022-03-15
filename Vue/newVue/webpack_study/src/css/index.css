@@ -1,0 +1,10 @@
+#app{
+  color: #ccc;
+  font-size: 28px;
+}
+.image{
+  width: 200px;
+  height: 200px;
+  background: url(../images/penguin.jpeg) no-repeat;
+  border: 1px solid #ccc;
+}

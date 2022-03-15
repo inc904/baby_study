@@ -1,0 +1,15 @@
+<!--pages/me/me.wxml-->
+<view>
+  <view class="userinfo">
+    <image class="avatar" src="/images/avatar/1.png"></image>
+    <text class="userinfo-nickname">点击授权登陆</text>
+  </view>
+  <view class="usermotto">
+    <view class="likeList">
+      <view class="likeItem" wx:for="{{ 5 }}" wx:key="{{ index }}">
+        <filmItem></filmItem>
+      <button class="btn" bind:tap="console" data-index="">删除</button>
+      </view>
+    </view>
+  </view>
+</view>

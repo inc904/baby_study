@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>私有化变量</title>
+</head>
+
+<body>
+    <script>
+        function Deng(name, wife) {
+            var prepareWife = 'xiaozhang';
+
+            this.name = name;
+            this.wife = wife;
+            this.divorce = function () {
+                this.prepareWife = prepareWife;
+            }
+            this.changePrepareWife = function (target) {
+                prepareWife = target;
+            }
+            this.sayPrepareWife = function () {
+                console.log(prepareWife);
+            }
+        }
+        var deng = new Deng('deng','xiaoliu');
+        console.log('============')
+        // 圣杯模式 共有原型加上中间层 实现继承
+        var inherit = (function (){
+            var F = function () {};
+            return function (Target, Origin) {
+                F.prototype = Origin.prototype;
+                Target.prototype = new F();
+                Target.prototype.constructor = Target;
+                Target.prototype.uber = Origin.prototype;
+            } 
+        }());
+        Father.prototype.lastName = 'yang';
+        function Father(){ }
+        function Son() { }
+        inherit(Son, Father);
+        var son = new Son();
+        var father = new Father();
+
+    </script>
+</body>
+
+</html>

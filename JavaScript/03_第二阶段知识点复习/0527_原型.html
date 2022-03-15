@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<htmls>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型</title>
+</head>
+
+<body>
+    <script>
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype = {
+            color : 'yellow',
+            height : 180,
+            age : 18
+        }
+        var person = new Person('zhangsaan');
+        var person1 = new Person('lisi');
+        console.log(person)
+        console.log(person.constructor)
+        console.log(Person.constructor)
+        console.log(Person.prototype)
+
+    </script>
+</body>
+
+</html>

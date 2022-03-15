@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Passing Data to Child Components with Props</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <blog-post v-for="post in posts" :key="post.id" :title="post.title" :content="post.content">
+        </blog-post> -->
+        <blog-post v-for="post in posts" :key="post.id" v-bind:title="post.title" @fun="show" ></blog-post>
+    </div>
+    <script>
+        // Vue.component('blog-post', {
+        //     props: ['title', 'content'],
+        //     template: '<div><h3>{{ title }}</h3><p>{{ content }}</p></div>',
+        // })
+        // var vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         posts: [
+        //             { id: 1, title: 'My Journey with Vue', content: 'asdasddasd' },
+        //             { id: 2, title: 'Blogging with Vue' , content: 'asdasddasd'},
+        //             { id: 3, title: 'Why Vue is so fun', content: 'asdasddasd' },
+        //         ]
+        //     },
+        //     methods: {}
+        // })
+        Vue.component('blog-post', {
+            props: ['title'],
+            template: '<h3 @click="myclick">{{ title }}</h3>',
+            methods:{
+                myclick(){
+                    this.$emit('fun')
+                    // console.log(123)
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                posts: [
+                    { id: 1, title: 'My journey with Vue' },
+                    { id: 2, title: 'Blogging with Vue' },
+                    { id: 3, title: 'Why Vue is so fun' }
+                ]
+            },
+            methods: {
+                show(){
+                    console.log('父组件的show')
+                }
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>

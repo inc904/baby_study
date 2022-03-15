@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person{
+            constructor(name, age, type){
+                this.name = name
+                this.age = age
+                this.type = 'hunman'
+            }
+            sayHello(){
+                window.alert('hello' + this.name)
+            }
+        }
+        var p1 = new Person('java', 13)
+        class Student extends Person{
+            constructor(name, age, score){
+                super(name, age)
+                this.score = score
+            }
+            sayScore(){
+                console.log(this.score)
+            }
+        }
+        var s1 = new Student('dave', 18, 90)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- 属性绑定 父子传值 -->
+    <son-com :parent-msg="msg"></son-com>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '父组件中的数据'
+      },
+      methods: {},
+      components: {
+        sonCom: {
+          data(){
+            return {
+              title: 'myTitle123',
+            }
+          },
+          props: ['parentMsg'],
+          template: '<div></p><---这是子组件--->子组件自己的数据:<p>{{ title }}<p>{{ parentMsg }}</p></div>'
+        }
+      }
+    })
+  </script>
+</body>
+</html>

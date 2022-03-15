@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ulcomp></ulcomp>
+    <login></login>
+  </div>
+  <template id="tpl">
+    <ul>
+      <li>全局组件</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </template>
+  <script>
+    Vue.component('ulcomp', {
+      template: '#tpl'
+    })
+    let vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      filters: {},
+      directives: {},
+      components: {
+        // 私有组件
+        login: {
+          template: '<h1>这是私有login组件</h1>'
+        }
+      },
+
+      // 钩子函数
+      beforeCreated() { },
+      created() { },
+      beforeMount() { },
+      mounted() { },
+      beforeUpdate() { },
+      updated() { },
+      beforeDestory() { },
+      destoryed() { }
+    })
+  </script>
+</body>
+
+</html>

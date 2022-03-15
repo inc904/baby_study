@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  let map = new Map()
+  let zhangsan = { name: '奇奇怪怪的人' }
+  let lisi = { name: '花里胡哨的人' }
+  map.set(zhangsan, lisi)
+  map.set(lisi, zhangsan)
+  zhangsan = null
+  console.log('zs',zhangsan)
+  console.log('map',map)
+  console.log(map.get(zhangsan))
+  console.log(map.get(lisi))
+  console.log(map.size)
+
+  let obj = {
+  	name: 'zs'
+  }
+  let name =  Symbol()
+  obj.name = name 
+  console.log(obj)
+  </script>
+</body>
+
+</html>

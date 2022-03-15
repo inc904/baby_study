@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>1物理像素的实现</title>
+</head>
+
+<body>
+  <script>
+  // window.onload = function() {
+  //   var dpr = window.devicePixelRatio
+  //   console.log(dpr)
+  //   var scale = 1 / dpr
+  //   var width = window.documentElement.clientWidth
+  //   var metaNode = document.querySelector('meta[name="viewport"]')
+  //   var htmlNode = document.querySelector('html')
+  //   htmlNode.style.fontSize = width * dpr + 'px'
+  // }
+  /*
+    pc      1
+    ip6     2
+    ip6sp   3
+  */
+  </script>
+  <style>
+  /*
+       利用样式实现
+        给元素加伪类 after 
+        媒体查询  缩放
+       */
+  #box::after {
+    content: '';
+    height: 1px;
+  }
+
+  @media screen and (-webkit-min-device-pixel-radio: 2) {
+    #box::after {
+      transform: scale(0.5);
+    }
+  }
+
+  @media screen and (-webkit-min-device-pixel-radio: 2) {
+    #box::after {
+      transform: scale(0.33333);
+    }
+  }
+  </style>
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>async_await</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: cyan;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <input
+        type="file"
+        class="filebutton"
+        style="display: none"
+        onchange="fileSelected()"
+      />
+      <br />
+
+      <button class="upload" onclick="openFileDialog()">选择文件上传</button>
+
+      <div class="img"></div>
+    </div>
+
+    <script>
+      //点击普通按钮,打开文件选择框
+
+      function openFileDialog() {
+        document.querySelector('.filebutton').click()
+      }
+
+      //选择一个文件时onchange时间被触发
+
+      function fileSelected() {
+        var fbutton = document.querySelector('.filebutton') //dom元素
+
+        //读取文件
+
+        var reader = new FileReader()
+
+        reader.onload = function (e) {
+          var dataURL = e.target.result //'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'
+
+          //alert(data);
+
+          var htmlImg = "<img src = '" + dataURL + "'/>"
+
+          $('.img').html(htmlImg)
+        }
+
+        var file = fbutton.files[0]
+
+        reader.readAsDataURL(file)
+
+        startFileUpload(file)
+      }
+
+      //开始上传
+
+      function startFileUpload(file) {
+        var uploadURL = 'FileUploadServer'
+
+        //手工构造一个form对象
+
+        var formData = new FormData()
+
+        formData.append('file', file) // 'file' 为HTTP Post里的字段名, file 对浏览器里的File对象
+
+        //手工构造一个请求对象，用这个对象发送表单数据
+
+        //设置 progress, load, error, abort 4个事件处理器
+
+        var request = new XMLHttpRequest()
+
+        request.upload.addEventListener(
+          'progress',
+          window.evt_upload_progress,
+          false
+        )
+
+        request.addEventListener('load', window.evt_upload_complete, false)
+
+        request.addEventListener('error', window.evt_upload_failed, false)
+
+        request.addEventListener('abort', window.evt_upload_cancel, false)
+
+        request.open('POST', uploadURL) // 设置服务URL
+
+        request.send(formData) // 发送表单数据
+      }
+
+      window.evt_upload_progress = function (evt) {
+        if (evt.lengthComputable) {
+          var progress = Math.round((evt.loaded * 100) / evt.total)
+
+          console.log('上传进度' + progress)
+        }
+      }
+
+      window.evt_upload_complete = function (evt) {
+        if (evt.loaded == 0) {
+          console.log('上传失败!')
+        } else {
+          console.log('上传完成!')
+
+          var response = JSON.parse(evt.target.responseText)
+
+          console.log(response)
+        }
+      }
+
+      window.evt_upload_failed = function (evt) {
+        console.log('上传出错')
+      }
+
+      window.evt_upload_cancel = function (evt) {
+        console.log('上传中止!')
+      }
+    </script>
+
+    <div draggable="true" class="box" ondragstart="drag(event)"></div>
+    <script>
+      function drag(ev) {
+        console.log(ev)
+      }
+    </script>
+    <script>
+      function takeLongTime(n) {
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve(n + 200)
+          }, n)
+        })
+      }
+
+      function step1(n) {
+        return takeLongTime(n)
+      }
+
+      step1(100).then((res) => console.log(res))
+    </script>
+  </body>
+</html>

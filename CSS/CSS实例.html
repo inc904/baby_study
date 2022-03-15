@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>背景</title>
+    <style type="text/css">
+      div {
+        width: 960px;
+        height: 460px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+      }
+      .normal {
+        background: url(51.jpg) no-repeat;
+      }
+      .full {
+        background: url(51.jpg) no-repeat;
+        /* background-size: 100% 100%; */
+        background-position: center center;
+      }
+      .per {
+        /* background: url(51.jpg) no-repeat; */
+        background-position: 20% 30%;
+        /* background-size: 100%; */
+      }
+      .per1 {
+        background: url(51.jpg) no-repeat;
+        background-position: 40% 30%;
+        /* background-size: 100%; */
+      }
+      .per a {
+        display: block;
+        width: 80px;
+        height: 80px;
+        background-color: red;
+        background: url(spirte.png) no-repeat;
+        background-size: 100% 100%;
+        background-position: -35px -2px;
+        border: 1px solid #ccc;
+      }
+      .pix {
+        background: url(51.jpg) no-repeat;
+        background-position: -100px -100px;
+        background-size: 100% 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <img src="51.jpg" > -->
+    <div class="normal">normal</div>
+    <div class="full">full</div>
+    <div class="per1"></div>
+    <div class="per">
+      per
+      <a href=""></a>
+    </div>
+    <div class="pix">pix</div>
+  </body>
+</html>

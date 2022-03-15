@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立即执行函数</title>
+</head>
+
+<body>
+    <script>
+        // 立即执行函数
+        // 此类函数没有声明，在上一次执行过后立即释放，适合做初始化工作
+
+        function a() {
+
+        } // 等待执行
+        function b() {
+
+        } // 等待执行
+
+        // 立即执行函数，执行完，立即被释放
+        (function () {
+            var a = 123;
+            var b = 234;
+            console.log(a + b);
+        }());
+
+        // 可以有参数
+        (function (a, b) {
+            console.log(a + b);
+        }(1, 2))
+
+        // 可以有返回值
+        var res = (function (a, b) {
+            var c = a + b;
+            return c;
+        }(3, 4));
+        console.log(res);
+    </script>
+    <script>
+        // 立即执行函数
+        (function () { }());  // w3c 建议i使用第一种
+        (function () { })();
+
+        // 只有表达式才能被执行符号执行
+        // 能被执行符号执行的表达式，这个函数的名字就会被自动忽略 
+        // 函数声明 
+        function test() {
+            var a = 123;
+        }
+
+        var test = function a() {
+            console.log(11)
+        }();
+    </script>
+</body>
+
+</html>

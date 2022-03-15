@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>json展开</title>
+</head>
+<body>
+	<script>
+
+		let json = {
+			a : 12,
+			b: "hello",
+			c: [12,2,"juice"]
+		};
+		// alert(...json); ---> ✖
+
+		let json2 = {
+			...json,
+			d: 123
+		}
+		console.log(json2);
+	</script>
+</body>
+</html>

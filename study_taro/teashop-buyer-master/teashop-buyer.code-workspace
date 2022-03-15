@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"search.exclude": {
+			"**/.temp": true,
+			"**/dist/**": true
+		},
+		"prettier.stylelintIntegration": true,
+		"prettier.eslintIntegration": true
+	}
+}

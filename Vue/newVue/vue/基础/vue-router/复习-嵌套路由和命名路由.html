@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>复习嵌套路由和命名路由</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+  <script src="../lib/vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{message}}</p>
+    <router-link to="/account">用户组件</router-link>
+    <router-view />
+
+  </div>
+
+  <template id="account">
+    <div>
+      <h2 class="b2">用户组件</h2>
+      <router-link :to="{name: 'login'}">登录</router-link>
+      <router-link :to="{name: 'register', params: {id: 18, name: 'ytf'}}">注册</router-link>
+
+      <router-view></router-view>
+    </div>
+  </template>
+  <template id="login">
+    <h2 class="b1">登录</h2>
+  </template>
+  <template id="register">
+    <h2 class="b2">
+      注册--{{this.$route.params.id}} --- {{this.$route.params.name}}
+    </h2>
+  </template>
+
+  <script>
+    var account = {
+      template: '#account'
+    }
+    var login = {
+      template: '#login'
+    }
+    var register = {
+      template: '#register'
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      },
+      router: new VueRouter({
+        routes: [
+          { path: '/', redirect: '/account' },
+          {
+            path: '/account', component: account, children: [
+              { path: 'login', name: 'login', component: login },
+              { path: 'register/:id/:name', name: 'register', component: register },
+            ]
+          }
+        ]
+      })
+
+    })
+   
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router-3.0.7.js"></script>
+    <style>
+      .v-active {
+        color: red;
+        font-weight: 800;
+        font-style: italic;
+        font-size: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <!--  <p><a href="#/register">注册页面</a><a href="#/login">登录页面</a></p> -->
+      <!-- <router-link to='/' tag="span">首页</router-link> -->
+      <router-link to="/login" exact>登录</router-link>
+      <router-link to="/register" exact>注册</router-link>
+      <router-view></router-view>
+    </div>
+    <script>
+      /**
+       * 高亮当前选中 link
+       * 选中时使用的类名：
+       * router-link-active
+       * 激活时使用的类名，默认值可以可以使用路由的构造选项 linkActiveClass 来全局配置：
+       * router-link-exact-active
+       * 是否激活
+       */
+      var register = {
+          template: '<h1>注册组件</h1>',
+        },
+        login = {
+          template: '<h1>登录组件</h1>',
+        }
+
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+          login,
+          register,
+        },
+        router: new VueRouter({
+          // linkActiveClass: 'v-active',
+          linkExactActiveClass: 'v-active',
+
+          // route 表示路由匹配规则
+          routes: [
+            { path: '/', redirect: '/login' },
+            { path: '/login', component: login },
+            { path: '/register', component: register },
+          ],
+        }),
+      })
+    </script>
+  </body>
+</html>

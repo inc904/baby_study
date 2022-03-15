@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>index</title>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <ol>
+        <todo-item v-for="item in grocerList" :key="item.id" :todo="item" />
+      </ol>
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script>
+      Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li>{{todo.text}}</li>',
+      })
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: 'hello Vue!',
+          grocerList: [
+            {
+              id: 0,
+              text: '蔬菜',
+            },
+            {
+              id: 1,
+              text: '水果',
+            },
+            {
+              id: 2,
+              text: '随便什么人吃的东西',
+            },
+          ],
+        },
+      })
+    </script>
+  </body>
+</html>

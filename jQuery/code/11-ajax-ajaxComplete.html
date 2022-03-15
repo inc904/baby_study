@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="./js/jquery-3.4.1.js"></script>
+</head>
+<body>
+	<div class="wait">
+		请求中。。。
+	</div>
+	<div class="test">
+		
+	</div>
+	<script>
+		$('.test').append('<p>1111</p>')
+		$('.test').append('<p>2222</p>')
+
+		$(document)
+			.ajaxSend(()=>{
+				$('.wait').css('color', 'orange')
+			})
+			.ajaxStart(function(){
+				$('.wait').css({'color':'red','fontSize':'20px'}).text('加载中。。。').append('<span> hello world1111</sapn>')
+			})
+			// .ajaxError(()=>{
+			// 	$('.wait').css({'color':'blue','fontSize':'40px'}).text('加载失败！！')
+			// })
+			.ajaxComplete(()=>{
+			$('.wait').css({'color':'blue','fontSize':'40px'}).text('加载完成！！').append('<span> hello world</sapn>')
+		})
+	
+		$.ajax({
+			url:"https://www.fastmock.site/mock/6145a47aab15ddd6d18196d8e2b5f630/api/getlist",
+			// url:"/tets",
+
+			success: function(res){
+				console.log(res)
+			}
+		})
+	</script>
+</body>
+</html>

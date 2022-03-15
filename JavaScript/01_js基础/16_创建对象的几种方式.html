@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建对象的几种方式</title>
+</head>
+
+<body>
+    <script>
+
+        // - Object的方式
+
+        var obj = new Object;
+        obj.name = "孙悟空";
+        obj.age = 22;
+        obj.address = "花果山";
+        console.log(obj);
+
+        // - 字面量的方式   
+
+        var obj2 = {
+            name: "白骨精",
+            age: 14,
+            address: "白骨洞"
+        };
+        console.log(obj2);
+
+        // - 工厂模式
+
+        function createPerson(name, age, address) {
+            var obj = new Object;
+            obj.name = name;
+            obj.age = age;
+            obj.address = address;
+            return obj;  //一定要记得把常见的对象 返回 
+        }
+        var per = createPerson("孙悟空", 23, "花果山");
+        var per2 = createPerson("猪八戒", 22, "高老庄");
+        var per3 = createPerson("蜘蛛精", 15, "盘丝洞");
+        console.log(per)
+        console.log(per2)
+        console.log(per3)
+
+        // - 构造函数
+
+        function Person(name, age, address){
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            this.say = function(){
+
+                console.log("this = "+this)
+            }
+        }
+
+        var per4 = new Person("沙和尚",45,"流沙河")
+        console.log(per4)
+        console.log(Person.prototype)
+
+        /*
+        per4.say()
+        function Fn(){
+            console.log(this)
+        }
+        var fff = new Fn();
+        console.log(fff);
+
+        function fn(){
+            console.log(this)
+        }
+        fn();
+        */
+    //    console.log(per4 instanceof Object);
+    //    console.log(window instanceof Object);
+    //    console.log(per4 instanceof Person);
+    console.log('------')
+    new Array(5).toString();
+    console.log( new Array(5))
+    </script>
+</body>
+
+</html>

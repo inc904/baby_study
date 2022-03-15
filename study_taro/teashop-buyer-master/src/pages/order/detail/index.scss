@@ -1,0 +1,129 @@
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+
+page {
+  background-color: #f5f5f5;
+}
+
+.orderDetailPage {
+  padding: 20px;
+
+  .orderDetailSection {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 10px;
+    padding: 30px 30px 20px;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: #999;
+    min-height: 150px;
+    box-sizing: border-box;
+
+    .title {
+      font-weight: 500;
+      color: rgba(51, 51, 51, 1);
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .row {
+      display: flex;
+      line-height: 42px;
+    }
+  }
+
+  .typeSkeleton {
+    min-height: 356px;
+  }
+
+  .storeSkeleton {
+    min-height: 100px;
+  }
+
+  .productSkeleton {
+    min-height: 112px;
+  }
+
+  .checkSkeleton {
+    min-height: 175px;
+  }
+
+  .infoSkeleton {
+    min-height: 84px;
+  }
+
+  .orderDetailStore {
+    display: flex;
+    align-items: center;
+
+    .left {
+      flex: 1;
+    }
+
+    .right {
+      width: 88px;
+      height: 88px;
+
+      .iconTel {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
+        background-image: url('../../../assets/images/cdn/phone-o.png');
+      }
+    }
+  }
+
+  .orderDetailProduct {
+    .list {
+      .item {
+        display: flex;
+        line-height: 54px;
+      }
+
+      .col1 {
+        flex: 1;
+      }
+
+      .col2 {
+        width: 60px;
+      }
+
+      .col3 {
+        width: 180px;
+        text-align: right;
+      }
+    }
+  }
+
+  .orderDetailCheck {
+    .row {
+      justify-content: space-between;
+      padding-bottom: 10px;
+    }
+
+    .bottom {
+      font-size: 32px;
+      color: #333;
+      text-align: right;
+      // prettier-ignore
+      border-top: 1Px solid #f5f5f5ff;
+      padding-top: 20px;
+      margin-right: -30px;
+      padding-right: 30px;
+
+      .price {
+        color: $color-brand;
+      }
+    }
+  }
+
+  .orderDetailInfo {
+    color: #333;
+    font-size: 24px;
+
+    .row {
+      padding-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <p>在线工具</p>
+            <p>在线工具</p>
+            <p>在线工具</p>
+        </li>
+        <li>
+            <p>支持我们</p>
+        </li>
+        <li>
+            <p>合作伙伴</p>
+        </li>
+        <li>
+            <p>测试电流</p>
+        </li>
+    </ul>
+    <script>
+        var obj = {
+            foo: "bar",
+            func: function () {
+                var self = this;
+                console.log("outer:this.foo=" + this.foo);
+                console.log("outer:self.foo=" + self.foo);
+                (function () {
+                    console.log("inner:this.foo=" + this.foo);
+                    console.log("inner:self.foo=" + self.foo);
+                }())
+            }
+        }
+        obj.func();
+    </script>
+</body>
+
+</html>

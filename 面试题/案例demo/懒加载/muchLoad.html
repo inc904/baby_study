@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>多张图片延迟加载</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .wrapper {
+    width: 1200px;
+    margin: 100px auto;
+  }
+
+  .imgBox {
+    height: 450px;
+    margin-bottom: 80px;
+    background-color: #888;
+  }
+
+  .imgbox img {
+    width: 100%;
+    vertical-align: middle;
+    display: none;
+  }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="imgBox">
+      <img src="" alt="" data-imgURL="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8a4efa031fe94c4a259c65e30b652423.jpg?thumb=1&w=1226&h=460&f=webp&q=90">
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+  let str = '',
+    $imgBoxs = null,
+    $window = $(window),
+    $wrapper = $('.wrapper')
+
+  new Array(20).fill(null).forEach(item => {
+    str += `
+    <div class="imgBox">
+      <img src="" alt=""
+        data-imgURL="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8a4efa031fe94c4a259c65e30b652423.jpg?thumb=1&w=1226&h=460&f=webp&q=90">
+    </div>
+    `
+  })
+  $wrapper.html(str)
+  $imgBoxs = $wrapper.children('.imgBox')
+
+  $window.on('load scroll', function() {
+
+    let $B = $window.outerHeight() + $window.scrollTop() // 当前窗口的底边距离页面顶端的距离：当前窗口高度+滚动条滚动的高度
+    // 循环每一张图片区域
+    $imgBoxs.each((index, item) => {
+      let $item = $(item),
+        $itemA = $item.outerHeight() + $item.offset().top,
+        isLoad = $item.attr('isLoad')
+      if ($itemA <= $B) {
+        let $img = $item.children('img')
+        $img.attr('isLoad', true)
+        $img.attr('src', $img.attr('data-imgURL'))
+        $img.on('load', () => $img.stop().fadeIn())
+      }
+    })
+  })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+        原型 prototype
+            - 我们所创建的每一个函数 ，解析器都会给他添加一个属性 prototype ，
+                这个属性对应着一个对象，这个对象就是我们所谓的原型对象。
+            - 如果函数作为一个普通的函数调用 prototype 没有任何作用
+            - 当函数以构造函数的形式调用时，他所创建的对象都会有一个隐含的属性，
+                指向该构造函数的原型对象，我们可以通过 __proto__ 来进行访问该属性
+            - 原型对象就相当于一个公共区域，所有同一个类的实例都可以访问到这个原型对象，我们可以将对象中公有的内容，统一设置到原型对象中。
+            - 当我们访问对象的一个属性或者方法的时候，他会现在自身中寻找，如果有这直接使用，如果没有则回去他关联的原型对象中寻找，如果找到则使用。
+     -->
+     <script>
+         function fn(){
+             console.log(213);
+         }
+         console.log(fn.prototype);
+     </script>
+</body>
+</html>

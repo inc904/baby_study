@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+      <p v-html="vhtml"></p>
+      <p v-text="vText"></p>
+      <ul v-for="item in fruits">
+        <li>{{ item }}</li>
+      </ul>
+      <button v-on:click="myClick">showTime</button>
+      <button v-on:click="hide">hide</button>
+      <button v-on:click="show">show</button>
+      <p v-if="seen">大家好</p>
+      <p v-show="flag">我是渣渣辉</p>
+      <ul>
+        <li v-for="(item,i) in fruits" :key="i">{{ item }}</li>
+      </ul>
+      <hr />
+      <ol>
+        <todo-item
+          v-for="item in groceryList"
+          v-bind:todo="item"
+          v-bind:key="item.id"
+        ></todo-item>
+        <hr />
+        <fruit-item
+          v-for="(item,i) in fruits"
+          v-bind:fruit="item"
+          :key="i+Math.random()"
+        ></fruit-item>
+      </ol>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.component('todo-item', {
+        props: ['todo'],
+        template: '<li> {{ todo.text }} </li>'
+      })
+      Vue.component('fruit-item', {
+        props: ['fruit'],
+        template: '<li> {{ fruit }} </li>'
+      })
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          message: 'hello Vue!',
+          vhtml: 'vhtml---o',
+          vText: 'vText---o',
+          fruits: ['apple', 'banana', 'orange', 'pear'],
+          groceryList: [
+            { id: 0, text: '蔬菜' },
+            { id: 1, text: '奶酪' },
+            { id: 2, text: '随便其它什么人吃的东西' }
+          ],
+          seen: true,
+          flag: true
+        },
+        methods: {
+          myClick: function() {
+            console.log('this is your yida!')
+          },
+          hide() {
+            this.seen = this.flag = false
+          },
+          show() {
+            this.seen = this.flag = true
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

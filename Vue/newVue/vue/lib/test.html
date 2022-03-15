@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>demo</title>
+  <style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    hr,
+    p,
+    blockquote,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    pre,
+    form,
+    fieldset,
+    legend,
+    button,
+    input,
+    textarea,
+    th,
+    td {
+      margin: 0;
+      padding: 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: 100%;
+    }
+
+    address,
+    cite,
+    dfn,
+    em,
+    var {
+      font-style: normal;
+    }
+
+    code,
+    kbd,
+    pre,
+    samp {
+      font-family: courier new, courier, monospace;
+    }
+
+    ul,
+    ol {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    sup {
+      vertical-align: text-top;
+    }
+
+    sub {
+      vertical-align: text-bottom;
+    }
+
+    legend {
+      color: #000;
+    }
+
+    fieldset,
+    img {
+      border: 0;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-size: 100%;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .clear {
+      clear: both;
+      float: none;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .title {
+      background: #D20F25;
+      width: 200px;
+      height: 40px;
+      color: #fff;
+      line-height: 40px;
+    }
+
+    .title p {
+      margin-left: 30px;
+    }
+
+    #vip {
+      background: #D20F25;
+      width: 200px;
+      height: 105px;
+      color: #FF92AD;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #list {
+      position: absolute;
+    }
+
+    #vip li {
+      height: 50px;
+      line-height: 24px;
+      font-size: 12px;
+      margin-left: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="title">
+    <p>会员中奖榜</p>
+  </div>
+  <div id="vip">
+    <ul id="list" style="top: 0px;">
+      <li>m**b<br />抽中18积分</li>
+      <li>小**宫<br />抽中28积分</li>
+      <li>金**告<br />抽中8积分</li>
+      <li>真**生<br />抽中88积分</li>
+      <li>郑**9<br />抽中18积分</li>
+      <li>l**美<br />抽中8积分</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    //在页面加载完后立即执行多个函数方案
+    function addloadEvent(func) {
+      var oldonload = window.onload;
+      if (typeof window.onload != "function") {
+        window.onload = func;
+      }
+      else {
+        window.onload = function () {
+          if (oldonload) {
+            oldonload();
+          }
+          func();
+        }
+      }
+    }
+    //在页面加载完后立即执行多个函数方案结束
+    addloadEvent(nes);
+    function nes() {
+      //获取列表父容器
+      var vip = document.getElementById("vip");
+      //获取信息列表
+      var list = document.getElementById("list");
+      //创建第二个列表设置一系列样式id等
+      var list1 = document.createElement("ul");
+      list1.setAttribute("id", "list1");
+      //初始位置为300正好在第一个列表的下面
+      list1.style.top = 300 + "px";
+      list1.style.position = "absolute";
+      //插入文档流
+      vip.appendChild(list1);
+      //把第一个列表的结构内容复制给第二个
+      list1.innerHTML = list.innerHTML;
+      //第一个列表
+      function b() {
+        //top值为当前的top减10   
+        list.style.top = parseInt(list.style.top) - 10 + "px";
+        //如果top值为-300那么初始化top
+        if (parseInt(list.style.top) == -300) {
+          list.style.top = 0;
+        }
+        //这里是实现间隔滚动判断
+        //当top值整除50(每个li的高度)时候清除定时器  
+        if (parseInt(list.style.top) % 50 == 0) {
+          clearInterval(time);
+          //然后两秒后再次执行time=setInterval
+          se = setTimeout(function () { time = setInterval(b, 30); }, 2000);
+        }
+      };
+      //定时器
+      time = setInterval(b, 30);
+      //第二个列表与第一个列表操作一样，只是修改了高度
+      function c() {
+        list1.style.top = parseInt(list1.style.top) - 10 + "px";
+        if (parseInt(list1.style.top) == 0) {
+          list1.style.top = 300 + "px";
+        }
+        if (parseInt(list1.style.top) % 50 == 0) {
+          clearInterval(time1);
+          se1 = setTimeout(function () { time1 = setInterval(c, 30); }, 2000);
+        }
+      };
+      time1 = setInterval(c, 30);
+      //鼠标移入列表时 清除两个定时器
+      vip.onmouseover = function () {
+        clearTimeout(se);
+        clearTimeout(se1);
+        clearInterval(time);
+        clearInterval(time1);
+      };
+      //鼠标划出时先判断如果定时器在执行则清除
+      vip.onmouseout = function () {
+        if (time && time1) {
+          clearInterval(time);
+          clearInterval(time1)
+        }
+        if (se && se1) {
+          clearTimeout(se);
+          clearTimeout(se1)
+        }
+        //再次执行定时器
+        se = setTimeout(function () { time = setInterval(b, 30); }, 2000);
+        se1 = setTimeout(function () { time1 = setInterval(c, 30); }, 2000);
+      };
+    } 
+  </script>
+</body>
+
+</html>

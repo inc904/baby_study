@@ -1,0 +1,6 @@
+/**app.wxss**/
+@import 'venders/weui';
+page {
+  background-color: #f0f0f0;
+  margin-bottom: 40px;
+}

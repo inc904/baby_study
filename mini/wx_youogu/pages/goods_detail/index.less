@@ -1,0 +1,96 @@
+/* pages/goods_detail/index.less */
+.goods_detail_page {
+  padding-bottom: 90rpx;
+  .swiper {
+    height: 70vw;
+    text-align: center;
+    .swiper-image {
+      width: 60%;
+      height: 6k40rpx;
+    }
+  }
+  .goods_price {
+    color: var(--themeColor);
+    font-size: 30rpx;
+    padding: 0 20rpx;
+    font-weight: 600;
+  }
+  .goods_name_wrap {
+    padding: 0 20rpx;
+    display: flex;
+    .goods_name {
+      flex: 8;
+      color: #999;
+      font-size: 28rpx;
+      padding: 0 16rpx;
+      overflow: hidden;
+      text-overflow: hidden;
+      -webkit-line-clamp: 2; // 限制文本行数为2
+      display: -webkit-box; // 结合上一条，设置弹性盒子模型
+      -webkit-box-orient: vertical; // 设置弹性盒子子元素的排列方式
+    }
+    .goods_favrite {
+      border-left: 5rpx solid #888;
+      color: #999;
+      flex: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+  .detail {
+    padding: 40rpx;
+    .title {
+      display: block;
+      color: var(--themeColor);
+      font-size: 40rpx;
+      border-bottom: 2rpx solid #0f0f0f;
+      padding-bottom: 40rpx;
+    }
+  }
+  .btm_tool {
+    width: 100%;
+    height: 90rpx;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    border-top: 1rpx solid #ccc;
+    .tool_item {
+      height: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 24rpx;
+      position: relative;
+      button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+      }
+    }
+    .btn_cart {
+      flex: 2;
+      background-color: orange;
+      font-size: 30rpx;
+      font-weight: 600;
+      color: #fff;
+    }
+    .btn_buy {
+      flex: 2;
+      background-color: var(--themeColor);
+      font-size: 30rpx;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+}

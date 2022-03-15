@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <script>
+        function test() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr[i] = i;
+            }
+            return arr;
+        }
+
+        console.log(test());
+        console.log("-------");
+
+        function test2() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr[i] = function () {
+                    console.log(i);
+                };
+            }
+            return arr;
+        }
+        var newArr = test2();
+        console.log(newArr);
+        for (var j = 0; j < newArr.length; j++) {
+            newArr[j]();
+        }
+        console.log("-------");
+
+        function test3() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                arr[i] = (function () {
+                    console.log(i);
+                }());
+            }
+            return arr;
+        }
+        var newArr = test3(); // 在上面立即执行函数中执行，在控制台打印 0 - 9 的值
+        /*
+        console.log(newArr); // 一个数组里面是个元素都是 undefined
+
+        for(var j = 0; j < newArr.length; j++){
+            newArr[j](); // 在上面立即执行后，已经销毁，所以找不到了，报错，not a function
+        }
+        */
+        console.log("-------");
+
+        function test4() {
+            var arr = [];
+            for (var i = 0; i < 10; i++) {
+                (function (a) {
+                    arr[a] = function () {
+                        console.log(a);
+                    };
+                }(i))
+            }
+            return arr;
+        }
+        var newArr = test4();
+        for (var j = 0; j < newArr.length; j++) {
+            newArr[j]();
+        }
+    </script>
+</body>
+
+</html>

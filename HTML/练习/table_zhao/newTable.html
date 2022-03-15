@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head runat="server">
+  <title></title>
+  <style type="text/css">
+    tr {
+      height: 30px;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+      var oName = document.getElementById('txt1');
+      var oEasyName = document.getElementById('txt2');
+      var oHero = document.getElementById('txt3');
+      var oBtn = document.getElementById('btn');
+      var oTab = document.getElementById('tab1');
+      var num = oTab.tBodies[0].rows.length + 1;
+      console.dir(oTab)
+      oBtn.onclick = function () {
+        var oTr = document.createElement('tr');
+        var oTd = document.createElement('td')
+        oTd.innerHTML = num++;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement('td');
+        // oTd.innerHTML = oName.value;
+        oTd.innerHTML = oName.value;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement('td');
+        oTd.innerHTML = oEasyName.value;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement('td');
+        oTd.innerHTML = oHero.value;
+        oTr.appendChild(oTd);
+
+        var oTd = document.createElement('td');
+        oTd.innerHTML = '<a href="#">删除</a>';
+        oTr.appendChild(oTd);
+        oTd.getElementsByTagName('a')[0].onclick = function () {
+          oTab.tBodies[0].removeChild(this.parentNode.parentNode);
+        }
+        oTab.tBodies[0].appendChild(oTr);
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <div style="margin-left: 300px; margin-top: 30px;">
+    业务组：<input type="text" id="txt1" />
+    员工标号：<input type="text" id="txt2" />
+    姓名 ：<input type="text" id="txt3" />
+    <input type="button" id="btn" value="添加信息" />
+  </div>
+  <table id="tab1" border="1" style="text-align: center; width: 800px; margin-left: 300px;
+            margin-top: 10px;">
+    <thead>
+      <tr style="background-color: #FF0000">
+        <td>
+          序号
+        </td>
+        <td>
+          业务组
+        </td>
+        <td>
+          员工编号
+        </td>
+        <td>
+          姓名
+        </td>
+        <td>
+          操作
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          1
+        </td>
+        <td>
+          	国际业务运营中心-CMCC运营组
+        </td>
+        <td>
+          HUM
+        </td>
+        <td>
+          123，345，53
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          2
+        </td>
+        <td>
+          国际业务运营中心-CMCC运营组
+        </td>
+        <td>
+            张三
+        </td>
+        <td>
+          123324，234
+        </td>
+        <td>
+          删除
+        </td>
+      </tr>
+      <tr style="height:10px;background-color:#66CDAA;" id="add">
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

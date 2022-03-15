@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+           数组的创建和数组的几个方法
+        */
+
+        // 字面量的方式创建数组
+        var arr = [1, 2, 3];
+        console.log(arr)
+
+        // - push 向数组末尾添加新的元素，并返回新的长度
+
+        var res = arr.push('199', 'zhangsang');
+        console.log(arr)
+        console.log('res=' + res)
+
+        // - pop 删除数组的最后一个元素，并返回删除的元素
+
+        var res2 = arr.pop();
+        console.log(arr);
+        console.log('res2=' + res2);
+
+        // -unshift 向数组开头添加一个或者多个元素,并返回数组的长度
+
+        var res3 = arr.unshift('牛魔王', '白骨精');
+        console.log(arr);
+        console.log('res3=' + res3);
+
+        // shift 删除数组的第一个元素，并将被删除的元素返回
+
+        var res4 = arr.shift()
+        console.log(arr)
+        console.log('res4=' + res4)
+    </script>
+</body>
+
+</html>

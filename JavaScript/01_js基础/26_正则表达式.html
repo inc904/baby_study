@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <script>
+        /*
+            []里的内容也是或的关系
+            [ab] == a|b
+            [a-z] 表示任意小写字母
+            [^ac] ^ 表示除了以外
+            [0-9]  表示任意数字
+        */ 
+        /*
+
+
+            split()
+                - 拆分字符串
+                - 默认进行全局匹配
+
+            search()
+                - 可以检索字符转中是否含有执行内容
+                - 如果搜索到指定内容，则会返回第一次出现的索引，如果没有搜索到，则会返回 -1
+                - search() 只会曹肇第一个，即使设置全局匹配也没用
+
+            match()    
+                - 根据正则表达式，从字符串中将符合条件的内容提取出来
+                - match 会将匹配到的内容匹配封装为一个数组返回，即使只查询到一个结果 
+                - 默认情况下 match 只会找到都第一个符合要求的内容，找到以后会停止检索
+                - i 忽略大小写 g 全局匹配
+
+            replace()
+                - 两个参数，
+                    第一个是匹配正则（被替换的内容），可以接受字符串和正则表达式
+                    第二个是替换的新内容
+
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <select name="" id="select">
+      <!-- <option value="北京">北京</option>
+  	<option value="上海">上海</option>
+  	<option value="广州">广州</option> -->
+    </select>
+    <script>
+      var obj = [
+        { name: '上海', selected: 0 },
+        { name: '北京', selected: 0 },
+        { name: '也门', selected: true },
+        { name: '深圳', selected: 0 },
+        { name: '郑州', selected: 0 },
+      ]
+      $.each(obj, function (index, item) {
+        if (item.name === '也门') {
+    //       $('#select').append(` 
+  	// <option value="${item.name}" selected>${item.name}</option>
+    // 		`)
+    // continue
+    return true
+        } else {
+          $('#select').append(` 
+  	<option value="${item.name}" >${item.name}</option>
+  			`)
+        }
+      })
+    </script>
+  </body>
+
+</html>

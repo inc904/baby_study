@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    {{ name }}
+    <div></div>
+    <p>{{message }}</p>
+    <input type="text" v-model="test">
+    <p> {{test}}</p>
+    <!-- <button type="button" name="button" onclick="">click</button> -->
+  </div>
+  <script src="./02_myVue.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        name: 'zzc',
+        message: '测试数据',
+        test: '双绑数据'
+      }
+    })
+    console.log(vm)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var obj = new Object();
+        obj.name = "孙悟空";
+        obj.age = "23";
+        obj.gender = "male";
+        obj.paly = function () {
+            console.log("我喜欢玩游戏!")
+        }
+        console.log(obj)
+        console.log(obj.age)
+        var obj2 = {
+            name: "猪八戒",
+            age: 24,
+            gender: "male",
+            eat: function () {
+                console.log("我喜欢吃东西!")
+            },
+            fun: obj
+        };
+        console.log(obj2);
+        console.log(obj2.fun);
+        console.log(obj2.eat);
+        console.log(obj2.age);
+        obj2.eat();
+        var otn = {
+            name:"孙悟空"
+        }
+        var orn = otn;
+        // orn.name = "猪八戒";
+        orn.age = 10;
+        console.log(otn.name)
+        // console.log(orn.name)
+        console.log(otn)
+        console.log(orn)
+
+    </script>
+</body>
+
+</html>

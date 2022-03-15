@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url(../images/body_bg.jpg) no-repeat center top;
+}
+
+ul,
+li {
+    list-style: none;
+}
+img{
+    display: inline-block;
+}
+
+.pageWrapper {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+
+/* .header {} */
+
+.clearfix:after {
+    content: '';
+    height: 0;
+    visibility: hidden;
+    clear: both;
+    display: block;
+}
+
+.header>img {
+    width: 100%;
+}

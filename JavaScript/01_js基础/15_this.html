@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var c =67;
+        function fn(a, b){
+            console.log("a="+a,"b="+b)
+            console.log(this)
+            console.log(this.c)
+        }
+        fn(12,34);
+        /*
+            - 解析器在调用函数时，每次都会想啊函数内部传递一个隐含的参数，这个隐含的参数就是this，this指向的是一个对象
+            - 这个对象我们称为函数的上下文对象
+            - 根据用函数的调用方式的不同，this会指向不同不同的对象
+                1.以函数的形式调用时。this永远都是window
+                2.以方法的形式调用时，this就是调用方法的哪个对象
+        */
+    </script>  
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+</head>
+<style>
+	/* * {
+		margin: 0;
+		padding: 0;
+	} */
+	table {
+		/* margin: 50px auto; */
+		border-collapse: collapse;
+		text-align: center;
+	}
+
+	thead {
+		background-color: gray;
+	}
+
+	div {
+		color: orange !important;
+	}
+
+	span {
+		/* vertical-align: middle; */
+		background-color: red;
+
+	}
+
+	p {
+		width: 200px;
+		cursor: pointer;
+		outline: red solid 2px;
+	}
+
+	#inp {
+		/* outline: red solid 2px; */
+		outline: 0;
+	}
+
+	.inp {
+		outline: red solid 1px;
+	}
+
+	.inp2:focus {
+		outline: red solid 1px;
+	}
+
+	caption {
+		cursor: move;
+	}
+
+	textarea {
+		resize: none;
+	}
+
+	textarea:focus {
+		outline: 10PX solid red;
+	}
+
+	img {
+		width: 100px;
+		/* height: 50px; */
+		/* vertical-align: middle; */
+		vertical-align: top;
+	}
+	.aa{background-color: #ccc;}
+</style>
+
+<body>
+	<div class="aa">
+			123
+		<span>文字对齐方式</span>
+		<img src="x.jpg" alt="">
+	</div>
+	<div style="color:red;">
+	
+		<p style="color:aqua;">css的继承</p>
+		<input type="text" name="" class="inp">
+		<input type="text" name="" id="inp">
+		<input type="text" name="" class="inp2">
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+	</div>
+	<caption>表格的标题</caption>
+
+	<table border="1" cellspacing="0" cellpadding="15" align="center">
+		<caption>表格的标题</caption>
+		<thead>
+			<tr>
+				<th colspan="9" class="header">宠物行为问题一周记录表格</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th>
+					<p>日期</p>
+					<p>项目</p>
+				</th>
+				<th>举例</th>
+				<th>星期一</th>
+				<th>星期二</th>
+				<th>星期三</th>
+				<th>星期四</th>
+				<th>星期五</th>
+				<th>星期六</th>
+				<th>星期日</th>
+			</tr>
+			<tr>
+				<td rowspan="6">每日饮食</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+				<td>早餐</td>
+			</tr>
+			<tr>
+				<td>小米粥</td>
+				<td>小米粥</td>
+				<td>小米粥</td>
+				<td>小米粥</td>
+				<td>小米粥</td>
+				<td>小米粥</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+				<td>午餐</td>
+			</tr>
+			<tr>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+				<td>鲜食</td>
+			</tr>
+			<tr>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+				<td>晚餐</td>
+			</tr>
+			<tr>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+				<td>罐头</td>
+			</tr>
+			<tr>
+				<td>饮水量</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+				<td>ml</td>
+			</tr>
+			<tr>
+				<td rowspan="4">行为及发生时间</td>
+				<td>10:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>吃完饭一直乱叫</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>18:00</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>随地大小便</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="2">提交时间：</th>
+				<th colspan="7"></th>
+			</tr>
+			<tr>
+				<th colspan="2">记录员：</th>
+				<th colspan="7"></th>
+			</tr>
+		</tfoot>
+	</table>
+
+</body>
+
+</html>

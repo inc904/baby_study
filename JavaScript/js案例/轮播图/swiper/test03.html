@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 800px;
+      margin: 100px auto;
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .dot {
+      position: absolute;
+      bottom: 15px;
+    }
+
+    .dot span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 3px;
+      background-color: #fff;
+
+    }
+
+    .dot span.active {
+
+      background-color: rgb(53, 144, 218);
+
+    }
+    .arrow{
+      width: 50px;
+      height: 80px;
+      background-color: red;
+      position: absolute;
+    }
+    .arrowleft{
+      left: 50px;
+    }
+    .arrowright{
+      right: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="swiper">
+    <div class="arrow arrowleft"></div>
+    <div class="arrow arrowright"></div>
+    <img class="imgBox" src="" alt="">
+    <div class="dot"></div>
+  </div>
+  <script>
+    let arr = [
+      './imgs/1.jpg',
+      './imgs/2.jpg',
+      './imgs/3.jpg',
+      './imgs/4.jpg',
+      './imgs/5.jpg'
+    ]
+    let imgBox = document.getElementsByClassName('imgBox')[0]
+    let index = 0
+    imgBox.src = arr[0]
+    let dot = document.getElementsByClassName('dot')[0]
+    for (let i = 0; i < arr.length; i++) {
+      let span = document.createElement('span')
+      dot.appendChild(span)
+      dot.children[0].classList.add('active')
+    }
+    // 自动轮播
+    let timer = setInterval(() => {
+      index++
+      if (index === arr.length) index = 0
+      imgBox.src = arr[index]
+      dotsOption(index)
+    }, 1000);
+
+    // 点击指示器切换
+    let dots = dot.children
+    for (let i = 0; i < dots.length; i++) {
+      dots[i].onmouseover = function () {
+        clearInterval(timer)
+        imgBox.src = arr[i]
+        dotsOption(i)
+        index++
+      }
+    }
+    // 指示器切换调用
+    function dotsOption(index){
+      document.getElementsByClassName('active')[0].classList.remove('active')
+      dot.children[index].classList.add('active')
+    }
+
+
+
+  </script>
+</body>
+
+</html>

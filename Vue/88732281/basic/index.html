@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+  </head>
+  <body>
+    <div id="app">
+      {{value}} {{deletedVal}}
+      <ul>
+        <!-- 全局组件 -->
+        <my-li2 v-for="item in list" :desc="item.desc" :key="item.id"></my-li2>
+      </ul>
+      <input type="text" v-model="value" />
+      <button @click="add">add</button>
+      <!-- 私有组件 -->
+      <blog
+        v-for="item in list"
+        :content="item.desc"
+        :i="item.id"
+        :key="item.id"
+        @pdel="del"
+      ></blog>
+    </div>
+    <template id="blog">
+      <h3 @click="ztype(i)">{{content}}</h3>
+    </template>
+    <script>
+      Vue.component('my-li2', {
+        props: ['desc'],
+        template: '<li>{{desc}}</li>'
+      })
+      new Vue({
+        el: ' #app',
+        data: {
+          list: [
+            { id: 0, desc: '吃饭' },
+            { id: 1, desc: '睡觉奥' },
+            { id: 2, desc: '打豆豆' }
+          ],
+          value: '123',
+          deletedVal: ''
+          // content: ''
+        },
+        methods: {
+          add() {
+            this.list.push({ id: this.list.length, desc: this.value })
+          },
+          del(id) {
+            console.log(111)
+
+            this.list.map((item, i) => {
+              if (item.id === id) {
+                this.list.splice(i, 1)
+                this.deletedVal = item.desc
+              }
+            })
+          }
+        },
+        components: {
+          MyLi: {
+            data: function() {
+              return {
+                title: '1'
+              }
+            },
+            props: ['desc'],
+            template: '<li>{{desc+this.title}}</li>'
+          },
+          Blog: {
+            data: function() {
+              return {}
+            },
+            methods: {
+              ztype(i) {
+                console.log(i)
+                this.$emit('pdel', i)
+              }
+            },
+            template: '#blog',
+            // template: ' <h3 @click="ztype(i)">{{content}}</h3>',
+            props: {
+              content: String,
+              i: Number
+            }
+            // props: ['content']
+          }
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+/* components/star/star.wxss */
+.source{
+  display: flex;
+}
+.item-star {
+  /* width: 100%; */
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.item-star .image {
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: middle;
+  margin-right: 8rpx;
+}

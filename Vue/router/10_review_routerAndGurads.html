@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<script src="../lib/vue-2.6.10.js"></script>
+		<script src="../lib/vue-router-3.0.7.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<button @click="changeVip">toggle_vip</button>
+			<p v-show="isVip">asdlkfjslkajf</p>
+			<router-link to="/account">用户组件</router-link>
+			<router-view></router-view>
+		</div>
+		<template id="login">
+			<div>
+				<h1>登录页面</h1>
+				请输入账户：<input type="text">
+			</div>
+		</template>
+		<template id="register">
+			<div>
+				<h1>注册页面</h1>
+				请输入邮箱：<input type="text">
+			</div>
+		</template>
+		<template id="account">
+			<div>
+				<h1>account</h1>
+				<router-link to="/account/login">登录</router-link>
+				<router-link to="/account/register">注册</router-link>
+				<router-view></router-view>
+			</div>
+		</template>
+		<script>
+			var login = {
+					template: '#login',
+					beforeRouteEnter(to, from, next){
+						console.log('组件独享得 beforeRouteEnter')
+						// next()
+					}
+				},
+				account = {
+					template: '#account'
+				}
+			register = {
+				template: '#register'
+			}
+			var router = new VueRouter({
+				routes: [{
+						path: '/',
+						redirect: '/account'
+					},
+					{
+						path: '/account',
+						component: account,
+						children: [{
+								path: 'login',
+								component: login
+							},
+							{
+								path: 'register',
+								component: register,
+								beforeEnter(to, from, next){
+									console.log(to)
+									console.log('组件内得 beforeEnter')
+									next()
+								}
+							},
+						],
+					}
+				]
+			})
+			// router.beforeEach((to, from, next) => {
+			// 	console.log('to', to)
+			// 	console.log('from', from)
+			// 	console.log('next', next)
+			// 	next()
+			// })
+			router.afterEach((to, from)=>{
+				console.log('全局 after')
+			})
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					isVip: false
+				},
+				methods: {
+					changeVip: ()=>{
+						// this.isVip = !this.isVip
+						console.log(this.isVip)
+						console.log(String(this.isVip))
+					},
+					changeVip2: () => {
+						this.isVip = !this.isVip
+						// console.log(String(this.isVip))
+					},
+				},
+				components: {
+					login,
+					account,
+					register
+				},
+				router
+			})
+		</script>
+	</body>
+
+</html>

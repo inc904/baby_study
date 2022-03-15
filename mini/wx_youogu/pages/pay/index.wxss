@@ -1,0 +1,93 @@
+/* pages/pay/index.wxss */
+.cart_page {
+  padding-bottom: 90rpx;
+}
+.cart_page .userInfo_row {
+  display: flex;
+  padding: 20rpx;
+  border-bottom: 1rpx solid var(--themeColor);
+}
+.cart_page .userInfo_row .userPhone {
+  text-align: right;
+  flex: 1;
+}
+.cart_page .cart_container .title {
+  padding: 20rpx;
+  font-size: 36rpx;
+  color: var(--themeColor);
+  border-bottom: 1rpx solid var(--themeColor);
+}
+.cart_page .cart_container .main .goods_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_page .cart_container .main .goods_item .cart_img {
+  flex: 2;
+}
+.cart_page .cart_container .main .goods_item .cart_img image {
+  width: 100%;
+}
+.cart_page .cart_container .main .goods_item .cart_info {
+  height: 100%;
+  flex: 4;
+}
+.cart_page .cart_container .main .goods_item .cart_info .goods_name {
+  display: -webkit-inline-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #666;
+}
+.cart_page .cart_container .main .goods_item .cart_info .goods_buy {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.cart_page .cart_container .main .goods_item .cart_info .goods_buy .goods_price {
+  color: var(--themeColor);
+  font-size: 34rpx;
+}
+.cart_page .cart_container .main .goods_item .cart_info .goods_buy .cart_num_tool {
+  display: flex;
+}
+.cart_page .cart_container .main .goods_item .cart_info .goods_buy .cart_num_tool .num {
+  width: 55rpx;
+  height: 55rpx;
+  line-height: 55rpx;
+  text-align: center;
+}
+.cart_page .footer_tool {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90rpx;
+  padding: 0 10rpx;
+  background-color: #fff;
+}
+.cart_page .footer_tool .total_price {
+  flex: 4;
+  text-align: right;
+  padding: 0 8rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cart_page .footer_tool .total_price .price text {
+  font-size: 32rpx;
+  color: var(--themeColor);
+}
+.cart_page .footer_tool .total_price .tip {
+  font-size: 20rpx;
+}
+.cart_page .footer_tool .order_pay {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: var(--themeColor);
+}

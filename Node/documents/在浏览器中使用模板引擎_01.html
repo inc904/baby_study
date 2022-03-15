@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, init
+    ial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="node_modules/art-template/lib/template-web.js"></script>
+    <script type="text/template" id="tpl">
+        大家好，我是{{ name }}
+        我今年{{ age }} 岁了
+        我来自{{ province }}
+        我喜欢{{each hobbies}} {{ $value }} {{/each}}  //循环
+        <p>我是p标签</p>
+        hello {{ name }}
+    </script>
+    <script>
+        var res = template('tpl',{
+            name: 'jack',
+            age: 18,
+            province: '荷兰',
+            hobbies: ['吃饭', '睡觉', '打豆豆']
+        })  // 模板引擎不关心内容，只要是在 tpl 中写的，都会展示，将内容输送到 html 页面中值钱， html 标签也不会被解析 
+        console.log(res)
+    </script>
+</body>
+</html>

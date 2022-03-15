@@ -1,0 +1,146 @@
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+@import '~taro-ui/dist/style/components/button.scss';
+@import '~taro-ui/dist/style/components/input.scss';
+
+.at-input {
+  padding: 0;
+  margin-left: 0;
+  margin-bottom: 0;
+  background-color: transparent;
+
+  &::after {
+    border: none;
+  }
+
+  input {
+    color: $color-brand;
+    line-height: 42px;
+  }
+}
+
+.at-button {
+  height: 80px;
+  line-height: 80px;
+  font-size: 30px;
+}
+
+.rechargePage {
+  padding: 30px;
+
+  .topCardWrap {
+    width: 670px;
+    height: 261px;
+    margin: 0 auto;
+    background-size: 100%;
+    background-image: url('../../../assets/images/cdn/recharge-card.jpg');
+    background-repeat: no-repeat;
+    color: #fff;
+    text-align: center;
+
+    .title {
+      font-size: 30px;
+      padding-top: 54px;
+    }
+
+    .value {
+      font-size: 60px;
+      font-weight: 500;
+      line-height: 74px;
+    }
+  }
+
+  .contentWrap {
+    .cateWrap {
+      display: flex;
+
+      .cateItem {
+        flex: 1;
+        margin: 0 25px 30px;
+        font-size: 36px;
+        line-height: 42px;
+        padding: 30px;
+        height: 140px;
+        box-sizing: border-box;
+        text-align: center;
+        color: #333;
+        // prettier-ignore
+        border: 1Px solid rgba(204, 204, 204, 1);
+        border-radius: 10px;
+
+        &.selected {
+          border-color: $color-brand;
+          color: $color-brand;
+          background-color: rgba(255, 234, 229, 1);
+        }
+
+        .value {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .btnWrap {
+      padding: 0 25px;
+      margin-bottom: 70px;
+    }
+  }
+
+  .navItemWrap {
+    .navItem {
+      display: flex;
+      align-items: center;
+      height: 48px;
+      padding: 25px 0;
+      margin: 10px 0;
+      line-height: 48px;
+      font-size: 32px;
+      color: rgba(35, 35, 35, 1);
+      // prettier-ignore
+      border-bottom: 1Px solid #dddee2;
+
+      .img {
+        width: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        margin-left: 8px;
+      }
+
+      .title {
+        flex: 1;
+      }
+
+      .icon {
+        display: inline-block;
+      }
+
+      .iconNavList {
+        width: 36px;
+        height: 39px;
+        background-size: 100%;
+        background-image: url('../../../assets/images/icon/icon-nav-list.png');
+      }
+
+      .iconNavWithDraw {
+        width: 36px;
+        height: 36px;
+        background-size: 100%;
+        background-image: url('../../../assets/images/icon/icon-nav-withdraw.png');
+      }
+
+      .iconArrowRight {
+        margin-left: 35px;
+        margin-right: 10px;
+        width: 15px;
+        height: 25px;
+        background-size: 100%;
+        background-image: url('../../../assets/images/icon/icon-arrow-right.png');
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script src="../lib/vue-2.6.10.js"></script>
+    <script src="../lib/vue-router-3.0.7.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+      }
+      #app {
+        overflow: hidden;
+      }
+      .mhead {
+        background-color: pink;
+        height: 150px;
+      }
+      .mbox {
+        background-color: orange;
+        width: 80%;
+        height: 400px;
+        float: left;
+      }
+      .sidebar {
+        background-color: cyan;
+        width: 20%;
+        height: 400px;
+        float: left;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <router-view></router-view>
+      <router-view name="side"></router-view>
+      <router-view name="mainbox"></router-view>
+    </div>
+    <template id="header">
+      <div class="mhead">
+        <h2>头部区域标题</h2>
+        <p>这是头部的文字</p>
+      </div>
+    </template>
+    <template id="mainbox">
+      <div class="mbox">
+        <h2>内容区域标题</h2>
+        <p>这是内容的文字</p>
+      </div>
+    </template>
+    <template id="side">
+      <div class="sidebar">
+        <h2>内容区域标题</h2>
+        <p>这是侧边栏的文字</p>
+      </div>
+    </template>
+    <script>
+      var mheader = {
+          template: '#header',
+        },
+        mainbox = {
+          template: '#mainbox',
+        },
+        side = {
+          template: '#side',
+        }
+
+      var vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+          mainbox,
+          mheader,
+          side,
+        },
+        router: new VueRouter({
+          routes: [
+            {
+              path: '/',
+              components: {
+                default: mheader,
+                side: side,
+                mainbox: mainbox,
+              },
+            },
+          ],
+        }),
+      })
+    </script>
+  </body>
+</html>

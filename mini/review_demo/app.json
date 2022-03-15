@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/mine/mine",
+    "pages/search/search",
+    "pages/img/img",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/videocamera/videocamera"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#58bc58",
+    "navigationBarTitleText": "我的应用",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#0094ff"
+  },
+  "tabBar": {
+    "color": "#9400ff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "icon/_home.png",
+        "selectedIconPath": "icon/home.png"
+      },
+      {
+        "pagePath": "pages/img/img",
+        "text": "图片",
+        "iconPath": "icon/_img.png",
+        "selectedIconPath": "icon/img.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜索",
+        "iconPath": "icon/_search.png",
+        "selectedIconPath": "icon/search.png"
+      },
+      {
+        "pagePath": "pages/videocamera/videocamera",
+        "text": "搜索",
+        "iconPath": "icon/_videocamera.png",
+        "selectedIconPath": "icon/videocamera.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "搜索",
+        "iconPath": "icon/_my.png",
+        "selectedIconPath": "icon/my.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

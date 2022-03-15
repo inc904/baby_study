@@ -1,0 +1,241 @@
+/* Custom Theme */
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+
+.productCard {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 0 rgba(255, 97, 64, 0.2);
+  overflow: hidden;
+  font-size: 28px;
+
+  .imgWrap {
+    position: relative;
+    height: 330px;
+    width: 100%;
+
+    .imgContext {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .imgSoldMark {
+      display: flex;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: #fff;
+      font-weight: 500;
+
+      .bg {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .text {
+        z-index: 2;
+      }
+    }
+  }
+
+  .infoWrap {
+    padding: 10px 20px 4px;
+
+    .infoName {
+      font-size: 30px;
+      line-height: 44px;
+      color: #3d3237;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .infoDesc {
+      color: #ccc;
+      font-size: 26px;
+      line-height: 36px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .actionWrap {
+    padding: 8px 20px 10px;
+    position: relative;
+
+    .row {
+      display: flex;
+      align-items: center;
+
+      &.price-wrap {
+        height: 40px;
+        line-height: 40px;
+        justify-content: space-between;
+      }
+
+      .price {
+        color: #ff2c00;
+      }
+
+      .vipPrice {
+        display: inline-block;
+        color: #ffae00;
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 300;
+        height: 28px;
+      }
+
+      .iconVip {
+        margin-left: 8px;
+        width: 50px;
+        height: 20px;
+        background-size: 100%;
+        background-image: url('../../../assets/images/icon/icon-vip.png');
+      }
+    }
+
+    .numControlWrap {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      margin-top: -24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .num {
+        padding: 0 16px;
+        font-size: 28px;
+        color: #ff6140;
+        line-height: 36px;
+        display: block;
+        min-width: 24px;
+        text-align: center;
+      }
+    }
+
+    .btn {
+      &-circle {
+        display: flex;
+        width: 48px;
+        height: 48px;
+        box-sizing: border-box;
+        // prettier-ignore
+        border: 1Px solid #ff6140;
+        border-radius: 100%;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 48px;
+      }
+
+      &-minus {
+        color: #ff6140;
+        background-size: 100%;
+        background-position: center center;
+        background-image: url('../../../assets/images/icon/icon-minus.png');
+
+        &.disable {
+          color: #8d8d8d;
+          border-color: #8d8d8d;
+          background-image: url('../../../assets/images/icon/icon-minus-un.png');
+        }
+      }
+
+      &-plus {
+        color: #fff;
+        background-color: #ff6140;
+        border: none;
+        background-size: 100%;
+        background-position: center center;
+        background-image: url('../../../assets/images/icon/icon-plus.png');
+
+        &.disable {
+          background-color: #8d8d8d;
+          border-color: #8d8d8d;
+        }
+      }
+    }
+
+    &.inactive {
+      .row .price {
+        color: #333;
+      }
+    }
+
+    &.beReduced {
+      .numControlWrap .num,
+      .btn-minus {
+        display: none;
+      }
+    }
+  }
+
+  &.list {
+    display: flex;
+    padding: 26px 30px 26px 20px;
+    box-sizing: border-box;
+    box-shadow: none;
+    // prettier-ignore
+    border-bottom: 1Px solid rgba(242, 242, 242, 1);
+
+    .imgWrap {
+      height: 180px;
+      width: 180px;
+      border-radius: 10px;
+      overflow: hidden;
+
+      .imgSoldMark {
+        font-size: 28px;
+      }
+    }
+
+    .contentWrap {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .infoWrap {
+      padding-top: 0;
+      flex: 1;
+
+      .infoName {
+        font-size: 26px;
+        color: #333;
+      }
+
+      .infoDesc {
+        color: rgba(102, 102, 102, 1);
+      }
+    }
+
+    .actionWrap .row {
+      justify-content: flex-start;
+      align-items: baseline;
+
+      .price {
+        margin-right: 16px;
+        font-size: 30px;
+        font-weight: 500;
+      }
+
+      .numControlWrap {
+        flex: 1;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <div>
+      <div>
+        <div>hello1</div>
+        <div>hello2</div>
+        <div>hello3</div>
+        <div>hello4</div>
+      </div>
+      <ul>
+        <li>world1</li>
+        <li>world2</li>
+        <li>world3</li>
+        <li>world4</li>
+      </ul>
+    </div>
+  </div>
+  <script type="text/javascript">
+  // 生成虚拟节点的 类
+  class Vnode {
+    constructor(tag, data, value, type) {
+      this.tag = tag && tag.toLowerCase()
+      this.data = data
+      this.value = value
+      this.type = type
+      this.children = []
+    }
+    appendChild(vnode) {
+      this.children.push(vnode)
+    }
+  }
+  // 遍历 DOM 树，调用 Vnode类生成虚拟 DOM树
+  function getVnode(node) {
+    let nodeType = node.nodeType
+    let childNodes = node.childNodes
+    let _vnode = null
+
+    if (nodeType == 1) {
+      // 元素节点
+      let nodeName = node.nodeName
+      let attrs = node.attributes
+      let _attrsObj = {}
+      for (var i = 0; i < attrs.length; i++) {
+        _attrsObj[attrs[i].nodeName] = attrs[i].nodeValue
+      }
+      _vnode = new Vnode(nodeName, _attrsObj, undefined, nodeType)
+      // node 子元素节点
+      for (var i = 0; i < childNodes.length; i++) {
+        _vnode.appendChild(getVnode(childNodes[i]))
+      }
+
+    } else if (nodeType == 3) {
+      // 文本节点
+      _vnode = new Vnode(undefined, undefined, node.nodeValue, nodeType)
+    }
+    return _vnode
+  }
+  let root = document.querySelector('#root')
+  let vroot = getVnode(root)
+  console.log(vroot)
+  </script>
+</body>
+
+</html>

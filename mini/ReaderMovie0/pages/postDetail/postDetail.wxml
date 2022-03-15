@@ -1,0 +1,27 @@
+<!--pages/postDetail/postDetail.wxml-->
+<view class="art-header">
+  <image src="{{ flag ? musicImgSrc : artInfo.headImgSrc}}"></image>
+  <view class="music" bindtap="musicTap">
+    <image wx:if="{{flag}}" src="/images/music/music-stop.png"></image>
+    <image wx:else src="/images/music/music-start.png"></image>
+  </view>
+</view>
+<view class="art-info">
+  <image src="{{artInfo.avatar}}"></image>
+  <text class="author">{{artInfo.author}}</text>
+  <text>发表于</text>
+  <text>{{artInfo.dateTime}}</text>
+</view>
+<text class="art-title">{{ artInfo.title}}</text>
+<view class="options">
+  <view class="collect" catchtap="collect">
+    <image src="/images/icon/collection.png" wx:if="{{collect}}"></image>
+    <image src="/images/icon/collection-anti.png" wx:else></image>
+  </view>
+  <view class="share" bindtap="share">
+    <image src="/images/icon/share.png"></image>
+  </view>
+</view>
+<view class="art-content">
+  {{artInfo.detail}}
+</view>

@@ -1,0 +1,10 @@
+链接按照顺序从一到九排列下来，大家有需要的可自行观看学习~
+1.https://www.freecodecamp.org/news/how-to-build-a-movie-search-app-using-react-hooks-24eb72ddfaf7/
+2.https://www.sitepoint.com/pusher-vue-real-time-chat-app/
+3.https://medium.com/@hamedbaatour/build-a-real-world-beautiful-web-app-with-angular-6-a-to-z-ultimate-guide-2018-part-i-e121dd1d55e
+4.https://medium.com/codingthesmartway-com-blog/building-a-svelte-3-todo-app-from-start-to-deployment-1737f72c23a6
+5.https://snipcart.com/blog/next-js-ecommerce-tutorial
+6.https://www.storyblok.com/tp/nuxt-js-multilanguage-website-tutorial （第六个项目b站也有对应教学：https://www.bilibili.com/video/av21130191/）
+7.https://blog.bitsrc.io/how-to-build-a-blog-with-gatsby-and-boostrap-d1270212b3dc
+8.https://www.telerik.com/blogs/building-a-blog-with-vue-and-markdown-using-gridsome
+9.https://www.learningsomethingnew.com/how-to-build-a-sound-cloud-like-audio-player-app-with-vue-js-quasar-and-wave-surfer

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  // function full100(price) {
+  //   return price - 5;
+  // }
+
+  // function full200(price) {
+  //   return price - 15;
+  // }
+
+  // function full300(price) {
+  //   return price - 30;
+  // }
+
+  // function full400(price) {
+  //   return price - 50;
+  // }
+
+  // function calculate(type, price) {
+  //   if (type == 'full100') {
+  //     return full100(price)
+  //   }
+  //   if (type == 'full200') {
+  //     return full200(price)
+  //   }
+  //   if (type == 'full300') {
+  //     return full300(price)
+  //   }
+  //   if (type == 'full400') {
+  //     return full400(price)
+  //   }
+  // }
+  var countPrice = {
+    returnPrice: {
+      full100: function(price) {
+        return price - 5
+      },
+      full200: function(price) {
+        return price - 15
+      },
+      full300: function(price) {
+        return price - 30
+      },
+      full400: function(price) {
+        return price - 50
+      }
+    },
+    getPirce: function(type, money) {
+      return this.returnPrice[type] ? this.returnPrice[type](money) : money;
+    },
+    addRule: function(type, discount) {
+      this.returnPrice[type] = function(price) {
+        return price - discount;
+      }
+    }
+  }
+  console.log(countPrice.getPirce('full300', 399))
+  countPrice.addRule('full500', 100);
+  console.log(countPrice.getPirce('full500',599))
+  console.log(countPrice)
+  </script>
+</body>
+
+</html>

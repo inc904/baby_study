@@ -1,0 +1,45 @@
+<!--pages/film/film.wxml-->
+<view class="film">
+  <!-- 正在热映 -->
+  <view class="file-type">
+    <view class="type-title">
+      <text class="title">正在热映</text>
+      <navigator class="more" url="/pages/moreList/moreList?title=正在热映">更多</navigator>
+    </view>
+    <scroll-view class="film-list" scroll-x>
+      <view class="list-wrap">
+        <block wx:for="{{ movies.inTheaterUrl}}" wx:key="{{ index }}">
+          <filmItem itemInfo="{{ movies.inTheaterUrl[index] }}"></filmItem>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 即将上映 -->
+   <view class="file-type">
+    <view class="type-title">
+      <text class="title">即将上映</text>
+      <navigator class="more" url="/pages/moreList/moreList?title=即将上映">更多</navigator>
+    </view>
+    <scroll-view class="film-list" scroll-x>
+      <view class="list-wrap">
+        <block wx:for="{{ movies.comingSoonUrl}}" wx:key="{{ index }}">
+          <filmItem itemInfo="{{ movies.comingSoonUrl[index] }}"></filmItem>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- Top250 -->
+   <view class="file-type">
+    <view class="type-title">
+      <text class="title">top250</text>
+      <navigator class="more" url="/pages/moreList/moreList?title=top250">更多</navigator>
+    </view>
+    <scroll-view class="film-list" scroll-x>
+      <view class="list-wrap">
+        <block wx:for="{{ movies.top250}}" wx:key="{{ index }}">
+          <filmItem itemInfo="{{ movies.top250[index] }}"></filmItem>
+        </block>
+      </view>
+    </scroll-view>
+  </view>
+</view>

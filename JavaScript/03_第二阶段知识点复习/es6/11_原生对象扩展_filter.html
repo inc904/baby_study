@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // filter 过滤
+        let arr = [67, 122, 36, 59, 99,24];
+        let arr2 = arr.filter(item => {
+            if(item %2 == 1){
+                return false;
+            }else{
+                return true;
+            }
+        })
+        console.log(arr2);
+
+        // 简写
+        let arr3 = arr.filter(item => item%2==0)
+        console.log(arr3);
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>swiper_menu</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0-0/axios.js"></script>
+  </head>
+  <body>
+    <div id="home_swiper" @mouseout="hiddenDcat" @mouseover="showDcat">
+      <div class="menu">
+        <div
+          class="item"
+          @mouseover="changeDcat(index)"
+          @mouseout="hiddenDcat"
+          v-for="(item,index) in cats"
+        >
+          {{item.cat_name}}
+          <em>></em>
+        </div>
+      </div>
+      <div class="d_cats_wrapper" v-show="show">
+        <div class="d_cats">
+          <div class="d_item" v-for="(item, index) in d_cats" :key="index">
+            <img :src="item.cat_icon" alt="" />
+            <span>{{item.cat_name}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="swiper">
+        <div class="swiper_item" v-for="item in imgs " :key="item.id">
+          <img :src="item.url" />
+        </div>
+      </div>
+    </div>
+    <script>
+      let vm = new Vue({
+        el: '#home_swiper',
+        data: {
+          timer: null,
+          i: 0,
+          msg: 'ajsdjhkj',
+          imgs: [
+            {
+              id: 1,
+              url:
+                'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0510125016746b5832a1307f1b6be006.jpg?w=2452&h=920',
+            },
+            {
+              id: 2,
+              url:
+                'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/88c951d33781f19fe90f6fc20411378b.jpg?thumb=1&w=1226&h=460&f=webp&q=90',
+            },
+            {
+              id: 3,
+              url:
+                'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/564794c4fc3eab75d60036edb4138d41.jpg?w=2452&h=920',
+            },
+          ],
+          show: false,
+          i: [],
+          cats: [],
+        },
+        created() {
+          this.getCats()
+          console.log('all', this.d_cats)
+        },
+        mounted() {
+          // this.run()
+          this.timer = setInterval(this.run, 2000)
+        },
+        beforeDestroy() {
+          clearTimeout(this.timer)
+        },
+        methods: {
+          getCats() {
+            const baseURL = 'https://api-hmugo-web.itheima.net/api/public/v1'
+            axios.get(baseURL + '/categories').then((res) => {
+              console.log(res)
+              this.cats = res.data.message.splice(0, 10)
+            })
+          },
+          changeDcat(i) {
+            this.show = true
+            this.i = i
+            console.log(this.d_cats)
+            // this.demo()
+          },
+          hiddenDcat(e) {
+            this.show = false
+            console.log(e)
+          },
+          showDcat() {
+            this.show = true
+          },
+          // demo() {
+          //   let i = this.i
+          //   let all = this.cats[i] // this.cats[i].children.forEach((element) => {
+          //   //   all.push(...element.children)
+          //   // })
+          //   console.log(all)
+          //   if (this.cats.children) {
+          //   }
+          // },
+
+          run() {
+            this.i += 1
+            let swiper = document.querySelector('.swiper')
+            // var left = swiper.style.marginLeft || 0
+            var left = swiper.style.marginLeft.split('px')[0] || 0
+            if (this.i > 1) {
+              left = 0
+              this.i = 0
+            }
+
+            console.log(swiper)
+            swiper.style.marginLeft = Number(left) - 1226 + 'px'
+            var l = left - 1226 + 'px'
+            console.log(l)
+            console.log(swiper.style.marginLeft)
+          },
+        },
+        computed: {
+          d_cats: function () {
+            // return this.cats[this.i]
+
+            if (this.cats[this.i]) {
+              let dd = this.cats[this.i] && this.cats[this.i].children
+              let temp = []
+              dd.forEach((element) => {
+                if (element.children) {
+                  temp.push(...element.children)
+                } else {
+                  return temp
+                }
+              })
+              return temp
+            } else {
+              return []
+            }
+          },
+        },
+      })
+    </script>
+  </body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #home_swiper {
+      width: 1226px;
+      height: 460px;
+      /* background-color: #ccc; */
+      margin: 140px auto;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      margin-left: 20px;
+    }
+
+    .menu {
+      width: 234px;
+      height: 460px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      /* background-color: aqua; */
+      background-color: rgba(105, 101, 101, 0.6);
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      padding: 20px 0;
+      box-sizing: border-box;
+    }
+
+    .menu .item {
+      /* text-align: center; */
+      /* background-color: red; */
+      height: 42px;
+      line-height: 42px;
+      padding-left: 30px;
+      font-size: 14px;
+      position: relative;
+    }
+    .menu .item em {
+      font-style: normal;
+      font-weight: bold;
+      position: absolute;
+      right: 30px;
+      /* top: 14px; */
+    }
+
+    .menu .item:hover {
+      background-color: #ff6700;
+    }
+    .d_cats {
+      position: absolute;
+      left: 235px;
+      top: 0;
+      display: flex;
+      /* flex-direction: column; */
+      align-content: start;
+      flex-wrap: wrap;
+      min-width: 50%;
+      /* width: 992px; */
+      height: 460px;
+      background-color: #fff;
+      box-shadow: 0 8px 16px rgba(0 0 0 19%);
+    }
+    .d_item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .d_item img {
+      width: 50px;
+      padding: 20px;
+    }
+    .swiper {
+      margin-left: 0;
+    }
+
+    .swiper_item {
+      float: left;
+    }
+
+    .swiper_item img {
+      width: 1226px;
+      height: 460px;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+  </style>
+</html>

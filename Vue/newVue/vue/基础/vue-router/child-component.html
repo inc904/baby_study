@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路由嵌套</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <script src="../lib/vue-router-3.0.1.js"></script>
+    <style>
+        .router-link-active {
+            color: red;
+        }
+
+        .v-enter-active,
+        .v-leave-active {
+            transition: all .5s;
+        }
+
+        .v-enter,
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(80px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Hello App!</h1>
+        <router-link to="/account">account</router-link>
+        <router-link to="/root">root</router-link>
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+    <template id="login">
+        <h3>登录组件---id: {{$route.query.id}}---name: {{$route.query.name}}</h3>
+    </template>
+    <template id="reg">
+        <h3>注册组件---id: {{$route.params.id}}---name: {{$route.params.name}}</h3>
+    </template>
+    <template id="myInp">
+        <div>
+            <h3>Account</h3>
+            <router-link to="/account/login?id=10&name=zzc" tag="a" name="lllogin">登录</router-link>
+            <router-link to="/account/register/12/whh">注册</router-link>
+            <transition mode="out-in">
+                <router-view></router-view>
+            </transition>
+        </div>
+    </template>
+    <template id="root">
+        <h3>后台管理</h3>
+    </template>
+    <script>
+        var login = {
+            template: '#login',
+            created() {
+                console.log(this.$route)
+                console.log(this.$route.query)
+            }
+        }
+        var register = {
+            template: '#reg',
+            created() {
+                console.log(this.$route)
+                console.log(this.$route.params.id)
+            }
+        }
+        var account = {
+            template: '#myInp',
+            created() {
+                console.log(this.$route)
+                console.log(this.$route.params.id)
+            }
+        }
+        var root = {
+            template: '#root',
+        }
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {},
+            router: new VueRouter({ // 路由对象实例
+                routes: [ // 路由匹配规则
+                    { path: '/', redirect: '/account' },
+                    { path: '/root', component: root },
+                    {
+                        path: '/account', component: account, children: [
+                            { path: 'login', component: login },
+                            { path: 'register/:id/:name', component: register },
+                        ]
+                    },
+
+                ],
+                linkActiveClass: 'my-active'
+            }),
+        })
+    </script>
+</body>
+
+</html>

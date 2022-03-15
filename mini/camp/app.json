@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/filmDetail/filmDetail",
+    "pages/me/me",
+    "pages/logs/logs",
+    "pages/list/list"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1F4BA5",
+    "navigationBarTitleText": "影评集中营",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "selectedColor": "#1F4BA5",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/tab/dianying.png",
+        "selectedIconPath": "/images/tab/dianying_hl.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "关于我",
+        "iconPath": "/images/tab/ciwei.png",
+        "selectedIconPath": "/images/tab/ciwei_hl.png"
+      }
+    ]
+  }
+}

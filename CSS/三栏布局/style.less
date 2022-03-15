@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+h2 {
+  height: 50px;
+  text-align: center;
+  background-color: #eee;
+}
+// .clearfix:after{
+//   content: '';
+//    height: 0;
+//    visibility: hidden;
+//    clear: both;
+//    display: block;
+
+// }
+.l {
+  width: 200px;
+  height: 200px;
+  background-color: cyan;
+}
+.r {
+  width: 100px;
+  height: 200px;
+  background-color: green;
+}
+.m {
+  background-color: lightcoral;
+  height: 210px;
+}
+.container {
+  &:after {
+    content: '';
+    height: 0;
+    visibility: hidden;
+    clear: both;
+    display: block;
+  }
+}
+
+.wrap1 {
+  border-bottom: 2px solid red;
+  .container {
+    position: relative;
+  }
+  .l,
+  .r {
+    position: absolute;
+    top: 0;
+  }
+  .l {
+    left: 0;
+  }
+  .m {
+    margin: 0 100px 0 200px;
+  }
+  .r {
+    right: 0;
+  }
+}
+.wrap2 {
+  .l {
+    float: left;
+  }
+  .m {
+    margin: 0 100px 0 200px;
+  }
+  .r {
+    float: right;
+  }
+}
+.wrap3 {
+  .container {
+    display: flex;
+    .m {
+      flex: 1;
+    }
+  }
+}
+.wrap4 {
+  .container {
+    display: table;
+    width: 100%;
+    div {
+      display: table-cell;
+    }
+  }
+}
+.wrap5 {
+  .container {
+    display: grid;
+    width: 100%;
+    // grid-template-rows: 220px;  /*设置行高  设置后，父元素的高度  不设置的话，由内容决定*/
+    grid-template-columns: 200px auto 100px; /*设置列数属性*/
+  }
+}
+
+.wrap6 {
+  .container {
+    padding: 0 100px 0 200px; // 父元素左右空出位子
+    .l,
+    .r,
+    .m {
+      float: left; // 三个都浮动
+      position: relative;
+    }
+    .l {
+      left: -200px;
+      margin-left: -100%;
+    }
+
+    .m {
+      width: 100%;
+    }
+    .r {
+      margin-right: -100px;
+    }
+  }
+}
+
+.wrap7 {
+  .container {
+    // padding: 0 100px 0 200px;
+    .l,
+    .r,
+    .m {
+      float: left;
+    }
+    .m {
+      width: 100%;
+      .in {
+        //  margin: 0 100px 0 200px;
+        padding: 0 100px 0 200px;
+      }
+    }
+    .l {
+      margin-left: -100%;
+    }
+    .r {
+      margin-left: -100px;
+    }
+  }
+}

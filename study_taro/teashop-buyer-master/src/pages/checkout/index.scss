@@ -1,0 +1,169 @@
+$color-brand: #ff6140;
+$color-brand-light: #ff8970;
+$color-brand-dark: #cc4e33;
+$color-border-base: #ccc;
+
+@import '~taro-ui/dist/style/components/checkbox.scss';
+@import '~taro-ui/dist/style/components/button.scss';
+
+page {
+  background-color: #f5f5f5;
+}
+
+$checkboxcomp: '.at-checkbox';
+
+#{$checkboxcomp} {
+  background-color: #fff;
+
+  &__option-wrap {
+    padding: 0 20px 0 0;
+  }
+
+  &::before {
+    border-top: none;
+  }
+
+  &::after {
+    border: none;
+  }
+
+  &__icon-cnt {
+    border: none;
+    margin-right: 0;
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+
+    .at-icon-check {
+      width: 36px;
+      height: 36px;
+      background-image: url('../../assets/images/icon/icon-check-o-dis.png');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+    }
+  }
+
+  &__option {
+    padding-left: 20px;
+
+    &:active {
+      background-color: #fff;
+    }
+
+    &--disabled {
+      #{$checkboxcomp}__option-cnt,
+      #{$checkboxcomp}__desc {
+        opacity: $opacity-disabled;
+      }
+
+      &:active {
+        background-color: $color-bg;
+      }
+    }
+
+    &--selected {
+      #{$checkboxcomp}__icon-cnt {
+        border: none;
+        background-color: $at-checkbox-icon-color;
+
+        .at-icon-check {
+          background-image: url('../../assets/images/icon/icon-check.png');
+        }
+      }
+    }
+  }
+}
+
+.at-button {
+  display: flex;
+  height: 70px;
+  line-height: 70px;
+  font-size: 30px;
+  font-weight: 500;
+  padding: 0 40px;
+  min-width: 210px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.checkoutPage {
+  padding: 20px 20px 152px;
+  color: #333;
+}
+
+.checkoutCard {
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  padding: 4px 0 20px 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 28px;
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    line-height: 46px;
+  }
+
+  .totalPrice {
+    padding: 16px 20px 16px 0;
+    // prettier-ignore
+    border-bottom: 1Px solid #ccc;
+
+    .price {
+      font-weight: 500;
+    }
+  }
+
+  .coupon {
+    padding: 16px 20px 8px 0;
+
+    .text {
+      color: $color-brand;
+    }
+  }
+
+  .payPrice {
+    padding-right: 20px;
+    font-weight: 500;
+    color: $color-brand;
+    text-align: right;
+  }
+
+  .balance {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    line-height: 40px;
+
+    .action {
+      display: flex;
+    }
+  }
+}
+
+.checkoutBottomMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 24px 30px 36px;
+  font-size: 30px;
+
+  .priceWrap {
+    margin-right: 20px;
+
+    .price {
+      color: $color-brand;
+      font-weight: 500;
+    }
+  }
+}

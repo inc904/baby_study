@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生命周期</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p id="test">{{msg}}</p>
+        <button @click="msg = '2333'">修改</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '测试文字'
+            },
+            methods: {
+                show() {
+                    console.log('show time!')
+                }
+            },
+            beforeCreate() {
+                // 在内存中创建，还有初始化数据和方法
+                // console.log(this.msg) // undefined
+                // this.show() //error
+            },
+            created() {
+                // 初始化了 数据 和 方法
+                // console.log(this.msg) 
+                // this.show() 
+            },
+            // 在内存中船舰成功，但是没有吧模板渲染到页面中
+            beforeMount() {
+                // 页面中的元素内容还没有被替换过来
+                // console.log(document.querySelector('p').innerText)
+                // {{ msg }}
+            },
+            mounted() {
+                // 内容已经被渲染到页面中
+                // console.log(document.querySelector('p').innerText)
+                // 如果要通过某些插件操作页面中的dom。可以在此处操作
+            },
+
+            // 脱离创建阶段，进入运行阶段
+            beforeUpdate() {
+                console.log('beforeUpdate')
+                console.log('页面元素中的数据：',document.querySelector('p').innerText)
+                console.log('data中的数据：',this.msg)
+                // 数据被改变，但是没有渲染到页面中
+            },
+            updated() {
+                console.log('updated')
+                console.log('页面元素中的数据：',document.querySelector('p').innerText)
+                console.log('data中的数据：',this.msg)
+            },
+            // 进入销毁阶段
+            beforeDestory() { },
+            destoryed() { }
+        })
+    </script>
+</body>
+
+</html>

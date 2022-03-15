@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>正则</title>
+  </head>
+  <body>
+    <!-- 
+      正则:
+        元字符
+          边界符:
+            ^  开始符. 
+            $  结尾符
+          字符类:
+            [] 表示有一系列字符可以选择,只要匹配其中一个就可以 
+            [a-z]  [0-9] [a-zA-Z0-9]
+             [] 中括号里面的 ^ 表示取反的意思
+          量词符:
+            *  重复0次或者更多次
+            +  重复一次或者更多次
+            ?  重复零次或者一次
+            {n}  重复n次
+            {n,}  重复n次或者更多次 
+            {n,m}  重复n到m次,中间不能有空格
+     -->
+    <script>
+      // 对象创建
+      var regexp = new RegExp()
+      // 字面量创建
+      var reg = /^[0-9a-z]{3,4}$/
+      // 检验字符串是否满足正则规则
+      var f = reg.test('23da')
+      console.log(f)
+
+      // 类
+      class Father {
+        constructor(name, pass) {
+          this.name = name
+          this.pass = pass1
+        }
+        showName() {
+          console.log(this.name)
+        }
+      }
+      class Son extends Father {
+        constructor(name, pass, sex) {
+          super(name, pass)
+          this.sex = sex
+        }
+        showSex() {
+          console.log('i am a boy!')
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="js/jquery-3.4.1.js"></script>
+</head>
+
+<body>
+  <script>
+    var arr = [3, 4, 5]
+    var obj = { 0: 2, 1: 3, 2: 4, length: 3 }
+    // 原生map
+    arr.map(function (value, index, array) {
+      console.log(index, value, array)
+    })
+    console.log('----');
+
+    // jq中的 map
+    $.map(arr, function (index, value) {
+      console.log(index, value)
+    })
+    console.log('----');
+
+    $.each(obj, function (index, value) {
+      console.log(index + ':' + value)
+    })
+  </script>
+</body>
+
+</html>

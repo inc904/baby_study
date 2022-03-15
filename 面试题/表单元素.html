@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>表单元素</title>
+</head>
+<body>
+<style>
+  input:focus,
+  textarea:focus {
+    border: 1px solid green;
+    background-color: #fcc;
+  }
+</style>
+<form action="">
+  <!--  边框  fieldset-->
+  <fieldset>
+    <!-- // 边框title  legend-->
+    <legend>Personal information:</legend>
+    <!-- 文本字段 -->
+    <label for="user">
+      Username: <input type="text" name="user"/><br/>
+    </label>
+    <!-- 密码字段 -->
+    Password: <input type="password" name="password"/><br/>
+    <!-- 单选按钮 -->
+    <input type="radio" name="sex" value="male" id="male"/>
+    <label for="male">
+      Male
+    </label>
+    <input type="radio" name="sex" value="female" id="female"/>
+    <label for="female">
+      Female
+    </label>
+    <br/>
+    <!-- 复选框 -->
+    <input type="checkbox" name="vehicle" value="Bike"/>I have a bike<br/>
+    <input type="checkbox" name="vehicle" value="Car"/>I have a car<br/>
+    <!-- 下拉框 -->
+    <select name="cars">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="fiat">Fiat</option>
+      <option value="audi">Audi</option>
+      <!--  预选 -->
+      <option value="fiat" selected>Fiat</option>
+    </select>
+    <br/>
+    <!-- 文本框 -->
+    <textarea rows="10" cols="30">
+        我是一个文本框。
+       </textarea
+       >
+    <br/>
+    <!-- 提交按钮 -->
+    <input type="submit" value="Submit"/>
+  </fieldset>
+</form>
+</body>
+<script></script>
+</html>

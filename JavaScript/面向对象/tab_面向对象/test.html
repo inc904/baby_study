@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">
+      1q3edqasd
+    </div>
+    <ul style="height: 100px; background-color: #eee;">
+      <li>123</li>
+    </ul>
+
+    <ul id="test">
+      <li>
+        <p>11111111111</p>
+      </li>
+      <li>
+        <div>
+          22222222
+        </div>
+      </li>
+      <li>
+        <span>3333333333</span>
+      </li>
+      <li>4444444</li>
+    </ul>
+    <script>
+      console.log(123123)
+      console.log(document.querySelector('.box'))
+      var ul = document.querySelector('ul')
+      ul.addEventListener('click', function(e) {
+        console.log(1)
+        if (e.target.nodeName === 'LI') {
+          console.log(2)
+        }
+        console.log(e.target.nodeName)
+      })
+      function test(a) {
+        if (a > 7) {
+          console.log(1111)
+        }
+        console.log(2222)
+      }
+      test(8)
+      var oUl = document.getElementById('test')
+      var lis = oUl.querySelectorAll('li')
+      lis[0].ondblclick = function(e) {
+        alert(1)
+      }
+      oUl.addEventListener('click', function(ev) {
+        var target = ev.target
+        while (target !== oUl) {
+          if (target.tagName.toLowerCase() == 'li') {
+            console.log('li click~')
+            break
+          } else {
+            target = target.parentNode
+          }
+          console.log(123)
+        }
+      })
+      // 解构赋值
+      let { data: res } = { data: 1, name: 'joe' }
+      console.log(res)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 属性绑定 父子传数据, 事件绑定，父子组件传递方法 -->
+    <son-com :parent-msg="pmsg" @parent-fn="show"></son-com>
+  </div>
+
+  <!-- 子组件模板 -->
+  <template id="tpl">
+    <div>
+      <p><---这是子组件---></p>
+      <p>子组件自己的数据:{{ title }}</p>
+      <p>父组件中的数据：{{ parentMsg }}</p>
+      <input type="button" value="子组件按钮-调用自己的方法" @click="myclick">
+      <input type="button" value="子组件按钮-调用父组件上的方法" @click="pclick">
+    </div>
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        pmsg: '父组件中的数据'
+      },
+      methods: {
+        show(param1, param2){
+          console.log('调用了父组件上的show方法-->'+param1+'-->'+param2)
+        }
+      },
+      components: {
+        sonCom: {
+          data() {
+            return {
+              title: 'myTitle123',
+            }
+          },
+          template: '#tpl',
+          // 接收 父组件传递的数据
+          props: ['parentMsg'],
+          methods: {
+            myclick(){
+              console.log('子组件自己的方法')
+            },
+            pclick(){
+              // 调用父组件的方法
+              // emit 触发的意思
+              this.$emit('parent-fn', '参数一','参数二')
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

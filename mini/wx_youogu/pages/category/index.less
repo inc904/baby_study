@@ -1,0 +1,57 @@
+/* pages/category/index.wxss */
+page {
+  height: 100%;
+}
+.cates {
+  height: 100%;
+  .cates_container {
+    height: calc(100vh - 90rpx);
+    display: flex;
+    .left {
+      // height: 100%;
+      // flex 子项高度 默认100%
+      flex: 2;
+      .menuItem {
+        font-size: 30rpx;
+        padding: 10rpx 6rpx;
+        text-align: center;
+      }
+      .active {
+        color: var(--themeColor);
+        border-left: 5px solid currentColor;
+      }
+    }
+    .right {
+      flex: 5;
+      .subCatItem {
+        width: 100%;
+
+        .subCat_title {
+          text-align: center;
+          height: 80rpx;
+          line-height: 80rpx;
+        }
+
+        .itemWrap {
+          display: flex;
+          flex-wrap: wrap;
+          .subItem {
+            width: 33.33%;
+            padding: 10rpx;
+
+            view {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-direction: column;
+              image {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

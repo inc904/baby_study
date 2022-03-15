@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>测试页面</title>
+  </head>
+  <body>
+    <script>
+      // {
+      //   var a = 123
+      // }
+
+      /**
+       * 作用域
+       */
+      // function demo() {
+      //   var b = 3425
+      // }
+      // demo()
+      // console.log(b)
+      // console.log(a)
+
+      // async function getData() {
+      //   return 'hello world!'
+      // }
+      // // var p1 = await getData()
+      // // console.log(p1) // await is only valid in async functions and async generators
+
+      // async function useData() {
+      //   var p2 = await getData()
+      //   console.log(p2)
+      // }
+      // useData()
+
+      // await  阻塞 把异步阻塞成同步
+
+      async function getData() {
+        console.log(2)
+        return 'hello world!'
+      }
+      // var p1 = await getData()
+      // console.log(p1) // await is only valid in async functions and async generators
+
+      async function useData() {
+        console.log(1)
+
+        var p2 = await getData()
+        // console.log(p2)
+        console.log(3)
+      }
+      useData()
+
+      // var c = Object.assign(3)
+      // console.log(Object.prototype.toString.call(c), c, 3)
+      // var d = 5
+      // console.log(Object.prototype.toString.call(4))
+      // console.log(Object.prototype.toString.call(d), typeof d)
+      // console.log(Array.isArray(d))
+
+      // function protofun() {}
+      // console.log('protofun', protofun.__proto__)
+      // console.log('protofun', protofun.prototype)
+      // function ProtoFun() {}
+      // console.log('ProtoFun', ProtoFun.__proto__)
+      // console.log('ProtoFun', ProtoFun.prototype)
+
+      function Model() {}
+      let model = new Model()
+
+      // Model 是模具样板
+      // 构造函数有原型  prototype  好比是图纸
+      // 模具实例 有 __proto__ 指向图纸
+      console.log('model.__proto__:', model.__proto__)
+      console.log('Model.prototype:', Model.prototype)
+
+      function clone(origin) {
+        let originProto = Object.getPrototypeOf(origin)
+        return Object.assign(Object.create(originProto), origin)
+      }
+
+      var obj1 = {
+        name: 'jack',
+        age: 12,
+        gender: {
+          chinese: 87,
+          math: 99,
+          english: 100,
+        },
+      }
+      var obj2 = clone(obj1)
+      console.log(obj2)
+      console.log(obj1 == obj2)
+      obj2.gender.math = 80
+      console.log(obj1.gender.math, obj2.gender.math)
+      console.log(obj2.__proto__ == obj1.__proto__)
+      console.log(
+        'obj1.__proto__ == Object.prototype:',
+        obj1.__proto__ == Object.prototype
+      )
+
+      var urlObj = {
+        host: 'acc.com',
+        port: 800,
+      }
+      var urlObj2 = {
+        port: 9000,
+      }
+      var resObj = Object.assign({}, urlObj, urlObj2)
+      console.log('res:', resObj)
+
+      // const DEFAULTS = {
+      //   logLevel: 0,
+      //   outputFormat: 'html',
+      // }
+      function processContent(options) {
+        options = Object.assign({}, DEFAULTS, options)
+        console.log(options)
+        // ...
+      }
+
+      const DEFAULTS = {
+        url: {
+          host: 'example.com',
+          port: 7070,
+        },
+      }
+      processContent({ url: { port: 8000 } })
+
+      async function getSomething() {
+        return 'something'
+      }
+      console.log(getSomething())
+
+      async function testAsync() {
+        return Promise.resolve('hello async')
+      }
+
+      const result = testAsync()
+      console.log(result)
+      // async function test() {
+      //   const v1 = await getSomething()
+      //   const v2 = await testAsync()
+      //   console.log(v1, v2)
+      // }
+
+      // test()
+    </script>
+  </body>
+</html>

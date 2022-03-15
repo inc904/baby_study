@@ -1,0 +1,13 @@
+body{
+	margin: 0;
+	padding: 0;
+	background: url(../images/5be670ac0d49b.png);
+}
+ul li.li{
+	list-style: none;
+	width: 200px;
+}
+img{
+	width: 100px;
+	height: 100px;
+}

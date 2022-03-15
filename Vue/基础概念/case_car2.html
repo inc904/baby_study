@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="lib/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>燕丹汽配城 <small>品牌管理系统</small></h1>
+    </div>
+    <div id="app">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <span>ID：</span>
+          <input type="text" class="form-control" placeholder="请输入ID" v-model="id">
+        </div>
+        <div class="form-group">
+          <span>名称：</span>
+          <input type="text" class="form-control" placeholder="请输入名称" v-model="name">
+        </div>
+        <div class="form-group">
+          <span>到货时间：</span>
+          <input type="text" class="form-control" placeholder="请输入到货时间" v-model="ctime" @keyup.enter="add">
+        </div>
+        <input type="button" class="btn btn-primary" value="添加" @click="add">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" v-model="keywords" v-focus>
+        </div>
+        <div class="form-group">
+          <input type="button" class="btn btn-default" value="搜索">
+        </div>
+      </form>
+      <table class="table table-hover table-bordered  table-striped">
+        <tr>
+          <td>编号</td>
+          <td>名称</td>
+          <td>到货时间</td>
+          <td>操作</td>
+        </tr>
+        <tr v-for="item, index in search(keywords)" :key="item.id" v-bind:v-data="item.id">
+          <td>{{ index }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.ctime }}</td>
+          <td>
+            <a class="btn btn-success" href="javascript:;" @click="edit(item.id)">编辑</a>
+            <a class="btn btn-danger" href="javascript:;" @click="del(item.id)">删除</a>
+          </td>
+        </tr>
+      </table>
+      <div class="page-footer">
+        <h2><small>当前时间1：</small>{{ time | dateFormat }}</h2>
+        <h2><small>当前时间2：</small>{{ time | myDate }}</h2>
+      </div>
+    </div>
+
+  </div>
+  <script src="lib/vue-2.4.0.js"></script>
+  <script>
+    // 定义全局 过滤器
+    Vue.filter('dateFormat', function (dateStr) {
+      // 根据给定的时间字符串
+      var dt = new Date(dateStr)
+      var y = dt.getFullYear()
+      var m = (dt.getMonth() + 1).toString().padStart(2, 0)
+      var d = dt.getDate().toString().padStart(2, 0)
+      return `${y}-${m}-${d}`
+    })
+    Vue.directive('focus', {
+      // 在每个函数中，第一个参数都是 el ，表示绑定指令的那个元素，是一个原生的js对象
+      bind: function (el) {
+        // 指令已绑定到元素上的时候，就会执行，只执行一次  
+      },
+      inserted(el) {
+        // 标识元素插入到 DOM 中的时候，会执行，只触发一次
+        el.focus()
+      },
+      updated: function () {
+        // 当 VNode 更新的时候，会执行，可能会触发多次
+      }
+    })
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        id: null,
+        name: null,
+        ctime: null,
+        keywords: '',
+        time: new Date(),
+        carList: [
+          { id: 0, name: '宝马', ctime: '2019年7月9日' },
+          { id: 1, name: '别克', ctime: '2019年7月9日' },
+          { id: 2, name: '宝马', ctime: '2019年7月9日' },
+          { id: 3, name: '宝骏', ctime: '2019年7月9日' },
+          { id: 4, name: '雷克萨斯', ctime: '2019年7月9日' },
+          { id: 5, name: '凯迪拉克', ctime: '2019年7月9日' }
+        ]
+      },
+      methods: {
+        add() {
+          var newCar = {
+            id: this.id,
+            name: this.name,
+            ctime: this.ctime
+          }
+          this.carList.push(newCar)
+          this.name = this.id = this.ctime = null
+        },
+        del(id) {
+          this.carList.some((item, index) => {
+            if (item.id == id) {
+              this.carList.splice(index, 1)
+              return true
+            }
+          })
+        },
+        edit() {
+          alert('功能正在开发中。。。')
+        },
+        search(keywords) {
+          // var newList = []
+          // this.carList.forEach(element => {
+          //   if (element.name.indexOf(keywords) != -1) {
+          //     newList.push(element)
+          //   }
+          // })
+
+          var newList = this.carList.filter(item => {
+            // if(item.name.indexOf(keywords) != -1){
+            if (item.name.includes(keywords)) {
+              return item
+            }
+          })
+
+          return newList
+        }
+      },
+      filters: {
+        myDate(dateStr) {
+          var dt = new Date(dateStr)
+          var y = dt.getFullYear()
+          var m = dt.getMonth() + 1
+          var d = dt.getDate()
+          return `${y}-${m}-${d}`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

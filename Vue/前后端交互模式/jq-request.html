@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jq-Ajax请求</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  </head>
+  <body>
+    <div class="wait"></div>
+    <script>
+      $.ajax({
+        url:
+          'https://www.fastmock.site/mock/6145a47aab15ddd6d18196d8e2b5f630/api/getlist',
+        beforeSend: () => {
+          $('.wait').append('<p>1111</p>')
+        },
+        success: (res) => {
+          $('.wait').append('<p>222</p>')
+          console.log(res)
+        },
+      })
+    </script>
+  </body>
+</html>
